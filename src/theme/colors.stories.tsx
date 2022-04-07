@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Box, useColorMode, useTheme } from "@chakra-ui/react";
 
 export default {
-  title: "color tester",
+  title: "Colors",
   component: Box,
 } as ComponentMeta<typeof Box>;
 
