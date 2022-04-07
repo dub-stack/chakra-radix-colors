@@ -5,10 +5,6 @@ import {
   screen as screenNoTheme,
 } from "@testing-library/react";
 import { Box } from "@chakra-ui/react";
-import { matchers } from "@emotion/jest";
-
-// add emotion matchers
-expect.extend(matchers);
 
 describe("Renders colors from theme", () => {
   // When we pass a color value such as "amberA.5" (or any other color from the
