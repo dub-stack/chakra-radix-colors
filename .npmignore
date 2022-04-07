@@ -1,3 +1,20 @@
 !dist/
 !package.json
 !LICENSE
+
+# ignore all test and story files
+dist/**/*.test.{ts,tsx,js,jsx}
+dist/**/*.stories.{ts,tsx,js,jsx}
+dist/util/test-utils.tsx
+.storybook/
+coverage/
+
+# ignore all config files
+*.config.{ts,tsx,js,jsx}
+tsconfig.json
+
+# ignore all source files
+src/
+
+# ignore npm package files
+out/
