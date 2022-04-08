@@ -14,11 +14,6 @@ updates:
     allow:
       - dependency-type: "all"
 
-    # check this setting, might need to assign to mergify-bot
-    # else assign to self so you get notified.
-    assignees:
-      - "SpencerDuball"
-
     # see how this plays with mergify, don't need to update the
     # package and trigger release with only a dev-deps update
     commit-message:
@@ -27,5 +22,4 @@ updates:
       include: "scope"
 
     labels:
-      - "npm"
-      - "dependencies"
+      - "dependency"
