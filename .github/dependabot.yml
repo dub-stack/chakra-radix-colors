@@ -8,7 +8,11 @@ updates:
       interval: "weekly"
       day: "sunday"
       time: "09:00"
+<<<<<<< HEAD
       timezone: "America/Chicago"
+=======
+      timezone: "america/chicago"
+>>>>>>> cf7ae82954cc7d45af62cbfef25c6f3e9533841b
 
     # keep all dependencies up-to-date
     allow:
