@@ -1,0 +1,31 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+
+    # update dependencies on sunday at 9:00AM CST
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "09:00"
+      timezone: "America/Chicago"
+
+    # keep all dependencies up-to-date
+    allow:
+      - dependency-type: "all"
+
+    # check this setting, might need to assign to mergify-bot
+    # else assign to self so you get notified.
+    assignees:
+      - "SpencerDuball"
+
+    # see how this plays with mergify, don't need to update the
+    # package and trigger release with only a dev-deps update
+    commit-message:
+      prefix: "update(deps)"
+      prefix-development: "update(dev-deps)"
+      include: "scope"
+
+    labels:
+      - "npm"
+      - "dependencies"
