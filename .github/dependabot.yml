@@ -22,8 +22,8 @@ updates:
     # see how this plays with mergify, don't need to update the
     # package and trigger release with only a dev-deps update
     commit-message:
-      prefix: "deps(prod)"
-      prefix-development: "deps(dev)"
+      prefix: "upgrade"
+      prefix-development: "upgrade"
       include: "scope"
 
     labels:
