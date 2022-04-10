@@ -10,4 +10,4 @@ export const parameters = {
   },
 };
 
-export const decorators = [chakraDecorator];
+// export const decorators = [chakraDecorator];
