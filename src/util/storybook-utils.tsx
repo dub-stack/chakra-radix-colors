@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { IconButton, ChakraProvider, useColorMode } from "@chakra-ui/react";
+import {
+  IconButton,
+  ChakraProvider,
+  Flex,
+  useColorMode,
+} from "@chakra-ui/react";
 import { RiMoonFill } from "react-icons/ri";
 import theme from "../theme";
 
@@ -49,10 +54,17 @@ export const Decorators = (props: {
         icon={<RiMoonFill color="#000000" />}
         onClick={() => setColorMode(colorMode === "light" ? "dark" : "light")}
       />
-      <NewDecorator colorMode={colorMode}>{props.newComponent}</NewDecorator>
-      <DefaultDecorator colorMode={colorMode}>
-        {props.defaultComponent}
-      </DefaultDecorator>
+      <Flex
+        gap="10px"
+        justifyContent="center"
+        minH="calc(100vh - 31px)"
+        alignItems="center"
+      >
+        <NewDecorator colorMode={colorMode}>{props.newComponent}</NewDecorator>
+        <DefaultDecorator colorMode={colorMode}>
+          {props.defaultComponent}
+        </DefaultDecorator>
+      </Flex>
     </>
   );
 };

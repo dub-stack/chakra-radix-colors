@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Box, BoxProps, useColorMode } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
 
 export default {
