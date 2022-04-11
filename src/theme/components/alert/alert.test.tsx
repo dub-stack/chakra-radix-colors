@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, ColorModeButtons } from "util/test-utils";
+import { render, screen } from "util/test-utils";
 import {
   Alert,
   AlertIcon,
@@ -11,22 +11,19 @@ describe("`solid` variant", () => {
   test("renders correctly with 'Light' color schemes", () => {
     const Scene = () => {
       return (
-        <>
-          <ColorModeButtons />
-          <Alert
-            status="error"
-            variant="solid"
-            colorScheme="red"
-            borderRadius="md"
-            data-testid="alert"
-          >
-            <AlertIcon />
-            <AlertTitle mr={2}>Outdated</AlertTitle>
-            <AlertDescription>
-              Your Chakra experience may be degraded.
-            </AlertDescription>
-          </Alert>
-        </>
+        <Alert
+          status="error"
+          variant="solid"
+          colorScheme="red"
+          borderRadius="md"
+          data-testid="alert"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
       );
     };
     render(<Scene />);
@@ -57,22 +54,19 @@ describe("`solid` variant", () => {
   test("renders correctly with 'Dark' color schemes", () => {
     const Scene = () => {
       return (
-        <>
-          <ColorModeButtons />
-          <Alert
-            status="error"
-            variant="solid"
-            colorScheme="redDark"
-            borderRadius="md"
-            data-testid="alert"
-          >
-            <AlertIcon />
-            <AlertTitle mr={2}>Outdated</AlertTitle>
-            <AlertDescription>
-              Your Chakra experience may be degraded.
-            </AlertDescription>
-          </Alert>
-        </>
+        <Alert
+          status="error"
+          variant="solid"
+          colorScheme="redDark"
+          borderRadius="md"
+          data-testid="alert"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
       );
     };
     render(<Scene />);

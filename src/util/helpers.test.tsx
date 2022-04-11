@@ -70,14 +70,8 @@ describe("getThemedColor", () => {
 describe("useThemedColor", () => {
   test("works when changing color modes", () => {
     const MyReactElement = () => {
-      const { toggleColorMode, colorMode } = useColorMode();
       const c = useThemedColor();
-      return (
-        <>
-          <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
-          <Text as="h1" color={c("tealA.4")} />
-        </>
-      );
+      return <Text as="h1" color={c("tealA.4")} />;
     };
 
     // render the scene
@@ -90,7 +84,7 @@ describe("useThemedColor", () => {
     );
 
     // toggle the color mode
-    screen.getByRole("button").click();
+    screen.getByTestId("toggle-color-mode").click();
 
     // check that the dark mode color is rendered
     expect(screen.getByRole("heading")).toHaveStyleRule(
