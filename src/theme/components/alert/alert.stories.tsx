@@ -6,6 +6,7 @@ import {
   AlertTitle,
   AlertDescription,
   chakra,
+  AlertProps,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
 
@@ -14,8 +15,8 @@ export default {
   component: Alert,
 } as ComponentMeta<typeof Alert>;
 
-const _Basic = () => (
-  <Alert status="error" variant="solid" borderRadius="md">
+const _Basic = (props: AlertProps) => (
+  <Alert status="error" variant="solid" borderRadius="md" {...props}>
     <AlertIcon />
     <AlertTitle mr={2}>Outdated</AlertTitle>
     <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
@@ -84,21 +85,11 @@ export const TopAccent: ComponentStory<typeof Alert> = (args) => {
   );
 };
 
-const _DocsExample = () => {
-  return (
-    <div>
-      <Alert status="error">
-        <AlertIcon />
-        There was an error processing your request
-      </Alert>
-    </div>
-  );
-};
-export const DocsExample: ComponentStory<typeof Alert> = (args) => {
+export const Bright: ComponentStory<typeof Alert> = (args) => {
   return (
     <Decorators
-      newComponent={<_DocsExample />}
-      defaultComponent={<_DocsExample />}
+      newComponent={<_Basic colorScheme="sky" />}
+      defaultComponent={<_Basic />}
     />
   );
 };

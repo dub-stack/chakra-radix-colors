@@ -44,7 +44,8 @@ function getBg(props: StyleFunctionProps): string {
 
 const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+
   return {
     container: { bg: getBg(props) },
     icon: { color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props) },
@@ -53,7 +54,8 @@ const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+
   return {
     container: {
       paddingStart: 3,
@@ -69,7 +71,8 @@ const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+
   return {
     container: {
       pt: 2,
@@ -88,7 +91,7 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   let { lightPalette, darkPalette, lightText, darkText, isBright } =
     getColorInfo(c, theme);
 
-  if (isBright) [lightText, darkText] = [darkText, lightText];
+  if (isBright) [lightText, darkText] = [darkText, darkText];
 
   return {
     container: {
