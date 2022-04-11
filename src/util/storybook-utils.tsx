@@ -56,7 +56,7 @@ export const Decorators = (props: {
       />
       <Flex
         gap="10px"
-        justifyContent="center"
+        justifyContent="space-evenly"
         minH="calc(100vh - 31px)"
         alignItems="center"
       >
