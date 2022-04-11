@@ -4,6 +4,7 @@ import {
   useThemedColor,
   getBaseColorPair,
   getResolvedColorPair,
+  getColorInfo,
 } from "./helpers";
 import theme from "theme";
 import React from "react";
@@ -170,6 +171,52 @@ describe("getResolvedColorPair ", () => {
   test("works with garbage values", () => {
     ["", "gray", "gr", "lime.", "pink.14"].forEach((color) => {
       expect(getResolvedColorPair(color, theme)).toEqual([color, color]);
+    });
+  });
+});
+
+describe("getColorInfo", () => {
+  test("gets light color info", () => {
+    expect(getColorInfo("red", theme)).toEqual({
+      lightPalette: "red",
+      darkPalette: "redDark",
+      isDark: false,
+      isBright: false,
+      lightText: "_gray.1",
+      darkText: "_gray.12",
+    });
+  });
+
+  test("gets dark color info", () => {
+    expect(getColorInfo("redDark", theme)).toEqual({
+      lightPalette: "redDark",
+      darkPalette: "red",
+      isDark: true,
+      isBright: false,
+      lightText: "_gray.12",
+      darkText: "_gray.1",
+    });
+  });
+
+  test("gets light bright color info", () => {
+    expect(getColorInfo("sky", theme)).toEqual({
+      lightPalette: "sky",
+      darkPalette: "skyDark",
+      isDark: false,
+      isBright: true,
+      lightText: "_gray.1",
+      darkText: "_gray.12",
+    });
+  });
+
+  test("gets dark bright color info", () => {
+    expect(getColorInfo("skyDark", theme)).toEqual({
+      lightPalette: "skyDark",
+      darkPalette: "sky",
+      isDark: true,
+      isBright: true,
+      lightText: "_gray.12",
+      darkText: "_gray.1",
     });
   });
 });

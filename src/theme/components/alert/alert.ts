@@ -5,7 +5,7 @@ import type {
   PartsStyleFunction,
   StyleFunctionProps,
 } from "@chakra-ui/theme-tools";
-import { getBaseColorPair } from "util/helpers";
+import { getColorInfo } from "util/helpers";
 
 // Please visit: https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
 // to understand which values were used where. This link provides a style guide for using colors
@@ -34,68 +34,66 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 
 function getBg(props: StyleFunctionProps): string {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getBaseColorPair(c, theme);
+  const { lightPalette, darkPalette } = getColorInfo(c, theme);
 
   // Using step 4, 5, 6 colors as this is an exception we want
   // to highlight instead of 3, 4, 5. See the following link for more
   // details: https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
-  return mode(`${lightBg}.4`, `${darkBg}.4`)(props);
+  return mode(`${lightPalette}.4`, `${darkPalette}.4`)(props);
 }
 
 const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getBaseColorPair(c, theme);
+  const { lightPalette, darkPalette } = getColorInfo(c, theme);
   return {
     container: { bg: getBg(props) },
-    icon: { color: mode(`${lightBg}.9`, `${darkBg}.9`)(props) },
+    icon: { color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props) },
   };
 };
 
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getBaseColorPair(c, theme);
+  const { lightPalette, darkPalette } = getColorInfo(c, theme);
   return {
     container: {
       paddingStart: 3,
       borderStartWidth: "4px",
-      borderStartColor: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      borderStartColor: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
       bg: getBg(props),
     },
     icon: {
-      color: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
     },
   };
 };
 
 const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getBaseColorPair(c, theme);
+  const { lightPalette, darkPalette } = getColorInfo(c, theme);
   return {
     container: {
       pt: 2,
       borderTopWidth: "4px",
-      borderTopColor: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      borderTopColor: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
       bg: getBg(props),
     },
     icon: {
-      color: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
     },
   };
 };
 
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getBaseColorPair(c, theme);
+  let { lightPalette, darkPalette, lightText, darkText, isBright } =
+    getColorInfo(c, theme);
 
-  // Get the color of the text. We need to check if passed color is a "Dark" color because
-  // the passed theme could be any of the following (for any color):
-  // ["red", "redDark", "redA", "redDarkA"]
-  const lightColor = lightBg.includes("Dark") ? "_gray.12" : "_gray.1";
-  const darkColor = lightBg.includes("Dark") ? "_gray.1" : "_gray.12";
+  if (isBright) [lightText, darkText] = [darkText, lightText];
+
   return {
     container: {
-      bg: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
-      color: mode(lightColor, darkColor)(props),
+      bg: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+      color: mode(lightText, darkText)(props),
     },
   };
 };

@@ -107,15 +107,15 @@ export function useThemedColor() {
  *   const [original, flipped] = getBaseColorPair("red", theme);
  *   // returns ["red", "redDark"]
  */
-export function getBaseColorPair(color: string, theme: Dict<any>) {
-  const [isDark, isA] = [color.includes("Dark"), color.includes("A")];
+export function getBaseColorPair(palette: string, theme: Dict<any>) {
+  const [isDark, isA] = [palette.includes("Dark"), palette.includes("A")];
 
   // make sure the passed color matches a theme color exactly
-  if (!theme.colors[color]) return [color, color];
+  if (!theme.colors[palette]) return [palette, palette];
 
   // search for the base ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = color.match(/[a-z]+/)!;
+  const baseSearch = palette.match(/[a-z]+/)!;
 
   // create new base
   let newBase = baseSearch[0];
@@ -159,4 +159,31 @@ export function getResolvedColorPair(color: string, theme: Dict<any>) {
   if (theme.colors[newBase] && theme.colors[newBase][index])
     return [theme.colors[lightBase][index], theme.colors[darkBase][index]];
   else return [color, color];
+}
+
+// Bright colors are meant to be used with different text color. To see the list of
+// bright colors visit: https://www.radix-ui.com/docs/colors/palette-composition/the-scales#bright-colors
+export const BrightColors = {
+  Sky: "sky",
+  Mint: "mint",
+  Lime: "lime",
+  Yellow: "yellow",
+  Amber: "amber",
+} as const;
+
+export function getColorInfo(palette: string, theme: Dict<any>) {
+  const [lightPalette, darkPalette] = getBaseColorPair(palette, theme);
+
+  // get the lightText & darkText
+  const isDark = palette.includes("Dark");
+  const [lightText, darkText] = isDark
+    ? ["_gray.12", "_gray.1"]
+    : ["_gray.1", "_gray.12"];
+
+  // determine if it is a bright color
+  const isBright = Object.values(BrightColors).some((brightColor) =>
+    palette.startsWith(brightColor)
+  );
+
+  return { lightPalette, darkPalette, isDark, lightText, darkText, isBright };
 }
