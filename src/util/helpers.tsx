@@ -69,7 +69,6 @@ export const getThemedColor = (colorMode: string) => (color: string) => {
   // search for the base, ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
   const baseSearch = base.match(/^[a-z]+/);
-  console.log(baseSearch);
   if (!baseSearch) return color;
 
   // create new base
