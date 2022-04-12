@@ -68,7 +68,8 @@ export const getThemedColor = (colorMode: string) => (color: string) => {
 
   // search for the base, ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = base.match(/[a-z]+/);
+  const baseSearch = base.match(/^[a-z]+/);
+  console.log(baseSearch);
   if (!baseSearch) return color;
 
   // create new base
@@ -115,7 +116,7 @@ export function getBaseColorPair(palette: string, theme: Dict<any>) {
 
   // search for the base ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = palette.match(/[a-z]+/)!;
+  const baseSearch = palette.match(/^[a-z]+/)!;
 
   // create new base
   let newBase = baseSearch[0];
@@ -145,7 +146,7 @@ export function getResolvedColorPair(color: string, theme: Dict<any>) {
 
   // search for the base, ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = base.match(/[a-z]+/);
+  const baseSearch = base.match(/^[a-z]+/);
   if (!baseSearch) return [color, color];
 
   // create new base

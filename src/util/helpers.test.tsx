@@ -61,7 +61,14 @@ describe("getThemedColor", () => {
   });
 
   test("returns raw garbage values", () => {
-    ["", "gray", "gr", "lime."].forEach((color) => {
+    ["", "gray", "gr", "lime.", "DarkA.2"].forEach((color) => {
+      expect(getThemedColor("light")(color)).toBe(color);
+      expect(getThemedColor("dark")(color)).toBe(color);
+    });
+  });
+
+  test("returns when out-of-range", () => {
+    ["mint.0", "lime.13", "skyDark.19"].forEach((color) => {
       expect(getThemedColor("light")(color)).toBe(color);
       expect(getThemedColor("dark")(color)).toBe(color);
     });
