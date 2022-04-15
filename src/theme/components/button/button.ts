@@ -51,7 +51,7 @@ const variantGhost: SystemStyleFunction = (props) => {
 
 const variantOutline: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  let { lightPalette, darkPalette, isDark } = getColorInfo(c, theme);
+  let { isDark } = getColorInfo(c, theme);
 
   let [lightColor, darkColor] = ["_gray.7", "_grayDark.7"];
   if (isDark) [lightColor, darkColor] = [darkColor, lightColor];
