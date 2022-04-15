@@ -33,23 +33,30 @@ const variantGhost: SystemStyleFunction = (props) => {
 
   // set the color
   let [lightColor, darkColor] = [`${lightPalette}.11`, `${darkPalette}.11`];
-  if (isDark) [lightColor, darkColor] = [darkColor, lightColor];
-  if (c.startsWith("_gray")) [lightColor, darkColor] = [darkText, lightText];
+  if (c.startsWith("_gray")) {
+    [lightColor, darkColor] = [darkText, lightText];
+    if (isDark) [lightColor, darkColor] = [darkColor, lightColor];
+  }
 
   return {
     color: mode(lightColor, darkColor)(props),
     _hover: {
-      bg: mode(`${lightPalette}.3`, `${darkPalette}.3`)(props),
+      bg: mode(`${lightPalette}.4`, `${darkPalette}.4`)(props),
     },
     _active: {
-      bg: mode(`${lightPalette}.4`, `${darkPalette}.4`)(props),
+      bg: mode(`${lightPalette}.5`, `${darkPalette}.5`)(props),
     },
   };
 };
 
 const variantOutline: SystemStyleFunction = (props) => {
-  const { colorScheme: c } = props;
-  const borderColor = mode(`_gray.7`, `_grayDark.7`)(props);
+  const { colorScheme: c, theme } = props;
+  let { lightPalette, darkPalette, isDark } = getColorInfo(c, theme);
+
+  let [lightColor, darkColor] = ["_gray.7", "_grayDark.7"];
+  if (isDark) [lightColor, darkColor] = [darkColor, lightColor];
+  const borderColor = mode(lightColor, darkColor)(props);
+
   return {
     border: "1px solid",
     borderColor: c.startsWith("_gray") ? borderColor : "currentColor",

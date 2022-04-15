@@ -216,21 +216,20 @@ describe("`solid` varaint", () => {
   });
 });
 
-describe.skip("`outline` variant", () => {
+describe.only("`outline` variant", () => {
   test("renders correctly with 'Light' color schemes", () => {
     const Scene = () => {
       return (
         <>
-          <Button
-            colorScheme="blueDark"
-            variant="solid"
-            data-testid="normal-btn"
-          >
+          <Button colorScheme="_gray" variant="outline" data-testid="gray-btn">
+            Button
+          </Button>
+          <Button colorScheme="blue" variant="outline" data-testid="normal-btn">
             Button
           </Button>
           <Button
-            colorScheme="amberDark"
-            variant="solid"
+            colorScheme="amber"
+            variant="outline"
             data-testid="bright-btn"
           >
             Button
@@ -241,6 +240,7 @@ describe.skip("`outline` variant", () => {
     render(<Scene />);
 
     // get dom elements
+    const gray = screen.getByTestId("gray-btn");
     const normal = screen.getByTestId("normal-btn");
     const bright = screen.getByTestId("bright-btn");
     const toggleColorMode = screen.getByTestId("toggle-color-mode");
@@ -249,23 +249,100 @@ describe.skip("`outline` variant", () => {
     // reset the color mode
     resetColorMode.click();
 
+    // test gray in light mode
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-5)", {
+      target: ":active",
+    });
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+    expect(gray).toHaveStyleRule(
+      "border-color",
+      "var(--chakra-colors-_gray-7)"
+    );
+    // test normal in light mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blue-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-blue-11)");
+    expect(normal).toHaveStyleRule("border-color", "currentColor");
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-amber-11)");
+    expect(bright).toHaveStyleRule("border-color", "currentColor");
+
+    ///////////////////////////////////////////////////////////
     // switch to dark mode
+    ///////////////////////////////////////////////////////////
     toggleColorMode.click();
+
+    // test gray in dark mode
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+    expect(gray).toHaveStyleRule(
+      "border-color",
+      "var(--chakra-colors-_grayDark-7)"
+    );
+    // test normal in dark mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-blueDark-11)");
+    expect(normal).toHaveStyleRule("border-color", "currentColor");
+    // test bright in dark mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(bright).toHaveStyleRule(
+      "color",
+      "var(--chakra-colors-amberDark-11)"
+    );
+    expect(bright).toHaveStyleRule("border-color", "currentColor");
   });
+
   test("renders correctly with 'Dark' color schemes", () => {
     const Scene = () => {
       return (
         <>
           <Button
+            colorScheme="_grayDark"
+            variant="outline"
+            data-testid="gray-btn"
+          >
+            Button
+          </Button>
+          <Button
             colorScheme="blueDark"
-            variant="solid"
+            variant="outline"
             data-testid="normal-btn"
           >
             Button
           </Button>
           <Button
             colorScheme="amberDark"
-            variant="solid"
+            variant="outline"
             data-testid="bright-btn"
           >
             Button
@@ -276,6 +353,7 @@ describe.skip("`outline` variant", () => {
     render(<Scene />);
 
     // get dom elements
+    const gray = screen.getByTestId("gray-btn");
     const normal = screen.getByTestId("normal-btn");
     const bright = screen.getByTestId("bright-btn");
     const toggleColorMode = screen.getByTestId("toggle-color-mode");
@@ -284,8 +362,77 @@ describe.skip("`outline` variant", () => {
     // reset the color mode
     resetColorMode.click();
 
+    // test gray in light mode
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+    expect(gray).toHaveStyleRule(
+      "border-color",
+      "var(--chakra-colors-_grayDark-7)"
+    );
+    // test normal in light mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-blueDark-11)");
+    expect(normal).toHaveStyleRule("border-color", "currentColor");
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(bright).toHaveStyleRule(
+      "color",
+      "var(--chakra-colors-amberDark-11)"
+    );
+    expect(bright).toHaveStyleRule("border-color", "currentColor");
+
+    ///////////////////////////////////////////////////////////
     // switch to dark mode
+    ///////////////////////////////////////////////////////////
     toggleColorMode.click();
+
+    // test gray in dark mode
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-5)", {
+      target: ":active",
+    });
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+    expect(gray).toHaveStyleRule(
+      "border-color",
+      "var(--chakra-colors-_gray-7)"
+    );
+    // test normal in dark mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blue-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-blue-11)");
+    expect(normal).toHaveStyleRule("border-color", "currentColor");
+    // test bright in dark mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-5)",
+      {
+        target: ":active",
+      }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-amber-11)");
+    expect(bright).toHaveStyleRule("border-color", "currentColor");
   });
 });
 
@@ -294,18 +441,13 @@ describe.skip("`ghost` variant", () => {
     const Scene = () => {
       return (
         <>
-          <Button
-            colorScheme="blueDark"
-            variant="solid"
-            data-testid="normal-btn"
-          >
+          <Button colorScheme="_gray" variant="solid" data-testid="gray-btn">
             Button
           </Button>
-          <Button
-            colorScheme="amberDark"
-            variant="solid"
-            data-testid="bright-btn"
-          >
+          <Button colorScheme="blue" variant="solid" data-testid="normal-btn">
+            Button
+          </Button>
+          <Button colorScheme="amber" variant="solid" data-testid="bright-btn">
             Button
           </Button>
         </>
@@ -314,6 +456,7 @@ describe.skip("`ghost` variant", () => {
     render(<Scene />);
 
     // get dom elements
+    const gray = screen.getByTestId("gray-btn");
     const normal = screen.getByTestId("normal-btn");
     const bright = screen.getByTestId("bright-btn");
     const toggleColorMode = screen.getByTestId("toggle-color-mode");
@@ -322,14 +465,90 @@ describe.skip("`ghost` variant", () => {
     // reset the color mode
     resetColorMode.click();
 
+    // test gray in light mode
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-4)");
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-6)", {
+      target: ":active",
+    });
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule("background", "var(--chakra-colors-blue-9)");
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blue-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    ///////////////////////////////////////////////////////////
     // switch to dark mode
+    ///////////////////////////////////////////////////////////
     toggleColorMode.click();
+
+    // test gray in light mode
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-4)"
+    );
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-6)",
+      {
+        target: ":active",
+      }
+    );
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-9)"
+    );
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
   });
+
   test("renders correctly with 'Dark' color schemes", () => {
     const Scene = () => {
       return (
         <>
           <Button
+            colorScheme="_grayDark"
+            variant="solid"
+            data-testid="gray-btn"
+          >
+            Button
+          </Button>
+          <Button
             colorScheme="blueDark"
             variant="solid"
             data-testid="normal-btn"
@@ -349,6 +568,7 @@ describe.skip("`ghost` variant", () => {
     render(<Scene />);
 
     // get dom elements
+    const gray = screen.getByTestId("gray-btn");
     const normal = screen.getByTestId("normal-btn");
     const bright = screen.getByTestId("bright-btn");
     const toggleColorMode = screen.getByTestId("toggle-color-mode");
@@ -357,8 +577,76 @@ describe.skip("`ghost` variant", () => {
     // reset the color mode
     resetColorMode.click();
 
+    // test gray in light mode
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-4)"
+    );
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-6)",
+      {
+        target: ":active",
+      }
+    );
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-9)"
+    );
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    ///////////////////////////////////////////////////////////
     // switch to dark mode
+    ///////////////////////////////////////////////////////////
     toggleColorMode.click();
+
+    // test gray in light mode
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-4)");
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-6)", {
+      target: ":active",
+    });
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule("background", "var(--chakra-colors-blue-9)");
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blue-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
   });
 });
 
@@ -367,18 +655,13 @@ describe.skip("`link` variant", () => {
     const Scene = () => {
       return (
         <>
-          <Button
-            colorScheme="blueDark"
-            variant="solid"
-            data-testid="normal-btn"
-          >
+          <Button colorScheme="_gray" variant="solid" data-testid="gray-btn">
             Button
           </Button>
-          <Button
-            colorScheme="amberDark"
-            variant="solid"
-            data-testid="bright-btn"
-          >
+          <Button colorScheme="blue" variant="solid" data-testid="normal-btn">
+            Button
+          </Button>
+          <Button colorScheme="amber" variant="solid" data-testid="bright-btn">
             Button
           </Button>
         </>
@@ -387,6 +670,7 @@ describe.skip("`link` variant", () => {
     render(<Scene />);
 
     // get dom elements
+    const gray = screen.getByTestId("gray-btn");
     const normal = screen.getByTestId("normal-btn");
     const bright = screen.getByTestId("bright-btn");
     const toggleColorMode = screen.getByTestId("toggle-color-mode");
@@ -395,14 +679,90 @@ describe.skip("`link` variant", () => {
     // reset the color mode
     resetColorMode.click();
 
+    // test gray in light mode
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-4)");
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-6)", {
+      target: ":active",
+    });
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule("background", "var(--chakra-colors-blue-9)");
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blue-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    ///////////////////////////////////////////////////////////
     // switch to dark mode
+    ///////////////////////////////////////////////////////////
     toggleColorMode.click();
+
+    // test gray in light mode
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-4)"
+    );
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-6)",
+      {
+        target: ":active",
+      }
+    );
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-9)"
+    );
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
   });
+
   test("renders correctly with 'Dark' color schemes", () => {
     const Scene = () => {
       return (
         <>
           <Button
+            colorScheme="_grayDark"
+            variant="solid"
+            data-testid="gray-btn"
+          >
+            Button
+          </Button>
+          <Button
             colorScheme="blueDark"
             variant="solid"
             data-testid="normal-btn"
@@ -422,6 +782,7 @@ describe.skip("`link` variant", () => {
     render(<Scene />);
 
     // get dom elements
+    const gray = screen.getByTestId("gray-btn");
     const normal = screen.getByTestId("normal-btn");
     const bright = screen.getByTestId("bright-btn");
     const toggleColorMode = screen.getByTestId("toggle-color-mode");
@@ -430,7 +791,75 @@ describe.skip("`link` variant", () => {
     // reset the color mode
     resetColorMode.click();
 
+    // test gray in light mode
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-4)"
+    );
+    expect(gray).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-_grayDark-6)",
+      {
+        target: ":active",
+      }
+    );
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-9)"
+    );
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blueDark-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amberDark-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    ///////////////////////////////////////////////////////////
     // switch to dark mode
+    ///////////////////////////////////////////////////////////
     toggleColorMode.click();
+
+    // test gray in light mode
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-4)");
+    expect(gray).toHaveStyleRule("background", "var(--chakra-colors-_gray-6)", {
+      target: ":active",
+    });
+    expect(gray).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
+
+    // test normal in light mode
+    expect(normal).toHaveStyleRule("background", "var(--chakra-colors-blue-9)");
+    expect(normal).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-blue-10)",
+      { target: ":active" }
+    );
+    expect(normal).toHaveStyleRule("color", "var(--chakra-colors-_gray-1)");
+
+    // test bright in light mode
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-9)"
+    );
+    expect(bright).toHaveStyleRule(
+      "background",
+      "var(--chakra-colors-amber-10)",
+      { target: ":active" }
+    );
+    expect(bright).toHaveStyleRule("color", "var(--chakra-colors-_gray-12)");
   });
 });

@@ -82,13 +82,22 @@ export const Ghost: ComponentStory<typeof Button> = (args) => {
 };
 
 const _Outline = (props: { colors: string[] }) => (
-  <>
-    {props.colors.map((color) => (
-      <Button key={color} colorScheme={color} variant="outline">
-        Button
-      </Button>
-    ))}
-  </>
+  <Box display="grid">
+    <Box>
+      {props.colors.map((color) => (
+        <Button key={color} colorScheme={color} variant="outline">
+          Button
+        </Button>
+      ))}
+    </Box>
+    <Box>
+      {props.colors.map((color) => (
+        <Button key={color} colorScheme={color + "Dark"} variant="outline">
+          Button
+        </Button>
+      ))}
+    </Box>
+  </Box>
 );
 export const Outline: ComponentStory<typeof Button> = (args) => {
   return (
