@@ -54,7 +54,6 @@ const variantOutline: SystemStyleFunction = (props) => {
   // when custom text colors, we must flip them here instead of with the
   // return from getColorInfo
   let [lightText, darkText] = [`${lightPalette}.9`, `${darkPalette}.9`];
-  if (isDark) [lightText, darkText] = [darkText, lightText];
 
   // get the color
   const [lightColor] = getResolvedColorPair(lightText, theme);

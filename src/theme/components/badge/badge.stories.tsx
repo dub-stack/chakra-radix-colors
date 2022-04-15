@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Badge } from "@chakra-ui/react";
+import { Badge, Box } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
 
 export default {
@@ -15,9 +15,18 @@ export const Basic: ComponentStory<typeof Badge> = (args) => {
 
 const _SolidBadge = () => {
   return (
-    <React.Fragment>
-      {["gray", "green", "red", "orange", "purple", "teal", "sky", "mint"].map(
-        (colorScheme) => (
+    <Box display="grid">
+      <Box>
+        {[
+          "gray",
+          "green",
+          "red",
+          "orange",
+          "purple",
+          "teal",
+          "sky",
+          "mint",
+        ].map((colorScheme) => (
           <Badge
             key={colorScheme}
             colorScheme={colorScheme}
@@ -26,9 +35,30 @@ const _SolidBadge = () => {
           >
             {colorScheme}
           </Badge>
-        )
-      )}
-    </React.Fragment>
+        ))}
+      </Box>
+      <Box>
+        {[
+          "grayDark",
+          "greenDark",
+          "redDark",
+          "orangeDark",
+          "purpleDark",
+          "tealDark",
+          "skyDark",
+          "mintDark",
+        ].map((colorScheme) => (
+          <Badge
+            key={colorScheme}
+            colorScheme={colorScheme}
+            variant="solid"
+            mr={2}
+          >
+            {colorScheme.replace("Dark", "")}
+          </Badge>
+        ))}
+      </Box>
+    </Box>
   );
 };
 export const SolidBadge: ComponentStory<typeof Badge> = (args) => {
@@ -41,15 +71,33 @@ export const SolidBadge: ComponentStory<typeof Badge> = (args) => {
 };
 
 const _SubtleBadges = () => (
-  <React.Fragment>
-    {["gray", "green", "red", "orange", "purple", "teal", "sky", "mint"].map(
-      (colorScheme) => (
+  <Box display="grid">
+    <Box>
+      {["gray", "green", "red", "orange", "purple", "teal", "sky", "mint"].map(
+        (colorScheme) => (
+          <Badge key={colorScheme} colorScheme={colorScheme} mr={2}>
+            {colorScheme}
+          </Badge>
+        )
+      )}
+    </Box>
+    <Box>
+      {[
+        "grayDark",
+        "greenDark",
+        "redDark",
+        "orangeDark",
+        "purpleDark",
+        "tealDark",
+        "skyDark",
+        "mintDark",
+      ].map((colorScheme) => (
         <Badge key={colorScheme} colorScheme={colorScheme} mr={2}>
-          {colorScheme}
+          {colorScheme.replace("Dark", "")}
         </Badge>
-      )
-    )}
-  </React.Fragment>
+      ))}
+    </Box>
+  </Box>
 );
 export const SubtleBadges: ComponentStory<typeof Badge> = (args) => {
   return (
@@ -61,20 +109,43 @@ export const SubtleBadges: ComponentStory<typeof Badge> = (args) => {
 };
 
 const _OutlineBadges = () => (
-  <React.Fragment>
-    {["gray", "green", "red", "orange", "purple", "teal", "sky", "mint"].map(
-      (colorScheme) => (
+  <Box display="grid">
+    <Box>
+      {["gray", "green", "red", "orange", "purple", "teal", "sky", "mint"].map(
+        (colorScheme) => (
+          <Badge
+            key={colorScheme}
+            colorScheme={colorScheme}
+            variant="outline"
+            mr={2}
+          >
+            {colorScheme}
+          </Badge>
+        )
+      )}
+    </Box>
+    <Box>
+      {[
+        "grayDark",
+        "greenDark",
+        "redDark",
+        "orangeDark",
+        "purpleDark",
+        "tealDark",
+        "skyDark",
+        "mint",
+      ].map((colorScheme) => (
         <Badge
           key={colorScheme}
           colorScheme={colorScheme}
           variant="outline"
           mr={2}
         >
-          {colorScheme}
+          {colorScheme.replace("Dark", "")}
         </Badge>
-      )
-    )}
-  </React.Fragment>
+      ))}
+    </Box>
+  </Box>
 );
 export const OutlineBadges: ComponentStory<typeof Badge> = (args) => {
   return (

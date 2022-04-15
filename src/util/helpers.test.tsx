@@ -132,7 +132,7 @@ describe("getResolvedColorPair ", () => {
   });
 
   test("works when supplying dark colors", () => {
-    ["gray", "pink", "amber", "sky"].forEach((color) => {
+    ["_gray", "gray", "pink", "amber", "sky"].forEach((color) => {
       expect(getResolvedColorPair(`${color}Dark.5`, theme)).toEqual([
         theme.colors[`${color}Dark` as keyof RadixColorsType][5],
         theme.colors[color as keyof RadixColorsType][5],
