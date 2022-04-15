@@ -1,7 +1,7 @@
 import { extendTheme, Theme } from "@chakra-ui/react";
 
 // Global style overrides
-// import styles from "./styles";
+import styles from "./styles";
 
 // Foundational style overrides
 import colors, { RadixColorsType } from "./foundations/colors";
@@ -13,6 +13,7 @@ import * as components from "./components";
 const theme = extendTheme({
   colors,
   components,
+  styles,
 }) as unknown as Omit<Theme, "colors"> & { colors: RadixColorsType };
 theme.colors = colors; // remove the default @chakra-ui colors
 

@@ -60,10 +60,10 @@ export const Decorators = (props: {
         minH="calc(100vh - 31px)"
         alignItems="center"
       >
-        <NewDecorator colorMode={colorMode}>{props.newComponent}</NewDecorator>
         <DefaultDecorator colorMode={colorMode}>
           {props.defaultComponent}
         </DefaultDecorator>
+        <NewDecorator colorMode={colorMode}>{props.newComponent}</NewDecorator>
       </Flex>
     </>
   );

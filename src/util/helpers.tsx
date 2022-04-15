@@ -3,50 +3,6 @@ import { useColorMode } from "@chakra-ui/react";
 import { Dict } from "@chakra-ui/utils";
 
 /**
- * Transforms a @radix-ui/colors palette from specifying a literal color,
- * (like `#ffffff`) to specify a chakra generated css variable. This is
- * useful when you need to alias a @radix-ui/colors palette to another name,
- * wihout duplicating the palette.
- *
-
- * This is used by the package when defining the default gray `_gray*` as shown
- * in the example below.
- *
- * @example
- * {
- *   _gray: chakraTokensFromPalette("slate")
- *   _grayA: chakraTokensFromPalette("slateA")
- *   _grayDark: chakraTokensFromPalette("slateDark")
- *   _grayDarkA: chakraTokensFromPalette("slateDarkA")
- * }
- * 
- * Without:  `_gray.3` -> `hsl(0 0% 95.1%)`
- * With:     `_gray.3` -> `var(--chakra-colors-slate-3)`
- *
- *
- * @param paletteName The name of the @radix-ui/colors palette.
- * @returns The css-variable-aliases color scale.
- */
-export function chakraTokensFromPalette(paletteName: RadixColorKeyType) {
-  const colorScale: IColorScale = {
-    1: `var(--chakra-colors-${paletteName}-1)`,
-    2: `var(--chakra-colors-${paletteName}-2)`,
-    3: `var(--chakra-colors-${paletteName}-3)`,
-    4: `var(--chakra-colors-${paletteName}-4)`,
-    5: `var(--chakra-colors-${paletteName}-5)`,
-    6: `var(--chakra-colors-${paletteName}-6)`,
-    7: `var(--chakra-colors-${paletteName}-7)`,
-    8: `var(--chakra-colors-${paletteName}-8)`,
-    9: `var(--chakra-colors-${paletteName}-9)`,
-    10: `var(--chakra-colors-${paletteName}-10)`,
-    11: `var(--chakra-colors-${paletteName}-11)`,
-    12: `var(--chakra-colors-${paletteName}-12)`,
-  };
-
-  return colorScale;
-}
-
-/**
  * Accepts a colorMode ("light" | "dark") and returns a function that accepts a color ("red.4").
  * This color is turned into the opposite-mode value when mode is turned to "dark" from "light"
  * and vise-versa.
@@ -68,7 +24,7 @@ export const getThemedColor = (colorMode: string) => (color: string) => {
 
   // search for the base, ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = base.match(/^[a-z]+/);
+  const baseSearch = base.match(/^_?[a-z]+/);
   if (!baseSearch) return color;
 
   // create new base
@@ -115,7 +71,7 @@ export function getBaseColorPair(palette: string, theme: Dict<any>) {
 
   // search for the base ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = palette.match(/^[a-z]+/)!;
+  const baseSearch = palette.match(/^_?[a-z]+/)!;
 
   // create new base
   let newBase = baseSearch[0];
@@ -145,7 +101,7 @@ export function getResolvedColorPair(color: string, theme: Dict<any>) {
 
   // search for the base, ex: "blue" from color "blueDarkA"
   // we can search for contiguous lowercase to find this
-  const baseSearch = base.match(/^[a-z]+/);
+  const baseSearch = base.match(/^_?[a-z]+/);
   if (!baseSearch) return [color, color];
 
   // create new base
@@ -185,5 +141,16 @@ export function getColorInfo(palette: string, theme: Dict<any>) {
     palette.startsWith(brightColor)
   );
 
-  return { lightPalette, darkPalette, isDark, lightText, darkText, isBright };
+  // determine if is an alpha color
+  const isA = palette.includes("A");
+
+  return {
+    lightPalette,
+    darkPalette,
+    isDark,
+    lightText,
+    darkText,
+    isBright,
+    isA,
+  };
 }

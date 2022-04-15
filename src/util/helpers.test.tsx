@@ -1,5 +1,4 @@
 import {
-  chakraTokensFromPalette,
   getThemedColor,
   useThemedColor,
   getBaseColorPair,
@@ -8,28 +7,9 @@ import {
 } from "./helpers";
 import theme from "theme";
 import React from "react";
-import { useColorMode, Button, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import { render, screen } from "util/test-utils";
 import { RadixColorsType } from "theme/foundations/colors";
-
-describe("chakraTokensFromPalette", () => {
-  test("returns css-variable-aliased color scale", () => {
-    expect(chakraTokensFromPalette("amberDarkA")).toMatchObject({
-      1: `var(--chakra-colors-amberDarkA-1)`,
-      2: `var(--chakra-colors-amberDarkA-2)`,
-      3: `var(--chakra-colors-amberDarkA-3)`,
-      4: `var(--chakra-colors-amberDarkA-4)`,
-      5: `var(--chakra-colors-amberDarkA-5)`,
-      6: `var(--chakra-colors-amberDarkA-6)`,
-      7: `var(--chakra-colors-amberDarkA-7)`,
-      8: `var(--chakra-colors-amberDarkA-8)`,
-      9: `var(--chakra-colors-amberDarkA-9)`,
-      10: `var(--chakra-colors-amberDarkA-10)`,
-      11: `var(--chakra-colors-amberDarkA-11)`,
-      12: `var(--chakra-colors-amberDarkA-12)`,
-    });
-  });
-});
 
 describe("getThemedColor", () => {
   test("works with light colors", () => {
@@ -189,6 +169,7 @@ describe("getColorInfo", () => {
       darkPalette: "redDark",
       isDark: false,
       isBright: false,
+      isA: false,
       lightText: "_gray.1",
       darkText: "_gray.12",
     });
@@ -200,6 +181,7 @@ describe("getColorInfo", () => {
       darkPalette: "red",
       isDark: true,
       isBright: false,
+      isA: false,
       lightText: "_gray.12",
       darkText: "_gray.1",
     });
@@ -211,17 +193,19 @@ describe("getColorInfo", () => {
       darkPalette: "skyDark",
       isDark: false,
       isBright: true,
+      isA: false,
       lightText: "_gray.1",
       darkText: "_gray.12",
     });
   });
 
-  test("gets dark bright color info", () => {
-    expect(getColorInfo("skyDark", theme)).toEqual({
-      lightPalette: "skyDark",
-      darkPalette: "sky",
+  test("gets alpha color info", () => {
+    expect(getColorInfo("skyDarkA", theme)).toEqual({
+      lightPalette: "skyDarkA",
+      darkPalette: "skyA",
       isDark: true,
       isBright: true,
+      isA: true,
       lightText: "_gray.12",
       darkText: "_gray.1",
     });
