@@ -35,11 +35,17 @@ const variantSolid: SystemStyleFunction = (props) => {
 const variantSubtle: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
   const { lightPalette, darkPalette, isDark } = getColorInfo(c, theme);
+  let { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
+    c,
+    theme
+  );
 
   // when custom text colors, we must flip them here instead of with the
   // return from getColorInfo
   let [lightText, darkText] = ["_grayA.11", "_grayDarkA.11"];
   if (isDark) [lightText, darkText] = [darkText, lightText];
+  if (c.startsWith("_gray"))
+    [lightText, darkText] = [`${grayLight}.12`, `${grayDark}.12`];
 
   return {
     bg: mode(`${lightPalette}.4`, `${darkPalette}.4`)(props),

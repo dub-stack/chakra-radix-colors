@@ -24,6 +24,8 @@ const baseStyleControl: SystemStyleFunction = (props) => {
   if (isBright && isDark) [lightText, darkText] = [lightText, lightText];
   else if (isBright) [lightText, darkText] = [darkText, darkText];
 
+  console.log("yo");
+
   return {
     w: "100%",
     transitionProperty: "box-shadow",
