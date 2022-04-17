@@ -5,4 +5,6 @@ export { default as Badge } from "./badge/badge";
 export { default as Button } from "./button/button";
 export { default as Checkbox } from "./checkbox/checkbox";
 export { default as CloseButton } from "./close-button/close-button";
+export { default as Code } from "./code/code";
 export { default as Drawer } from "./drawer/drawer";
+export { default as Container } from "./container/container";

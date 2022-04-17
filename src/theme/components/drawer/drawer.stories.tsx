@@ -12,7 +12,8 @@ import { Decorators } from "util/storybook-utils";
 
 export default {
   title: "Components / Drawer",
-};
+  component: Drawer,
+} as ComponentMeta<typeof Drawer>;
 
 const _DrawerExample = () => {
   const [open, setOpen] = React.useState(false);
