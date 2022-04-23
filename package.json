@@ -34,6 +34,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.8",
+    "@chakra-ui/skip-nav": "^1.2.6",
     "@emotion/jest": "^11.9.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
