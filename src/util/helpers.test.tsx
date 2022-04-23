@@ -1,30 +1,15 @@
 import {
-  chakraTokensFromPalette,
   getThemedColor,
   useThemedColor,
+  getBaseColorPair,
+  getResolvedColorPair,
+  getColorInfo,
 } from "./helpers";
+import theme from "theme";
 import React from "react";
-import { useColorMode, Button, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import { render, screen } from "util/test-utils";
-
-describe("chakraTokensFromPalette", () => {
-  test("returns css-variable-aliased color scale", () => {
-    expect(chakraTokensFromPalette("amberDarkA")).toMatchObject({
-      1: `var(--chakra-colors-amberDarkA-1)`,
-      2: `var(--chakra-colors-amberDarkA-2)`,
-      3: `var(--chakra-colors-amberDarkA-3)`,
-      4: `var(--chakra-colors-amberDarkA-4)`,
-      5: `var(--chakra-colors-amberDarkA-5)`,
-      6: `var(--chakra-colors-amberDarkA-6)`,
-      7: `var(--chakra-colors-amberDarkA-7)`,
-      8: `var(--chakra-colors-amberDarkA-8)`,
-      9: `var(--chakra-colors-amberDarkA-9)`,
-      10: `var(--chakra-colors-amberDarkA-10)`,
-      11: `var(--chakra-colors-amberDarkA-11)`,
-      12: `var(--chakra-colors-amberDarkA-12)`,
-    });
-  });
-});
+import { RadixColorsType } from "theme/foundations/colors";
 
 describe("getThemedColor", () => {
   test("works with light colors", () => {
@@ -56,7 +41,14 @@ describe("getThemedColor", () => {
   });
 
   test("returns raw garbage values", () => {
-    ["", "gray", "gr", "lime."].forEach((color) => {
+    ["", "gray", "gr", "lime.", "DarkA.2"].forEach((color) => {
+      expect(getThemedColor("light")(color)).toBe(color);
+      expect(getThemedColor("dark")(color)).toBe(color);
+    });
+  });
+
+  test("returns when out-of-range", () => {
+    ["mint.0", "lime.13", "skyDark.19"].forEach((color) => {
       expect(getThemedColor("light")(color)).toBe(color);
       expect(getThemedColor("dark")(color)).toBe(color);
     });
@@ -66,14 +58,8 @@ describe("getThemedColor", () => {
 describe("useThemedColor", () => {
   test("works when changing color modes", () => {
     const MyReactElement = () => {
-      const { toggleColorMode, colorMode } = useColorMode();
       const c = useThemedColor();
-      return (
-        <>
-          <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
-          <Text as="h1" color={c("tealA.4")} />
-        </>
-      );
+      return <Text as="h1" color={c("tealA.4")} />;
     };
 
     // render the scene
@@ -86,12 +72,142 @@ describe("useThemedColor", () => {
     );
 
     // toggle the color mode
-    screen.getByRole("button").click();
+    screen.getByTestId("toggle-color-mode").click();
 
     // check that the dark mode color is rendered
     expect(screen.getByRole("heading")).toHaveStyleRule(
       "color",
       "var(--chakra-colors-tealDarkA-4)"
     );
+  });
+});
+
+describe("getColorPair ", () => {
+  test("works when supplying light colors", () => {
+    ["gray", "pink", "amber", "sky"].forEach((color) => {
+      expect(getBaseColorPair(color, theme)).toEqual([
+        `${color}`,
+        `${color}Dark`,
+      ]);
+    });
+  });
+
+  test("works when supplying dark colors", () => {
+    ["gray", "pink", "amber", "sky"].forEach((color) => {
+      expect(getBaseColorPair(`${color}Dark`, theme)).toEqual([
+        `${color}Dark`,
+        `${color}`,
+      ]);
+    });
+  });
+
+  test("works when supplying alpha colors", () => {
+    ["gray", "pink", "amber", "sky"].forEach((color) => {
+      expect(getBaseColorPair(`${color}A`, theme)).toEqual([
+        `${color}A`,
+        `${color}DarkA`,
+      ]);
+      expect(getBaseColorPair(`${color}DarkA`, theme)).toEqual([
+        `${color}DarkA`,
+        `${color}A`,
+      ]);
+    });
+  });
+
+  test("works with garbage values", () => {
+    ["", "gr", "lime.", "pink.14"].forEach((color) => {
+      expect(getBaseColorPair(color, theme)).toEqual([color, color]);
+    });
+  });
+});
+
+describe("getResolvedColorPair ", () => {
+  test("works when supplying light colors", () => {
+    ["gray", "pink", "amber", "sky"].forEach((color) => {
+      expect(getResolvedColorPair(`${color}.2`, theme)).toEqual([
+        theme.colors[color as keyof RadixColorsType][2],
+        theme.colors[`${color}Dark` as keyof RadixColorsType][2],
+      ]);
+    });
+  });
+
+  test("works when supplying dark colors", () => {
+    ["_gray", "gray", "pink", "amber", "sky"].forEach((color) => {
+      expect(getResolvedColorPair(`${color}Dark.5`, theme)).toEqual([
+        theme.colors[`${color}Dark` as keyof RadixColorsType][5],
+        theme.colors[color as keyof RadixColorsType][5],
+      ]);
+    });
+  });
+
+  test("works when supplying alpha colors", () => {
+    ["gray", "red", "teal", "sky"].forEach((color) => {
+      expect(getResolvedColorPair(`${color}A.12`, theme)).toEqual([
+        theme.colors[`${color}A` as keyof RadixColorsType][12],
+        theme.colors[`${color}DarkA` as keyof RadixColorsType][12],
+      ]);
+    });
+    ["gray", "pink", "amber", "sky"].forEach((color) => {
+      expect(getResolvedColorPair(`${color}DarkA.11`, theme)).toEqual([
+        theme.colors[`${color}DarkA` as keyof RadixColorsType][11],
+        theme.colors[`${color}A` as keyof RadixColorsType][11],
+      ]);
+    });
+  });
+
+  test("works with garbage values", () => {
+    ["", "gray", "gr", "lime.", "pink.14"].forEach((color) => {
+      expect(getResolvedColorPair(color, theme)).toEqual([color, color]);
+    });
+  });
+});
+
+describe("getColorInfo", () => {
+  test("gets light color info", () => {
+    expect(getColorInfo("red", theme)).toEqual({
+      lightPalette: "red",
+      darkPalette: "redDark",
+      isDark: false,
+      isBright: false,
+      isA: false,
+      lightText: "_gray.1",
+      darkText: "_gray.12",
+    });
+  });
+
+  test("gets dark color info", () => {
+    expect(getColorInfo("redDark", theme)).toEqual({
+      lightPalette: "redDark",
+      darkPalette: "red",
+      isDark: true,
+      isBright: false,
+      isA: false,
+      lightText: "_gray.12",
+      darkText: "_gray.1",
+    });
+  });
+
+  test("gets light bright color info", () => {
+    expect(getColorInfo("sky", theme)).toEqual({
+      lightPalette: "sky",
+      darkPalette: "skyDark",
+      isDark: false,
+      isBright: true,
+      isA: false,
+      lightText: "_gray.1",
+      darkText: "_gray.12",
+    });
+  });
+
+  test("gets alpha color info", () => {
+    expect(getColorInfo("skyDarkA", theme)).toEqual({
+      lightPalette: "skyDarkA",
+      darkPalette: "skyA",
+      isDark: true,
+      isBright: true,
+      isA: true,
+      lightText: "_gray.12",
+      darkText: "_gray.1",
+    });
   });
 });

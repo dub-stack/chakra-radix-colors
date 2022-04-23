@@ -1,5 +1,4 @@
 import * as radixColors from "@radix-ui/colors";
-import { chakraTokensFromPalette } from "util/helpers";
 
 // create the types for radix colors
 export interface IColorScale {
@@ -34,17 +33,15 @@ export const colors = Object.fromEntries(
 ) as unknown as RadixColorsType;
 
 // override the default styles
-export const overrides = {
-  colors: {
-    // add all radix-ui color scales to the chakra-ui overrides
-    ...colors,
+export default {
+  // add all radix-ui color scales to the chakra-ui overrides
+  ...colors,
 
-    // select a default grayscale from the radix-ui colors as chakra-ui
-    // has only one grayscale. Radix-ui provides many grayscales and we need
-    // a default for all component overrides
-    _gray: chakraTokensFromPalette("slate"),
-    _grayA: chakraTokensFromPalette("slateA"),
-    _grayDark: chakraTokensFromPalette("slateDark"),
-    _grayDarkA: chakraTokensFromPalette("slateDarkA"),
-  },
+  // select a default grayscale from the radix-ui colors as chakra-ui
+  // has only one grayscale. Radix-ui provides many grayscales and we need
+  // a default for all component overrides
+  _gray: { ...colors.slate },
+  _grayA: { ...colors.slateA },
+  _grayDark: { ...colors.slateDark },
+  _grayDarkA: { ...colors.slateDarkA },
 };
