@@ -8,7 +8,6 @@ import theme from "theme";
 import React from "react";
 import { Text } from "@chakra-ui/react";
 import { render, screen } from "util/test-utils";
-import { RadixColorsType } from "theme/foundations/colors";
 
 describe("getThemedColor", () => {
   test("works with light colors", () => {

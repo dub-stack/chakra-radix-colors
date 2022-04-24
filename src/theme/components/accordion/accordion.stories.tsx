@@ -7,6 +7,7 @@ import {
   chakra,
   AccordionIcon,
   AccordionPanel,
+  AccordionProps,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
 
@@ -15,39 +16,11 @@ export default {
   component: Accordion,
 } as ComponentMeta<typeof Accordion>;
 
-const New = (
-  <Accordion>
+const AccordionComponent = (props: AccordionProps) => (
+  <Accordion {...props}>
     <AccordionItem>
       <h2>
-        <AccordionButton>
-          <chakra.div flex="1" textAlign="left">
-            Section 1 title
-          </chakra.div>
-          <AccordionIcon />
-        </AccordionButton>
-      </h2>
-      <AccordionPanel>Panel 1</AccordionPanel>
-    </AccordionItem>
-
-    <AccordionItem>
-      <h2>
-        <AccordionButton>
-          <chakra.div flex="1" textAlign="left">
-            Section 2 title
-          </chakra.div>
-          <AccordionIcon />
-        </AccordionButton>
-      </h2>
-      <AccordionPanel>Panel 2</AccordionPanel>
-    </AccordionItem>
-  </Accordion>
-);
-
-const Default = (
-  <Accordion>
-    <AccordionItem>
-      <h2>
-        <AccordionButton>
+        <AccordionButton data-testid="accordion-button-1">
           <chakra.div flex="1" textAlign="left">
             Section 1 title
           </chakra.div>
@@ -72,7 +45,12 @@ const Default = (
 );
 
 const Template: ComponentStory<typeof Accordion> = (args) => {
-  return <Decorators newComponent={New} oldComponent={Default} />;
+  return (
+    <Decorators
+      newComponent={<AccordionComponent data-testid="accordion" />}
+      oldComponent={<AccordionComponent />}
+    />
+  );
 };
 
 export const Primary = Template.bind({});

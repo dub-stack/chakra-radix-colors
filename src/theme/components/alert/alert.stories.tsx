@@ -6,82 +6,382 @@ import {
   AlertTitle,
   AlertDescription,
   chakra,
-  AlertProps,
+  Box,
+  VStack,
+  Text,
+  StackProps,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "index";
 
 export default {
   title: "Components / Alert",
   component: Alert,
 } as ComponentMeta<typeof Alert>;
 
-const _Basic = (props: AlertProps) => (
-  <Alert status="error" variant="solid" borderRadius="md" {...props}>
-    <AlertIcon />
-    <AlertTitle mr={2}>Outdated</AlertTitle>
-    <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
-  </Alert>
-);
-export const Basic: ComponentStory<typeof Alert> = (args) => {
-  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
-};
-
-const _Subtle = () => (
-  <Alert status="success" mx="auto" alignItems="start">
-    <AlertIcon />
-    <chakra.div flex="1">
-      <AlertTitle>Holy Smokes</AlertTitle>
-      <AlertDescription>Something just happened!</AlertDescription>
-    </chakra.div>
-  </Alert>
-);
-export const Subtle: ComponentStory<typeof Alert> = (args) => {
-  return <Decorators newComponent={<_Subtle />} oldComponent={<_Subtle />} />;
-};
-
-const _LeftAccent = () => (
-  <Alert variant="left-accent" mx="auto" alignItems="start">
-    <AlertIcon />
-    <chakra.div flex="1">
-      <AlertTitle>Holy Smokes</AlertTitle>
-      <AlertDescription>Something just happened!</AlertDescription>
-    </chakra.div>
-  </Alert>
-);
-export const LeftAccent: ComponentStory<typeof Alert> = (args) => {
+const NewSolidVariant = (props: StackProps) => {
+  const c = useThemedColor();
   return (
-    <Decorators newComponent={<_LeftAccent />} oldComponent={<_LeftAccent />} />
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("gray.1")} p="4">
+        <Alert
+          status="error"
+          variant="solid"
+          borderRadius="md"
+          colorScheme="red"
+          data-testid="AlertLight"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("grayDark.1")} p="4">
+        <Alert
+          status="error"
+          variant="solid"
+          borderRadius="md"
+          colorScheme="redDark"
+          data-testid="AlertDark"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
+      </Box>
+    </VStack>
   );
 };
-
-const _TopAccent = () => (
-  <Alert
-    variant="top-accent"
-    mx="auto"
-    alignItems="flex-start"
-    pt="3"
-    rounded="md"
-  >
-    <AlertIcon />
-    <chakra.div flex="1">
-      <AlertTitle display="block" mr="2">
-        Holy Smokes
-      </AlertTitle>
-      <AlertDescription>Something just happened!</AlertDescription>
-    </chakra.div>
-  </Alert>
+const OldSolidVariant = (props: StackProps) => (
+  <VStack {...props}>
+    <Text as="h1" fontWeight="bold">
+      Old Theme
+    </Text>
+    {/* display the light version in light mode */}
+    <Box p="4">
+      <Alert status="error" variant="solid" borderRadius="md" colorScheme="red">
+        <AlertIcon />
+        <AlertTitle mr={2}>Outdated</AlertTitle>
+        <AlertDescription>
+          Your Chakra experience may be degraded.
+        </AlertDescription>
+      </Alert>
+    </Box>
+    {/* default has no dark version per mode */}
+    <Box p="4" visibility="hidden">
+      <Alert status="error" variant="solid" borderRadius="md" colorScheme="red">
+        <AlertIcon />
+        <AlertTitle mr={2}>Outdated</AlertTitle>
+        <AlertDescription>
+          Your Chakra experience may be degraded.
+        </AlertDescription>
+      </Alert>
+    </Box>
+  </VStack>
 );
-export const TopAccent: ComponentStory<typeof Alert> = (args) => {
-  return (
-    <Decorators newComponent={<_TopAccent />} oldComponent={<_TopAccent />} />
-  );
-};
-
-export const Bright: ComponentStory<typeof Alert> = (args) => {
+export const SolidVariant: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={<_Basic colorScheme="sky" />}
-      oldComponent={<_Basic />}
+      newComponent={<NewSolidVariant data-testid="NewSolidVariant" />}
+      oldComponent={<OldSolidVariant data-testid="OldSolidVariant" />}
+    />
+  );
+};
+
+const NewSubtleVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("gray.1")} p="4">
+        <Alert status="success" variant="subtle" borderRadius="md">
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("grayDark.1")} p="4">
+        <Alert
+          status="success"
+          variant="subtle"
+          borderRadius="md"
+          colorScheme="greenDark"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
+      </Box>
+    </VStack>
+  );
+};
+const OldSubtleVariant = (props: StackProps) => (
+  <VStack {...props}>
+    <Text as="h1" fontWeight="bold">
+      Old Theme
+    </Text>
+    {/* display the light version in light mode */}
+    <Box p="4">
+      <Alert status="success" variant="subtle" borderRadius="md">
+        <AlertIcon />
+        <AlertTitle mr={2}>Outdated</AlertTitle>
+        <AlertDescription>
+          Your Chakra experience may be degraded.
+        </AlertDescription>
+      </Alert>
+    </Box>
+    {/* default has no dark version per mode */}
+    <Box p="4" visibility="hidden">
+      <Alert status="success" variant="subtle" borderRadius="md">
+        <AlertIcon />
+        <AlertTitle mr={2}>Outdated</AlertTitle>
+        <AlertDescription>
+          Your Chakra experience may be degraded.
+        </AlertDescription>
+      </Alert>
+    </Box>
+  </VStack>
+);
+export const SubtleVariant: ComponentStory<typeof VStack> = (args) => {
+  return (
+    <Decorators
+      newComponent={<NewSubtleVariant data-testid="NewSubtleVariant" />}
+      oldComponent={<OldSubtleVariant data-testid="OldSubtleVariant" />}
+    />
+  );
+};
+
+const NewLeftAccentVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("gray.1")} p="4">
+        <Alert variant="left-accent" alignItems="start" colorScheme="blue">
+          <AlertIcon />
+          <chakra.div flex="1">
+            <AlertTitle>Holy Smokes</AlertTitle>
+            <AlertDescription>Something just happened!</AlertDescription>
+          </chakra.div>
+        </Alert>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("grayDark.1")} p="4">
+        <Alert variant="left-accent" alignItems="start" colorScheme="blueDark">
+          <AlertIcon />
+          <chakra.div flex="1">
+            <AlertTitle>Holy Smokes</AlertTitle>
+            <AlertDescription>Something just happened!</AlertDescription>
+          </chakra.div>
+        </Alert>
+      </Box>
+    </VStack>
+  );
+};
+const OldLeftAccentVariant = (props: StackProps) => (
+  <VStack {...props}>
+    <Text as="h1" fontWeight="bold">
+      Old Theme
+    </Text>
+    {/* display the light version in light mode */}
+    <Box p="4">
+      <Alert variant="left-accent" alignItems="start" colorScheme="blue">
+        <AlertIcon />
+        <chakra.div flex="1">
+          <AlertTitle>Holy Smokes</AlertTitle>
+          <AlertDescription>Something just happened!</AlertDescription>
+        </chakra.div>
+      </Alert>
+    </Box>
+    {/* default has no dark version per mode */}
+    <Box p="4" visibility="hidden">
+      <Alert variant="left-accent" alignItems="start" colorScheme="blue">
+        <AlertIcon />
+        <chakra.div flex="1">
+          <AlertTitle>Holy Smokes</AlertTitle>
+          <AlertDescription>Something just happened!</AlertDescription>
+        </chakra.div>
+      </Alert>
+    </Box>
+  </VStack>
+);
+export const LeftAccentVariant: ComponentStory<typeof VStack> = (args) => {
+  return (
+    <Decorators
+      newComponent={<NewLeftAccentVariant data-testid="NewLeftAccentVariant" />}
+      oldComponent={<OldLeftAccentVariant data-testid="OldLeftAccentVariant" />}
+    />
+  );
+};
+
+const NewTopAccentVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("gray.1")} p="4">
+        <Alert variant="top-accent" alignItems="start" colorScheme="blue">
+          <AlertIcon />
+          <chakra.div flex="1">
+            <AlertTitle>Holy Smokes</AlertTitle>
+            <AlertDescription>Something just happened!</AlertDescription>
+          </chakra.div>
+        </Alert>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("grayDark.1")} p="4">
+        <Alert variant="top-accent" alignItems="start" colorScheme="blueDark">
+          <AlertIcon />
+          <chakra.div flex="1">
+            <AlertTitle>Holy Smokes</AlertTitle>
+            <AlertDescription>Something just happened!</AlertDescription>
+          </chakra.div>
+        </Alert>
+      </Box>
+    </VStack>
+  );
+};
+const OldTopAccentVariant = (props: StackProps) => (
+  <VStack {...props}>
+    <Text as="h1" fontWeight="bold">
+      Old Theme
+    </Text>
+    {/* display the light version in light mode */}
+    <Box p="4">
+      <Alert variant="top-accent" alignItems="start" colorScheme="blue">
+        <AlertIcon />
+        <chakra.div flex="1">
+          <AlertTitle>Holy Smokes</AlertTitle>
+          <AlertDescription>Something just happened!</AlertDescription>
+        </chakra.div>
+      </Alert>
+    </Box>
+    {/* default has no dark version per mode */}
+    <Box p="4" visibility="hidden">
+      <Alert variant="top-accent" alignItems="start" colorScheme="blue">
+        <AlertIcon />
+        <chakra.div flex="1">
+          <AlertTitle>Holy Smokes</AlertTitle>
+          <AlertDescription>Something just happened!</AlertDescription>
+        </chakra.div>
+      </Alert>
+    </Box>
+  </VStack>
+);
+export const TopAccentVariant: ComponentStory<typeof VStack> = (args) => {
+  return (
+    <Decorators
+      newComponent={<NewTopAccentVariant data-testid="NewTopAccentVariant" />}
+      oldComponent={<OldTopAccentVariant data-testid="OldTopAccentVariant" />}
+    />
+  );
+};
+
+const NewBrightColor = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("gray.1")} p="4">
+        <Alert
+          status="error"
+          variant="solid"
+          borderRadius="md"
+          colorScheme="amber"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("grayDark.1")} p="4">
+        <Alert
+          status="error"
+          variant="solid"
+          borderRadius="md"
+          colorScheme="amberDark"
+        >
+          <AlertIcon />
+          <AlertTitle mr={2}>Outdated</AlertTitle>
+          <AlertDescription>
+            Your Chakra experience may be degraded.
+          </AlertDescription>
+        </Alert>
+      </Box>
+    </VStack>
+  );
+};
+const OldBrightColor = (props: StackProps) => (
+  <VStack {...props}>
+    <Text as="h1" fontWeight="bold">
+      Old Theme
+    </Text>
+    {/* display the light version in light mode */}
+    <Box p="4">
+      <Alert
+        status="error"
+        variant="solid"
+        borderRadius="md"
+        colorScheme="yellow"
+      >
+        <AlertIcon />
+        <AlertTitle mr={2}>Outdated</AlertTitle>
+        <AlertDescription>
+          Your Chakra experience may be degraded.
+        </AlertDescription>
+      </Alert>
+    </Box>
+    {/* default has no dark version per mode */}
+    <Box p="4" visibility="hidden">
+      <Alert
+        status="error"
+        variant="solid"
+        borderRadius="md"
+        colorScheme="yellow"
+      >
+        <AlertIcon />
+        <AlertTitle mr={2}>Outdated</AlertTitle>
+        <AlertDescription>
+          Your Chakra experience may be degraded.
+        </AlertDescription>
+      </Alert>
+    </Box>
+  </VStack>
+);
+export const BrightColor: ComponentStory<typeof VStack> = (args) => {
+  return (
+    <Decorators
+      newComponent={<NewBrightColor data-testid="NewBrightColor" />}
+      oldComponent={<OldBrightColor data-testid="OldBrightColor" />}
     />
   );
 };

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect } from "react";
+import React, { FC, ReactElement } from "react";
 import { render } from "@testing-library/react";
 import { ChakraProvider } from "@chakra-ui/provider";
 import theme from "../theme";

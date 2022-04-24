@@ -34,69 +34,81 @@ const baseStyle: PartsStyleObject<typeof parts> = {
 
 function getBg(props: StyleFunctionProps): string {
   const { theme, colorScheme: c } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  const { light, dark } = getColorInfo(c, theme);
 
-  // Using step 4, 5, 6 colors as this is an exception we want
-  // to highlight instead of 3, 4, 5. See the following link for more
-  // details: https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale#steps-35-component-backgrounds
-  return mode(`${lightPalette}.4`, `${darkPalette}.4`)(props);
+  return mode(`${light}.4`, `${dark}.4`)(props);
 }
 
 const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: lightGray, dark: darkGray } = getColorInfo("gray", theme);
+
+  if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
 
   return {
-    container: { bg: getBg(props) },
-    icon: { color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props) },
+    container: {
+      bg: getBg(props),
+      color: mode(`${darkGray}.1`, `${lightGray}.1`)(props),
+    },
+    icon: { color: mode(`${light}.9`, `${dark}.9`)(props) },
   };
 };
 
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: lightGray, dark: darkGray } = getColorInfo("gray", theme);
+
+  if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
 
   return {
     container: {
       paddingStart: 3,
       borderStartWidth: "4px",
-      borderStartColor: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+      borderStartColor: mode(`${light}.9`, `${dark}.9`)(props),
       bg: getBg(props),
+      color: mode(`${darkGray}.1`, `${lightGray}.1`)(props),
     },
     icon: {
-      color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+      color: mode(`${light}.9`, `${dark}.9`)(props),
     },
   };
 };
 
 const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: lightGray, dark: darkGray } = getColorInfo("gray", theme);
+
+  if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
 
   return {
     container: {
       pt: 2,
       borderTopWidth: "4px",
-      borderTopColor: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+      borderTopColor: mode(`${light}.9`, `${dark}.9`)(props),
       bg: getBg(props),
+      color: mode(`${darkGray}.1`, `${lightGray}.1`)(props),
     },
     icon: {
-      color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+      color: mode(`${light}.9`, `${dark}.9`)(props),
     },
   };
 };
 
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  let { lightPalette, darkPalette, lightText, darkText, isBright } =
-    getColorInfo(c, theme);
+  let { light, dark, isBright, isDark } = getColorInfo(c, theme);
+  let { light: gray, dark: grayDark } = getColorInfo("gray", theme);
 
-  if (isBright) [lightText, darkText] = [darkText, darkText];
+  if (isBright) [gray, grayDark] = [grayDark, grayDark];
+  if (isDark) [gray, grayDark] = [grayDark, gray];
 
   return {
     container: {
-      bg: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
-      color: mode(lightText, darkText)(props),
+      bg: mode(`${light}.9`, `${dark}.9`)(props),
+      color: mode(`${gray}.1`, `${grayDark}.1`)(props),
     },
   };
 };

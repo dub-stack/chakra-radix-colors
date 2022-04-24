@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "cypress-real-events"],
+    "baseUrl": "..",
+    "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
+      "*": ["src/*"]
+    }
+  },
+  "include": ["**/*.ts"]
+}

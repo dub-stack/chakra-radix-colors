@@ -94,13 +94,10 @@ export const BrightColors = {
 } as const;
 
 export function getColorInfo(palette: string, theme: Dict<any>) {
-  const [lightPalette, darkPalette] = getBaseColorPair(palette, theme);
+  const [light, dark] = getBaseColorPair(palette, theme);
 
   // get the lightText & darkText
   const isDark = palette.includes("Dark");
-  const [lightText, darkText] = isDark
-    ? ["_gray.12", "_gray.1"]
-    : ["_gray.1", "_gray.12"];
 
   // determine if it is a bright color
   const isBright = Object.values(BrightColors).some((brightColor) =>
@@ -111,11 +108,9 @@ export function getColorInfo(palette: string, theme: Dict<any>) {
   const isA = palette.includes("A");
 
   return {
-    lightPalette,
-    darkPalette,
+    light,
+    dark,
     isDark,
-    lightText,
-    darkText,
     isBright,
     isA,
   };

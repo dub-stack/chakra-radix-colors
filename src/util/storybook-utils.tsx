@@ -5,7 +5,7 @@ import {
   Flex,
   useColorMode,
 } from "@chakra-ui/react";
-import { RiMoonFill } from "react-icons/ri";
+import { RiMoonFill, RiRecycleFill } from "react-icons/ri";
 import theme from "../theme";
 
 /**
@@ -63,6 +63,7 @@ export const Decorators = (props: {
   return (
     <>
       <IconButton
+        id="switch-color-mode"
         aria-label="Toggle theme"
         bg="#EDE6E6"
         p="8px"
@@ -72,6 +73,18 @@ export const Decorators = (props: {
         right="1rem"
         icon={<RiMoonFill color="#000000" />}
         onClick={() => setColorMode(colorMode === "light" ? "dark" : "light")}
+      />
+      <IconButton
+        id="reset-color-mode"
+        aria-label="Toggle theme"
+        bg="#EDE6E6"
+        p="8px"
+        borderRadius="6px"
+        position="fixed"
+        top="1rem"
+        left="1rem"
+        icon={<RiRecycleFill color="#000000" />}
+        onClick={() => setColorMode("light")}
       />
       <Flex
         gap="10px"
