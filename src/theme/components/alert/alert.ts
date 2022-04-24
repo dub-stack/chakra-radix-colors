@@ -42,7 +42,7 @@ function getBg(props: StyleFunctionProps): string {
 const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isDark } = getColorInfo(c, theme);
-  let { light: lightGray, dark: darkGray } = getColorInfo("gray", theme);
+  let { light: lightGray, dark: darkGray } = getColorInfo("_gray", theme);
 
   if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
 
@@ -58,7 +58,7 @@ const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isDark } = getColorInfo(c, theme);
-  let { light: lightGray, dark: darkGray } = getColorInfo("gray", theme);
+  let { light: lightGray, dark: darkGray } = getColorInfo("_gray", theme);
 
   if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
 
@@ -79,7 +79,7 @@ const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
 const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isDark } = getColorInfo(c, theme);
-  let { light: lightGray, dark: darkGray } = getColorInfo("gray", theme);
+  let { light: lightGray, dark: darkGray } = getColorInfo("_gray", theme);
 
   if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
 
@@ -100,7 +100,7 @@ const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isBright, isDark } = getColorInfo(c, theme);
-  let { light: gray, dark: grayDark } = getColorInfo("gray", theme);
+  let { light: gray, dark: grayDark } = getColorInfo("_gray", theme);
 
   if (isBright) [gray, grayDark] = [grayDark, grayDark];
   if (isDark) [gray, grayDark] = [grayDark, gray];

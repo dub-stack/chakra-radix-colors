@@ -11,27 +11,27 @@ describe("Solid Variant", () => {
   it("displays light color in light mode correctly", () => {
     cy.get("[data-testid=AlertLight]")
       .should("have.css", "background-color", getRgbFromThemeColor("red.9"))
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"));
   });
 
   it("displays light color in dark mode correctly", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=AlertLight]")
       .should("have.css", "background-color", getRgbFromThemeColor("redDark.9"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
   });
 
   it("displays dark color in light mode correctly", () => {
     cy.get("[data-testid=AlertDark]")
       .should("have.css", "background-color", getRgbFromThemeColor("redDark.9"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
   });
 
   it("displays dark color in dark mode correctly", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=AlertDark]")
       .should("have.css", "background-color", getRgbFromThemeColor("red.9"))
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"));
   });
 });
 
@@ -46,7 +46,7 @@ describe("Subtle Variant", () => {
   it("displays light color in light mode correctly", () => {
     cy.get("[data-testid=AlertLight]")
       .should("have.css", "background-color", getRgbFromThemeColor("green.4"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
     cy.get("[data-testid=AlertLight] .chakra-alert__icon").should(
       "have.css",
       "color",
@@ -61,7 +61,7 @@ describe("Subtle Variant", () => {
         "background-color",
         getRgbFromThemeColor("greenDark.4")
       )
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"));
     cy.get("[data-testid=AlertLight] .chakra-alert__icon").should(
       "have.css",
       "color",
@@ -75,7 +75,7 @@ describe("Subtle Variant", () => {
         "background-color",
         getRgbFromThemeColor("greenDark.4")
       )
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"));
     cy.get("[data-testid=AlertDark] .chakra-alert__icon").should(
       "have.css",
       "color",
@@ -86,7 +86,7 @@ describe("Subtle Variant", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=AlertDark]")
       .should("have.css", "background-color", getRgbFromThemeColor("green.4"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
     cy.get("[data-testid=AlertDark] .chakra-alert__icon").should(
       "have.css",
       "color",
@@ -106,7 +106,7 @@ describe("Left-Accent Variant", () => {
   it("displays light color in light mode correctly", () => {
     cy.get("[data-testid=AlertLight]")
       .should("have.css", "background-color", getRgbFromThemeColor("blue.4"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"))
       .should(
         "have.css",
         "border-inline-start-color",
@@ -126,7 +126,7 @@ describe("Left-Accent Variant", () => {
         "background-color",
         getRgbFromThemeColor("blueDark.4")
       )
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"))
       .should(
         "have.css",
         "border-inline-start-color",
@@ -145,7 +145,7 @@ describe("Left-Accent Variant", () => {
         "background-color",
         getRgbFromThemeColor("blueDark.4")
       )
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"))
       .should(
         "have.css",
         "border-inline-start-color",
@@ -161,7 +161,7 @@ describe("Left-Accent Variant", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=AlertDark]")
       .should("have.css", "background-color", getRgbFromThemeColor("blue.4"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"))
       .should(
         "have.css",
         "border-inline-start-color",
@@ -186,7 +186,7 @@ describe("Top-Accent Variant", () => {
   it("displays light color in light mode correctly", () => {
     cy.get("[data-testid=AlertLight]")
       .should("have.css", "background-color", getRgbFromThemeColor("blue.4"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"))
       .should("have.css", "border-top-color", getRgbFromThemeColor("blue.9"));
     cy.get("[data-testid=AlertLight] .chakra-alert__icon").should(
       "have.css",
@@ -202,7 +202,7 @@ describe("Top-Accent Variant", () => {
         "background-color",
         getRgbFromThemeColor("blueDark.4")
       )
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"))
       .should(
         "have.css",
         "border-top-color",
@@ -221,7 +221,7 @@ describe("Top-Accent Variant", () => {
         "background-color",
         getRgbFromThemeColor("blueDark.4")
       )
-      .should("have.css", "color", getRgbFromThemeColor("gray.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_gray.1"))
       .should(
         "have.css",
         "border-top-color",
@@ -237,7 +237,7 @@ describe("Top-Accent Variant", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=AlertDark]")
       .should("have.css", "background-color", getRgbFromThemeColor("blue.4"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"))
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"))
       .should("have.css", "border-top-color", getRgbFromThemeColor("blue.9"));
     cy.get("[data-testid=AlertDark] .chakra-alert__icon").should(
       "have.css",
@@ -258,7 +258,7 @@ describe("Bright Color", () => {
   it("displays light color in light mode correctly", () => {
     cy.get("[data-testid=AlertLight]")
       .should("have.css", "background-color", getRgbFromThemeColor("amber.9"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
   });
 
   it("displays light color in dark mode correctly", () => {
@@ -269,7 +269,7 @@ describe("Bright Color", () => {
         "background-color",
         getRgbFromThemeColor("amberDark.9")
       )
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
   });
 
   it("displays dark color in light mode correctly", () => {
@@ -279,13 +279,13 @@ describe("Bright Color", () => {
         "background-color",
         getRgbFromThemeColor("amberDark.9")
       )
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
   });
 
   it("displays dark color in dark mode correctly", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=AlertDark]")
       .should("have.css", "background-color", getRgbFromThemeColor("amber.9"))
-      .should("have.css", "color", getRgbFromThemeColor("grayDark.1"));
+      .should("have.css", "color", getRgbFromThemeColor("_grayDark.1"));
   });
 });
