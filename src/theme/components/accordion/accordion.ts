@@ -1,7 +1,9 @@
 import { accordionAnatomy as parts } from "@chakra-ui/anatomy";
-import type {
-  PartsStyleObject,
+import {
+  PartsStyleFunction,
+  SystemStyleFunction,
   SystemStyleObject,
+  mode,
 } from "@chakra-ui/theme-tools";
 
 const baseStyleContainer: SystemStyleObject = {
@@ -12,22 +14,24 @@ const baseStyleContainer: SystemStyleObject = {
   },
 };
 
-const baseStyleButton: SystemStyleObject = {
-  transitionProperty: "common",
-  transitionDuration: "normal",
-  fontSize: "1rem",
-  _focus: {
-    boxShadow: "outline",
-  },
-  _hover: {
-    bg: "blackA.3",
-  },
-  _disabled: {
-    opacity: 0.4,
-    cursor: "not-allowed",
-  },
-  px: 4,
-  py: 2,
+const baseStyleButton: SystemStyleFunction = (props) => {
+  return {
+    transitionProperty: "common",
+    transitionDuration: "normal",
+    fontSize: "1rem",
+    _focus: {
+      boxShadow: "outline",
+    },
+    _hover: {
+      bg: mode("blackA.3", "whiteA.3")(props),
+    },
+    _disabled: {
+      opacity: 0.4,
+      cursor: "not-allowed",
+    },
+    px: 4,
+    py: 2,
+  };
 };
 
 const baseStylePanel: SystemStyleObject = {
@@ -40,13 +44,13 @@ const baseStyleIcon: SystemStyleObject = {
   fontSize: "1.25em",
 };
 
-const baseStyle: PartsStyleObject<typeof parts> = {
+const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   root: {},
   container: baseStyleContainer,
-  button: baseStyleButton,
+  button: baseStyleButton(props),
   panel: baseStylePanel,
   icon: baseStyleIcon,
-};
+});
 
 export default {
   parts: parts.keys,

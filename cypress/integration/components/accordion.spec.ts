@@ -1,14 +1,23 @@
 describe("Default", () => {
   beforeEach(() => {
     cy.visit(
-      "http://localhost:6006/iframe.html?id=components-accordion--primary&args=&viewMode=story"
+      "http://localhost:6006/iframe.html?id=components-accordion--default&args=&viewMode=story"
     );
+    cy.get("#reset-color-mode").click();
   });
 
-  it("displays hover styles", () => {
-    cy.get("[data-testid=accordion] [data-testid=accordion-button-1]")
+  it("displays light color in light mode correctly", () => {
+    cy.get("[data-testid=accordion-button]")
       .realHover()
-      .wait(100) // wait for color transition to complete
+      .wait(200) // wait for color transition to complete
       .should("have.css", "background-color", "rgba(0, 0, 0, 0.047)");
+  });
+
+  it("displays light color in dark mode correctly", () => {
+    cy.get("#switch-color-mode").click();
+    cy.get("[data-testid=accordion-button]")
+      .realHover()
+      .wait(200) // wait for color transition to complete
+      .should("have.css", "background-color", "rgba(255, 255, 255, 0.035)");
   });
 });
