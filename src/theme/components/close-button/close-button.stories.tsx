@@ -10,14 +10,12 @@ export default {
 
 const _Default = () => <CloseButton />;
 export const Default: ComponentStory<typeof CloseButton> = (args) => {
-  return (
-    <Decorators newComponent={<_Default />} defaultComponent={<_Default />} />
-  );
+  return <Decorators newComponent={<_Default />} oldComponent={<_Default />} />;
 };
 
 const _State = () => <CloseButton isDisabled />;
 export const State: ComponentStory<typeof CloseButton> = (args) => {
-  return <Decorators newComponent={<_State />} defaultComponent={<_State />} />;
+  return <Decorators newComponent={<_State />} oldComponent={<_State />} />;
 };
 
 const _Sizes = () => (
@@ -28,5 +26,5 @@ const _Sizes = () => (
   </>
 );
 export const Sizes: ComponentStory<typeof CloseButton> = (args) => {
-  return <Decorators newComponent={<_Sizes />} defaultComponent={<_Sizes />} />;
+  return <Decorators newComponent={<_Sizes />} oldComponent={<_Sizes />} />;
 };

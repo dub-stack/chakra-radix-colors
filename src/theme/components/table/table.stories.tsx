@@ -96,19 +96,19 @@ const SimpleTable = (props: TableProps) => (
 
 const _SimpleMD = () => <SimpleTable size="md" />;
 export const SimpleMd: ComponentStory<typeof _SimpleMD> = (args) => (
-  <Decorators newComponent={<_SimpleMD />} defaultComponent={<_SimpleMD />} />
+  <Decorators newComponent={<_SimpleMD />} oldComponent={<_SimpleMD />} />
 );
 
 const _StripedMD = () => <SimpleTable variant="striped" size="md" />;
 export const StripedMD: ComponentStory<typeof _StripedMD> = (args) => (
-  <Decorators newComponent={<_StripedMD />} defaultComponent={<_StripedMD />} />
+  <Decorators newComponent={<_StripedMD />} oldComponent={<_StripedMD />} />
 );
 
 const _SimpleMDColor = () => <SimpleTable size="md" colorScheme="teal" />;
 export const SimpleMdColor: ComponentStory<typeof _SimpleMDColor> = (args) => (
   <Decorators
     newComponent={<_SimpleMDColor />}
-    defaultComponent={<_SimpleMDColor />}
+    oldComponent={<_SimpleMDColor />}
   />
 );
 
@@ -120,6 +120,6 @@ export const StripedMDColor: ComponentStory<typeof _StripedMDColor> = (
 ) => (
   <Decorators
     newComponent={<_StripedMDColor />}
-    defaultComponent={<_StripedMDColor />}
+    oldComponent={<_StripedMDColor />}
   />
 );

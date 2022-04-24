@@ -11,7 +11,7 @@ export default {
 const _Basic = () => <Progress value={50} w="full" />;
 export const Basic: ComponentStory<typeof _Basic> = (args) => (
   <Container maxW="500px">
-    <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />
+    <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />
   </Container>
 );
 
@@ -24,7 +24,7 @@ export const withColorScheme: ComponentStory<typeof _withColorScheme> = (
   <Container maxW="500px">
     <Decorators
       newComponent={<_withColorScheme />}
-      defaultComponent={<_withColorScheme />}
+      oldComponent={<_withColorScheme />}
     />
   </Container>
 );
@@ -35,5 +35,5 @@ const _withLabel = () => (
   </Progress>
 );
 export const withLabel: ComponentStory<typeof _withLabel> = (args) => (
-  <Decorators newComponent={<_withLabel />} defaultComponent={<_withLabel />} />
+  <Decorators newComponent={<_withLabel />} oldComponent={<_withLabel />} />
 );

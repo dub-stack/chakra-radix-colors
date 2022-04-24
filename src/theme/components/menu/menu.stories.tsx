@@ -50,5 +50,5 @@ const _Basic = () => (
 );
 
 export const Basic: ComponentStory<typeof _Basic> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };

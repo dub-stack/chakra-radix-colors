@@ -50,7 +50,7 @@ export const Solid: ComponentStory<typeof Button> = (args) => {
           colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
         />
       }
-      defaultComponent={
+      oldComponent={
         <_Solid colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
       }
     />
@@ -74,7 +74,7 @@ export const Ghost: ComponentStory<typeof Button> = (args) => {
           colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
         />
       }
-      defaultComponent={
+      oldComponent={
         <_Ghost colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
       }
     />
@@ -107,7 +107,7 @@ export const Outline: ComponentStory<typeof Button> = (args) => {
           colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
         />
       }
-      defaultComponent={
+      oldComponent={
         <_Outline colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
       }
     />
@@ -131,7 +131,7 @@ export const Link: ComponentStory<typeof Button> = (args) => {
           colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
         />
       }
-      defaultComponent={
+      oldComponent={
         <_Link colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
       }
     />
@@ -161,7 +161,7 @@ export const WithVariants = () => {
   return (
     <Decorators
       newComponent={<_withVariants />}
-      defaultComponent={<_withVariants />}
+      oldComponent={<_withVariants />}
     />
   );
 };
@@ -184,10 +184,7 @@ const _withSizes = () => (
 );
 export const WithSizes = () => {
   return (
-    <Decorators
-      newComponent={<_withSizes />}
-      defaultComponent={<_withSizes />}
-    />
+    <Decorators newComponent={<_withSizes />} oldComponent={<_withSizes />} />
   );
 };
 
@@ -207,7 +204,7 @@ const _WithIcon = () => (
 );
 export const WithIcon = () => {
   return (
-    <Decorators newComponent={<_WithIcon />} defaultComponent={<_WithIcon />} />
+    <Decorators newComponent={<_WithIcon />} oldComponent={<_WithIcon />} />
   );
 };
 
@@ -225,7 +222,7 @@ export const WithReactIcons = () => {
   return (
     <Decorators
       newComponent={<_withReactIcons />}
-      defaultComponent={<_withReactIcons />}
+      oldComponent={<_withReactIcons />}
     />
   );
 };
@@ -258,7 +255,7 @@ export const WithLoading = () => {
   return (
     <Decorators
       newComponent={<_WithLoading />}
-      defaultComponent={<_WithLoading />}
+      oldComponent={<_WithLoading />}
     />
   );
 };
@@ -283,7 +280,7 @@ export const WithDisabled = () => {
   return (
     <Decorators
       newComponent={<_withDisabled />}
-      defaultComponent={<_withDisabled />}
+      oldComponent={<_withDisabled />}
     />
   );
 };
@@ -305,10 +302,7 @@ const _iconButton = () => (
 );
 export const AnIconButton = () => {
   return (
-    <Decorators
-      newComponent={<_iconButton />}
-      defaultComponent={<_iconButton />}
-    />
+    <Decorators newComponent={<_iconButton />} oldComponent={<_iconButton />} />
   );
 };
 
@@ -322,7 +316,7 @@ export const WithButtonGroup = () => {
   return (
     <Decorators
       newComponent={<_WithButtonGroup />}
-      defaultComponent={<_WithButtonGroup />}
+      oldComponent={<_WithButtonGroup />}
     />
   );
 };
@@ -341,7 +335,7 @@ export const AttachedButtons = () => {
   return (
     <Decorators
       newComponent={<_attachedButtons />}
-      defaultComponent={<_attachedButtons />}
+      oldComponent={<_attachedButtons />}
     />
   );
 };

@@ -53,9 +53,6 @@ function _BasicUsage() {
 
 export const BasicUsage: ComponentStory<typeof _BasicUsage> = (args) => {
   return (
-    <Decorators
-      newComponent={<_BasicUsage />}
-      defaultComponent={<_BasicUsage />}
-    />
+    <Decorators newComponent={<_BasicUsage />} oldComponent={<_BasicUsage />} />
   );
 };

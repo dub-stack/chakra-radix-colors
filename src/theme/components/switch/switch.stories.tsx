@@ -17,5 +17,5 @@ const _Base = () => (
   </HStack>
 );
 export const Base: ComponentStory<typeof _Base> = (args) => (
-  <Decorators newComponent={<_Base />} defaultComponent={<_Base />} />
+  <Decorators newComponent={<_Base />} oldComponent={<_Base />} />
 );

@@ -21,7 +21,7 @@ const _Basic = () => (
   </Container>
 );
 export const Basic: ComponentStory<typeof Skeleton> = (args) => (
-  <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />
+  <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />
 );
 
 const _Text = () => (
@@ -35,7 +35,7 @@ const _Text = () => (
   </Container>
 );
 export const Text: ComponentStory<typeof Skeleton> = (args) => (
-  <Decorators newComponent={<_Text />} defaultComponent={<_Text />} />
+  <Decorators newComponent={<_Text />} oldComponent={<_Text />} />
 );
 
 const _Combined = () => (
@@ -47,5 +47,5 @@ const _Combined = () => (
   </Container>
 );
 export const Combined: ComponentStory<typeof Skeleton> = (args) => (
-  <Decorators newComponent={<_Combined />} defaultComponent={<_Combined />} />
+  <Decorators newComponent={<_Combined />} oldComponent={<_Combined />} />
 );

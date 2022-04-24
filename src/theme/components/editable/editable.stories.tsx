@@ -53,7 +53,7 @@ const _Basic = () => (
   </Editable>
 );
 export const Basic: ComponentStory<typeof Editable> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };
 
 export const _CodeSandboxTopbar = () => {
@@ -72,7 +72,7 @@ export const CodeSandboxTopbar: ComponentStory<typeof Editable> = (args) => {
   return (
     <Decorators
       newComponent={<_CodeSandboxTopbar />}
-      defaultComponent={<_CodeSandboxTopbar />}
+      oldComponent={<_CodeSandboxTopbar />}
     />
   );
 };

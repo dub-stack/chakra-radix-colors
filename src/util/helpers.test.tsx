@@ -2,7 +2,6 @@ import {
   getThemedColor,
   useThemedColor,
   getBaseColorPair,
-  getResolvedColorPair,
   getColorInfo,
 } from "./helpers";
 import theme from "theme";
@@ -117,47 +116,6 @@ describe("getColorPair ", () => {
   test("works with garbage values", () => {
     ["", "gr", "lime.", "pink.14"].forEach((color) => {
       expect(getBaseColorPair(color, theme)).toEqual([color, color]);
-    });
-  });
-});
-
-describe("getResolvedColorPair ", () => {
-  test("works when supplying light colors", () => {
-    ["gray", "pink", "amber", "sky"].forEach((color) => {
-      expect(getResolvedColorPair(`${color}.2`, theme)).toEqual([
-        theme.colors[color as keyof RadixColorsType][2],
-        theme.colors[`${color}Dark` as keyof RadixColorsType][2],
-      ]);
-    });
-  });
-
-  test("works when supplying dark colors", () => {
-    ["_gray", "gray", "pink", "amber", "sky"].forEach((color) => {
-      expect(getResolvedColorPair(`${color}Dark.5`, theme)).toEqual([
-        theme.colors[`${color}Dark` as keyof RadixColorsType][5],
-        theme.colors[color as keyof RadixColorsType][5],
-      ]);
-    });
-  });
-
-  test("works when supplying alpha colors", () => {
-    ["gray", "red", "teal", "sky"].forEach((color) => {
-      expect(getResolvedColorPair(`${color}A.12`, theme)).toEqual([
-        theme.colors[`${color}A` as keyof RadixColorsType][12],
-        theme.colors[`${color}DarkA` as keyof RadixColorsType][12],
-      ]);
-    });
-    ["gray", "pink", "amber", "sky"].forEach((color) => {
-      expect(getResolvedColorPair(`${color}DarkA.11`, theme)).toEqual([
-        theme.colors[`${color}DarkA` as keyof RadixColorsType][11],
-        theme.colors[`${color}A` as keyof RadixColorsType][11],
-      ]);
-    });
-  });
-
-  test("works with garbage values", () => {
-    ["", "gray", "gr", "lime.", "pink.14"].forEach((color) => {
-      expect(getResolvedColorPair(color, theme)).toEqual([color, color]);
     });
   });
 });

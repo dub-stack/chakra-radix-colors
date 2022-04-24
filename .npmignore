@@ -8,6 +8,8 @@ dist/**/*.stories.{ts,tsx,js,jsx}
 dist/util/test-utils.tsx
 .storybook/
 coverage/
+cypress/
+cypress.json
 
 # ignore all config files
 *.config.{ts,tsx,js,jsx}

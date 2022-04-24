@@ -32,7 +32,7 @@ export const BasicUsage: ComponentStory<typeof _BasicUsageNew> = (args) => {
   return (
     <Decorators
       newComponent={<_BasicUsageNew />}
-      defaultComponent={<_BasicUsageDefault />}
+      oldComponent={<_BasicUsageDefault />}
     />
   );
 };

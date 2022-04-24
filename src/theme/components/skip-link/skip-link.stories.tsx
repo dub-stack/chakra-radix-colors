@@ -18,6 +18,6 @@ const _BasicExample = () => (
 export const BasicExample: ComponentStory<typeof _BasicExample> = (args) => (
   <Decorators
     newComponent={<_BasicExample />}
-    defaultComponent={<_BasicExample />}
+    oldComponent={<_BasicExample />}
   />
 );

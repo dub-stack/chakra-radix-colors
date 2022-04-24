@@ -1,4 +1,3 @@
-import type { IColorScale, RadixColorKeyType } from "theme/foundations/colors";
 import { useColorMode } from "@chakra-ui/react";
 import { Dict } from "@chakra-ui/utils";
 
@@ -82,39 +81,6 @@ export function getBaseColorPair(palette: string, theme: Dict<any>) {
   const darkBase = `${newBase}${isDark ? "" : "Dark"}${A}`;
 
   return [`${lightBase}`, `${darkBase}`];
-}
-
-/**
- * Returns a [lightColor, darkColor] tuple with the light and
- * dark colors of the input color.
- *
- * @param color A color string from theme. Ex: "teal"
- * @param theme The theme with radix-ui color palettes.
- * @returns A color tuple of the resolved [lightColor, darkColor].
- * @example
- *   const [original, flipped] = getResolvedColorPair("amberA.7", theme);
- *   // returns ["hsl(36 99.9% 46.2% / 0.612)", "hsl(34 99.6% 52.9% / 0.331)"]
- */
-export function getResolvedColorPair(color: string, theme: Dict<any>) {
-  const [base, index] = color.split(".");
-  const [isDark, isA] = [base.includes("Dark"), base.includes("A")];
-
-  // search for the base, ex: "blue" from color "blueDarkA"
-  // we can search for contiguous lowercase to find this
-  const baseSearch = base.match(/^_?[a-z]+/);
-  if (!baseSearch) return [color, color];
-
-  // create new base
-  let newBase = baseSearch[0];
-  const A = isA ? "A" : "";
-
-  // get light and dark base
-  const lightBase = `${newBase}${isDark ? "Dark" : ""}${A}`;
-  const darkBase = `${newBase}${isDark ? "" : "Dark"}${A}`;
-
-  if (theme.colors[newBase] && theme.colors[newBase][index])
-    return [theme.colors[lightBase][index], theme.colors[darkBase][index]];
-  else return [color, color];
 }
 
 // Bright colors are meant to be used with different text color. To see the list of

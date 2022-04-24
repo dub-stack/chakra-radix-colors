@@ -39,7 +39,7 @@ const _Basic = () => (
 );
 
 export const Basic: ComponentStory<typeof Avatar> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };
 
 /**
@@ -76,7 +76,7 @@ export const WithCustomIcon: ComponentStory<typeof Avatar> = (args) => {
   return (
     <Decorators
       newComponent={<_WithCustomIcon />}
-      defaultComponent={<_WithCustomIcon />}
+      oldComponent={<_WithCustomIcon />}
     />
   );
 };
@@ -104,7 +104,7 @@ export const WithSizes: ComponentStory<typeof Avatar> = (args) => {
   return (
     <Decorators
       newComponent={<_WithSizes bg="green.9" />}
-      defaultComponent={<_WithSizes />}
+      oldComponent={<_WithSizes />}
     />
   );
 };
@@ -130,10 +130,7 @@ const _WithSrcSet = () => {
 
 export const WithSrcSet: ComponentStory<typeof Avatar> = (args) => {
   return (
-    <Decorators
-      newComponent={<_WithSrcSet />}
-      defaultComponent={<_WithSrcSet />}
-    />
+    <Decorators newComponent={<_WithSrcSet />} oldComponent={<_WithSrcSet />} />
   );
 };
 
@@ -154,7 +151,7 @@ export const AvatarGroups: ComponentStory<typeof Avatar> = (args) => {
   return (
     <Decorators
       newComponent={<_AvatarGroup />}
-      defaultComponent={<_AvatarGroup />}
+      oldComponent={<_AvatarGroup />}
     />
   );
 };

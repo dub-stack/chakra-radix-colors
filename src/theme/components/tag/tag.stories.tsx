@@ -29,7 +29,7 @@ const _Subtle = () => (
   </HStack>
 );
 export const Subtle: ComponentStory<typeof _Subtle> = (args) => (
-  <Decorators newComponent={<_Subtle />} defaultComponent={<_Subtle />} />
+  <Decorators newComponent={<_Subtle />} oldComponent={<_Subtle />} />
 );
 
 const _Solid = () => (
@@ -45,7 +45,7 @@ const _Solid = () => (
   </HStack>
 );
 export const Solid: ComponentStory<typeof _Solid> = (args) => (
-  <Decorators newComponent={<_Solid />} defaultComponent={<_Solid />} />
+  <Decorators newComponent={<_Solid />} oldComponent={<_Solid />} />
 );
 
 const _Outline = () => (
@@ -61,5 +61,5 @@ const _Outline = () => (
   </HStack>
 );
 export const Outline: ComponentStory<typeof _Outline> = (args) => (
-  <Decorators newComponent={<_Outline />} defaultComponent={<_Outline />} />
+  <Decorators newComponent={<_Outline />} oldComponent={<_Outline />} />
 );

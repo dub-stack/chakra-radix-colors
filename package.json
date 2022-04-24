@@ -14,6 +14,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest --verbose",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -47,8 +49,10 @@
     "@storybook/testing-library": "^0.0.9",
     "@testing-library/react": "^12.1.4",
     "@types/jest": "^27.4.1",
+    "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
+    "cypress": "^9.5.4",
     "framer-motion": "^6.2.9",
     "jest": "^27.5.1",
     "react": "^17.0.2",
@@ -62,8 +66,5 @@
   "peerDependencies": {
     "@chakra-ui/react": "^1.8.8",
     "@radix-ui/colors": "^0.1.8"
-  },
-  "dependencies": {
-    "@types/react-test-renderer": "^17.0.1"
   }
 }

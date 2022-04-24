@@ -34,7 +34,7 @@ export const DrawerExample: ComponentStory<typeof _DrawerExample> = (args) => {
   return (
     <Decorators
       newComponent={<_DrawerExample />}
-      defaultComponent={<_DrawerExample />}
+      oldComponent={<_DrawerExample />}
     />
   );
 };
@@ -178,7 +178,7 @@ export const WithLongContent: ComponentStory<typeof _WithLongContent> = (
   return (
     <Decorators
       newComponent={<_WithLongContent />}
-      defaultComponent={<_WithLongContent />}
+      oldComponent={<_WithLongContent />}
     />
   );
 };

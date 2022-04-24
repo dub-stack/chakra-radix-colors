@@ -72,7 +72,7 @@ const Default = (
 );
 
 const Template: ComponentStory<typeof Accordion> = (args) => {
-  return <Decorators newComponent={New} defaultComponent={Default} />;
+  return <Decorators newComponent={New} oldComponent={Default} />;
 };
 
 export const Primary = Template.bind({});

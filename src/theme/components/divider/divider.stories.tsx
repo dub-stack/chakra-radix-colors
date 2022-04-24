@@ -14,7 +14,7 @@ const _Basic = () => (
   </Container>
 );
 export const Basic: ComponentStory<typeof Divider> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };
 
 const _Vertical = () => (
@@ -24,7 +24,7 @@ const _Vertical = () => (
 );
 export const Vertical: ComponentStory<typeof Divider> = (args) => {
   return (
-    <Decorators newComponent={<_Vertical />} defaultComponent={<_Vertical />} />
+    <Decorators newComponent={<_Vertical />} oldComponent={<_Vertical />} />
   );
 };
 
@@ -35,10 +35,7 @@ const _Horizontal = () => (
 );
 export const Horizontal: ComponentStory<typeof Divider> = (args) => {
   return (
-    <Decorators
-      newComponent={<_Horizontal />}
-      defaultComponent={<_Horizontal />}
-    />
+    <Decorators newComponent={<_Horizontal />} oldComponent={<_Horizontal />} />
   );
 };
 
@@ -51,7 +48,7 @@ export const DashedVariant: ComponentStory<typeof Divider> = (args) => {
   return (
     <Decorators
       newComponent={<_DashedVariant />}
-      defaultComponent={<_DashedVariant />}
+      oldComponent={<_DashedVariant />}
     />
   );
 };

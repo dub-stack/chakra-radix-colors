@@ -12,7 +12,7 @@ const New = <Box h="200px" w="200px" bg="amberA.10" />;
 const Default = <Box h="200px" w="200px" bg="orange.200" />;
 
 const Template: ComponentStory<typeof Box> = (args) => {
-  return <Decorators newComponent={New} defaultComponent={Default} />;
+  return <Decorators newComponent={New} oldComponent={Default} />;
 };
 
 export const Primary = Template.bind({});

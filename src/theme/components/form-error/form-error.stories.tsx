@@ -52,7 +52,7 @@ export const InputExample: ComponentStory<typeof _InputExample> = (args) => {
   return (
     <Decorators
       newComponent={<_InputExample />}
-      defaultComponent={<_InputExample />}
+      oldComponent={<_InputExample />}
     />
   );
 };

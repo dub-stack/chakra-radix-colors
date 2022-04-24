@@ -92,9 +92,6 @@ const _AllStates = () => {
 };
 export const AllStates: ComponentStory<typeof Checkbox> = (args) => {
   return (
-    <Decorators
-      newComponent={<_AllStates />}
-      defaultComponent={<_AllStates />}
-    />
+    <Decorators newComponent={<_AllStates />} oldComponent={<_AllStates />} />
   );
 };

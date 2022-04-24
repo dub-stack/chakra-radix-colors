@@ -11,5 +11,5 @@ export default {
 const _Kbd = () => <Kbd>Ctrl + L</Kbd>;
 
 export const KbdExample: ComponentStory<typeof _Kbd> = (args) => {
-  return <Decorators newComponent={<_Kbd />} defaultComponent={<_Kbd />} />;
+  return <Decorators newComponent={<_Kbd />} oldComponent={<_Kbd />} />;
 };

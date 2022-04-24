@@ -10,5 +10,5 @@ export default {
 
 const _Basic = () => <Code colorScheme="pink">import React from react</Code>;
 export const Basic: ComponentStory<typeof _Basic> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };

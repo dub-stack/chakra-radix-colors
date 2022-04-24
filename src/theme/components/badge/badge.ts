@@ -3,7 +3,7 @@ import type {
   SystemStyleFunction,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
-import { getColorInfo, getResolvedColorPair } from "util/helpers";
+import { getColorInfo } from "util/helpers";
 
 const baseStyle: SystemStyleObject = {
   px: 1,
@@ -62,8 +62,8 @@ const variantOutline: SystemStyleFunction = (props) => {
   let [lightText, darkText] = [`${lightPalette}.9`, `${darkPalette}.9`];
 
   // get the color
-  const [lightColor] = getResolvedColorPair(lightText, theme);
-  const [darkColor] = getResolvedColorPair(darkText, theme);
+  const [lightColor] = getColor(theme, lightText);
+  const [darkColor] = getColor(theme, darkText);
   const color = mode(lightColor, darkColor)(props);
 
   return {

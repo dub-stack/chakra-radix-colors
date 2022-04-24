@@ -13,8 +13,5 @@ const _WithString = () => (
 );
 
 export const WithString: ComponentStory<typeof _WithString> = (args) => (
-  <Decorators
-    newComponent={<_WithString />}
-    defaultComponent={<_WithString />}
-  />
+  <Decorators newComponent={<_WithString />} oldComponent={<_WithString />} />
 );

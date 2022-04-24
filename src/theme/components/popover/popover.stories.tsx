@@ -38,7 +38,5 @@ export const _Simple = () => (
 );
 
 export const Simple: ComponentStory<typeof _Simple> = (args) => {
-  return (
-    <Decorators newComponent={<_Simple />} defaultComponent={<_Simple />} />
-  );
+  return <Decorators newComponent={<_Simple />} oldComponent={<_Simple />} />;
 };

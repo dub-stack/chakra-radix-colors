@@ -25,7 +25,7 @@ const _Line = () => (
   </Tabs>
 );
 export const Line: ComponentStory<typeof _Line> = (args) => (
-  <Decorators newComponent={<_Line />} defaultComponent={<_Line />} />
+  <Decorators newComponent={<_Line />} oldComponent={<_Line />} />
 );
 
 const _Enclosed = () => (
@@ -45,7 +45,7 @@ const _Enclosed = () => (
   </Tabs>
 );
 export const Enclosed: ComponentStory<typeof _Enclosed> = (args) => (
-  <Decorators newComponent={<_Enclosed />} defaultComponent={<_Enclosed />} />
+  <Decorators newComponent={<_Enclosed />} oldComponent={<_Enclosed />} />
 );
 
 const _EnclosedColored = () => (
@@ -69,7 +69,7 @@ export const EnclosedColored: ComponentStory<typeof _EnclosedColored> = (
 ) => (
   <Decorators
     newComponent={<_EnclosedColored />}
-    defaultComponent={<_EnclosedColored />}
+    oldComponent={<_EnclosedColored />}
   />
 );
 
@@ -90,10 +90,7 @@ const _SoftRounded = () => (
   </Tabs>
 );
 export const SoftRounded: ComponentStory<typeof _SoftRounded> = (args) => (
-  <Decorators
-    newComponent={<_SoftRounded />}
-    defaultComponent={<_SoftRounded />}
-  />
+  <Decorators newComponent={<_SoftRounded />} oldComponent={<_SoftRounded />} />
 );
 
 const _SolidRounded = () => (
@@ -115,6 +112,6 @@ const _SolidRounded = () => (
 export const SolidRounded: ComponentStory<typeof _SolidRounded> = (args) => (
   <Decorators
     newComponent={<_SolidRounded />}
-    defaultComponent={<_SolidRounded />}
+    oldComponent={<_SolidRounded />}
   />
 );

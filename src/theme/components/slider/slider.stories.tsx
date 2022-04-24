@@ -31,7 +31,7 @@ const _SliderBug = () => {
   );
 };
 export const SliderBug: ComponentStory<typeof _SliderBug> = (args) => (
-  <Decorators newComponent={<_SliderBug />} defaultComponent={<_SliderBug />} />
+  <Decorators newComponent={<_SliderBug />} oldComponent={<_SliderBug />} />
 );
 
 const _Disabled = () => {
@@ -53,5 +53,5 @@ const _Disabled = () => {
   );
 };
 export const Disabled: ComponentStory<typeof _Disabled> = (args) => (
-  <Decorators newComponent={<_Disabled />} defaultComponent={<_Disabled />} />
+  <Decorators newComponent={<_Disabled />} oldComponent={<_Disabled />} />
 );

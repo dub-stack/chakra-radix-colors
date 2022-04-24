@@ -30,9 +30,7 @@ const _Default = () => (
   </BrowserRouter>
 );
 export const Default: ComponentStory<typeof Breadcrumb> = (args) => {
-  return (
-    <Decorators newComponent={<_Default />} defaultComponent={<_Default />} />
-  );
+  return <Decorators newComponent={<_Default />} oldComponent={<_Default />} />;
 };
 
 const _Separator = () => (
@@ -52,10 +50,7 @@ const _Separator = () => (
 );
 export const Seperator: ComponentStory<typeof Breadcrumb> = (args) => {
   return (
-    <Decorators
-      newComponent={<_Separator />}
-      defaultComponent={<_Separator />}
-    />
+    <Decorators newComponent={<_Separator />} oldComponent={<_Separator />} />
   );
 };
 
@@ -78,7 +73,7 @@ export const SeparatorV2: ComponentStory<typeof Breadcrumb> = (args) => {
   return (
     <Decorators
       newComponent={<_SeparatorV2 />}
-      defaultComponent={<_SeparatorV2 />}
+      oldComponent={<_SeparatorV2 />}
     />
   );
 };

@@ -38,7 +38,7 @@ export const GroupWithStack: ComponentStory<typeof _GroupWithStack> = (
   return (
     <Decorators
       newComponent={<_GroupWithStack />}
-      defaultComponent={<_GroupWithStack />}
+      oldComponent={<_GroupWithStack />}
     />
   );
 };

@@ -10,7 +10,7 @@ import theme from "../theme";
 
 /**
  * Effectively a hook that is used to toggle the colorMode for a Provider.
- * This is needed instead of a hook, because we must place this downstream from
+ * This is needed instead of just a hook because we must place this downstream from
  * a provider.
  *
  * @param props
@@ -22,6 +22,12 @@ const SetColorMode = (props: { colorMode: string }) => {
   return <></>;
 };
 
+/**
+ * Returns a chakra provider with the new package theme.
+ *
+ * @param props The color mode: "light" | "dark"
+ * @returns
+ */
 const NewDecorator: React.FC<{ colorMode: string }> = (props) => (
   <ChakraProvider theme={theme}>
     <SetColorMode colorMode={props.colorMode} />
@@ -29,16 +35,29 @@ const NewDecorator: React.FC<{ colorMode: string }> = (props) => (
   </ChakraProvider>
 );
 
-const DefaultDecorator: React.FC<{ colorMode: string }> = (props) => (
+/**
+ * Returns a chakra provider with the orignal chakra-ui theme.
+ *
+ * @param props The color mode: "light" | "dark"
+ * @returns
+ */
+const OldDecorator: React.FC<{ colorMode: string }> = (props) => (
   <ChakraProvider>
     <SetColorMode colorMode={props.colorMode} />
     {props.children}
   </ChakraProvider>
 );
 
+/**
+ * The wrapper for all storybook components. This allows for easy visual
+ * comparison between the old chakra theme, and the new package theme.
+ *
+ * @param props The components for the new/old providers.
+ * @returns
+ */
 export const Decorators = (props: {
   newComponent: React.ReactNode;
-  defaultComponent: React.ReactNode;
+  oldComponent: React.ReactNode;
 }) => {
   const [colorMode, setColorMode] = useState("light");
   return (
@@ -60,9 +79,7 @@ export const Decorators = (props: {
         minH="calc(100vh - 31px)"
         alignItems="center"
       >
-        <DefaultDecorator colorMode={colorMode}>
-          {props.defaultComponent}
-        </DefaultDecorator>
+        <OldDecorator colorMode={colorMode}>{props.oldComponent}</OldDecorator>
         <NewDecorator colorMode={colorMode}>{props.newComponent}</NewDecorator>
       </Flex>
     </>

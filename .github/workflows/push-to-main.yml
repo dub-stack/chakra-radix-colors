@@ -1,0 +1,62 @@
+name: push-to-main
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  # CONVENTIONAL_PULL_REQUESTS: ✅
+  # conventional-pr-check job exists so that each PR has a conventional PR title. This helps
+  # prioritize the review of PRs. Please see https://www.conventionalcommits.org/en/v1.0.0/
+  # for details.
+  # Available types: [feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert]
+  conventional-pr-check:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+    steps:
+      - name: check-pr-title
+        uses: amannn/action-semantic-pull-request@v4.4.0
+
+  # CONVENTIONAL_COMMITS: ✅
+  # conventional-commit-check job exists so that the codebase maintains conventional commit
+  # messages. Please see https://www.conventionalcommits.org/en/v1.0.0/ for details.
+  # Available types: [feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert]
+  conventional-commit-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-commit-message
+        uses: aevea/commitsar@v0.18.0
+
+  # PASSING_TESTS: ✅
+  # test-check job exists to ensure nothing has broken between tests, and that all tests pass.
+
+  # FULL_COVERAGE: ✅
+  # coverage-check job exists to ensure that there is 100% coverage for the codebase. While this
+  # may not be a practical or recommened standard in most project, this is a relatively simple package
+  # and 100% coverage will be a feasible and worth-while effort.
+
+  # CONSISTENT_FORMATTING: ✅
+  # prettify job exists so that the codebase maintains consistent formatting. This will
+  # run `prettier` on all committed files of given pull_request and add these changes to
+  # the last commit.
+  prettify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          # Make sure the actual branch is checked out when running on pull request
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
+
+      - name: prettify
+        uses: creyD/prettier_action@v4.2
+        with:
+          # This will add the changes to the previous commit & prevent new commit.
+          same_commit: true
+          # This will apply the format changes only to files that have been changed.
+          only_changed: true
+
+  # PUBLISH_TO_NPM: ✅
+  # publish-to-npm job exists to publish a new patch or minor version to NPM.

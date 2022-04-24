@@ -23,7 +23,7 @@ const _Basic = (props: AlertProps) => (
   </Alert>
 );
 export const Basic: ComponentStory<typeof Alert> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };
 
 const _Subtle = () => (
@@ -36,9 +36,7 @@ const _Subtle = () => (
   </Alert>
 );
 export const Subtle: ComponentStory<typeof Alert> = (args) => {
-  return (
-    <Decorators newComponent={<_Subtle />} defaultComponent={<_Subtle />} />
-  );
+  return <Decorators newComponent={<_Subtle />} oldComponent={<_Subtle />} />;
 };
 
 const _LeftAccent = () => (
@@ -52,10 +50,7 @@ const _LeftAccent = () => (
 );
 export const LeftAccent: ComponentStory<typeof Alert> = (args) => {
   return (
-    <Decorators
-      newComponent={<_LeftAccent />}
-      defaultComponent={<_LeftAccent />}
-    />
+    <Decorators newComponent={<_LeftAccent />} oldComponent={<_LeftAccent />} />
   );
 };
 
@@ -78,10 +73,7 @@ const _TopAccent = () => (
 );
 export const TopAccent: ComponentStory<typeof Alert> = (args) => {
   return (
-    <Decorators
-      newComponent={<_TopAccent />}
-      defaultComponent={<_TopAccent />}
-    />
+    <Decorators newComponent={<_TopAccent />} oldComponent={<_TopAccent />} />
   );
 };
 
@@ -89,7 +81,7 @@ export const Bright: ComponentStory<typeof Alert> = (args) => {
   return (
     <Decorators
       newComponent={<_Basic colorScheme="sky" />}
-      defaultComponent={<_Basic />}
+      oldComponent={<_Basic />}
     />
   );
 };

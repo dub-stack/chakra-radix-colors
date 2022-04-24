@@ -10,7 +10,7 @@ export default {
 
 const _Basic = () => <Badge>Success</Badge>;
 export const Basic: ComponentStory<typeof Badge> = (args) => {
-  return <Decorators newComponent={<_Basic />} defaultComponent={<_Basic />} />;
+  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
 };
 
 const _SolidBadge = () => {
@@ -63,10 +63,7 @@ const _SolidBadge = () => {
 };
 export const SolidBadge: ComponentStory<typeof Badge> = (args) => {
   return (
-    <Decorators
-      newComponent={<_SolidBadge />}
-      defaultComponent={<_SolidBadge />}
-    />
+    <Decorators newComponent={<_SolidBadge />} oldComponent={<_SolidBadge />} />
   );
 };
 
@@ -103,7 +100,7 @@ export const SubtleBadges: ComponentStory<typeof Badge> = (args) => {
   return (
     <Decorators
       newComponent={<_SubtleBadges />}
-      defaultComponent={<_SubtleBadges />}
+      oldComponent={<_SubtleBadges />}
     />
   );
 };
@@ -151,7 +148,7 @@ export const OutlineBadges: ComponentStory<typeof Badge> = (args) => {
   return (
     <Decorators
       newComponent={<_OutlineBadges />}
-      defaultComponent={<_OutlineBadges />}
+      oldComponent={<_OutlineBadges />}
     />
   );
 };

@@ -72,7 +72,7 @@ export const WithFocusAndErrorColors: ComponentStory<
   return (
     <Decorators
       newComponent={<_WithFocusAndErrorColorsNew />}
-      defaultComponent={<_WithFocusAndErrorColorsOrig />}
+      oldComponent={<_WithFocusAndErrorColorsOrig />}
     />
   );
 };
@@ -90,7 +90,7 @@ export const WithVariants: ComponentStory<typeof _WithVariants> = (args) => {
   return (
     <Decorators
       newComponent={<_WithVariants />}
-      defaultComponent={<_WithVariants />}
+      oldComponent={<_WithVariants />}
     />
   );
 };
@@ -116,7 +116,7 @@ export const WithInputAddon: ComponentStory<typeof _WithInputAddon> = (
   return (
     <Decorators
       newComponent={<_WithInputAddon />}
-      defaultComponent={<_WithInputAddon />}
+      oldComponent={<_WithInputAddon />}
     />
   );
 };
