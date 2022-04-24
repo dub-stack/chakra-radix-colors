@@ -7,7 +7,6 @@ import {
   chakra,
   AccordionIcon,
   AccordionPanel,
-  AccordionProps,
   StackProps,
   VStack,
   Text,
@@ -93,7 +92,7 @@ const OldDefault = (props: StackProps) => {
   );
 };
 
-export const Default: ComponentStory<typeof Accordion> = (args) => {
+export const Default: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
       newComponent={<NewDefault data-testid="NewDefault" />}

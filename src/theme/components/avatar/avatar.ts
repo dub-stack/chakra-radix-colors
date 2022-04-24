@@ -14,13 +14,13 @@ const baseStyleBadge: SystemStyleFunction = (props) => {
     transform: "translate(25%, 25%)",
     borderRadius: "full",
     border: "0.2em solid",
-    borderColor: mode("_gray.1", "_gray.12")(props),
+    borderColor: mode("_gray.1", "_grayDark.1")(props),
   };
 };
 
 const baseStyleExcessLabel: SystemStyleFunction = (props) => {
   return {
-    bg: mode("_gray.3", "_grayDarkA.3")(props),
+    bg: mode("_gray.4", "_grayDark.4")(props),
   };
 };
 
@@ -32,7 +32,7 @@ const baseStyleContainer: SystemStyleFunction = (props) => {
   let color = "_gray.1";
   if (!isBgDark) color = "_gray.11";
 
-  const borderColor = mode("_gray.1", "_gray.12")(props);
+  const borderColor = mode("_gray.1", "_grayDark.1")(props);
 
   return {
     bg,

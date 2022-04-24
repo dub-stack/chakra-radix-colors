@@ -1,6 +1,6 @@
 import { getColor } from "@chakra-ui/theme-tools";
 import theme from "theme";
-import { hsl } from "color-convert";
+import { hsl, hex } from "color-convert";
 
 /**
  * Turns an HSL string into an array of the h, s, l values.
@@ -23,5 +23,10 @@ export function getRgbFromThemeColor(color: string) {
   const c = getColor(theme, color);
   let [h, s, l] = normalizeHslString(c);
   let [r, g, b] = hsl.rgb([h, s, l]);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+export function getRgbFromHex(color: string) {
+  let [r, g, b] = hex.rgb(color);
   return `rgb(${r}, ${g}, ${b})`;
 }

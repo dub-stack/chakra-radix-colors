@@ -6,14 +6,14 @@ describe("Default", () => {
     cy.get("#reset-color-mode").click();
   });
 
-  it("displays light color in light mode correctly", () => {
+  it("displays in light mode correctly", () => {
     cy.get("[data-testid=accordion-button]")
       .realHover()
       .wait(200) // wait for color transition to complete
       .should("have.css", "background-color", "rgba(0, 0, 0, 0.047)");
   });
 
-  it("displays light color in dark mode correctly", () => {
+  it("displays in dark mode correctly", () => {
     cy.get("#switch-color-mode").click();
     cy.get("[data-testid=accordion-button]")
       .realHover()
