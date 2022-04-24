@@ -106,7 +106,12 @@ const NewSubtleVariant = (props: StackProps) => {
         New Theme
       </Text>
       <Box bg={c("gray.1")} p="4">
-        <Alert status="success" variant="subtle" borderRadius="md">
+        <Alert
+          status="success"
+          variant="subtle"
+          borderRadius="md"
+          data-testid="AlertLight"
+        >
           <AlertIcon />
           <AlertTitle mr={2}>Outdated</AlertTitle>
           <AlertDescription>
@@ -121,6 +126,7 @@ const NewSubtleVariant = (props: StackProps) => {
           variant="subtle"
           borderRadius="md"
           colorScheme="greenDark"
+          data-testid="AlertDark"
         >
           <AlertIcon />
           <AlertTitle mr={2}>Outdated</AlertTitle>
@@ -177,7 +183,12 @@ const NewLeftAccentVariant = (props: StackProps) => {
         New Theme
       </Text>
       <Box bg={c("gray.1")} p="4">
-        <Alert variant="left-accent" alignItems="start" colorScheme="blue">
+        <Alert
+          variant="left-accent"
+          alignItems="start"
+          colorScheme="blue"
+          data-testid="AlertLight"
+        >
           <AlertIcon />
           <chakra.div flex="1">
             <AlertTitle>Holy Smokes</AlertTitle>
@@ -187,7 +198,12 @@ const NewLeftAccentVariant = (props: StackProps) => {
       </Box>
       {/* display the dark version in light mode */}
       <Box bg={c("grayDark.1")} p="4">
-        <Alert variant="left-accent" alignItems="start" colorScheme="blueDark">
+        <Alert
+          variant="left-accent"
+          alignItems="start"
+          colorScheme="blueDark"
+          data-testid="AlertDark"
+        >
           <AlertIcon />
           <chakra.div flex="1">
             <AlertTitle>Holy Smokes</AlertTitle>
@@ -243,7 +259,12 @@ const NewTopAccentVariant = (props: StackProps) => {
         New Theme
       </Text>
       <Box bg={c("gray.1")} p="4">
-        <Alert variant="top-accent" alignItems="start" colorScheme="blue">
+        <Alert
+          variant="top-accent"
+          alignItems="start"
+          colorScheme="blue"
+          data-testid="AlertLight"
+        >
           <AlertIcon />
           <chakra.div flex="1">
             <AlertTitle>Holy Smokes</AlertTitle>
@@ -253,7 +274,12 @@ const NewTopAccentVariant = (props: StackProps) => {
       </Box>
       {/* display the dark version in light mode */}
       <Box bg={c("grayDark.1")} p="4">
-        <Alert variant="top-accent" alignItems="start" colorScheme="blueDark">
+        <Alert
+          variant="top-accent"
+          alignItems="start"
+          colorScheme="blueDark"
+          data-testid="AlertDark"
+        >
           <AlertIcon />
           <chakra.div flex="1">
             <AlertTitle>Holy Smokes</AlertTitle>
@@ -314,6 +340,7 @@ const NewBrightColor = (props: StackProps) => {
           variant="solid"
           borderRadius="md"
           colorScheme="amber"
+          data-testid="AlertLight"
         >
           <AlertIcon />
           <AlertTitle mr={2}>Outdated</AlertTitle>
@@ -329,6 +356,7 @@ const NewBrightColor = (props: StackProps) => {
           variant="solid"
           borderRadius="md"
           colorScheme="amberDark"
+          data-testid="AlertDark"
         >
           <AlertIcon />
           <AlertTitle mr={2}>Outdated</AlertTitle>
