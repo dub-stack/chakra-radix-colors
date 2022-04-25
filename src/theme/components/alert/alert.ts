@@ -42,14 +42,14 @@ function getBg(props: StyleFunctionProps): string {
 const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isDark } = getColorInfo(c, theme);
-  let { light: lightGray, dark: darkGray } = getColorInfo("_gray", theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
+  if (isDark) [_gray, _grayDark] = [_grayDark, _grayDark];
 
   return {
     container: {
       bg: getBg(props),
-      color: mode(`${darkGray}.1`, `${lightGray}.1`)(props),
+      color: mode(`${_grayDark}.1`, `${_gray}.1`)(props),
     },
     icon: { color: mode(`${light}.9`, `${dark}.9`)(props) },
   };
@@ -58,9 +58,9 @@ const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isDark } = getColorInfo(c, theme);
-  let { light: lightGray, dark: darkGray } = getColorInfo("_gray", theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
+  if (isDark) [_gray, _grayDark] = [_grayDark, _grayDark];
 
   return {
     container: {
@@ -68,7 +68,7 @@ const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
       borderStartWidth: "4px",
       borderStartColor: mode(`${light}.9`, `${dark}.9`)(props),
       bg: getBg(props),
-      color: mode(`${darkGray}.1`, `${lightGray}.1`)(props),
+      color: mode(`${_grayDark}.1`, `${_gray}.1`)(props),
     },
     icon: {
       color: mode(`${light}.9`, `${dark}.9`)(props),
@@ -79,9 +79,9 @@ const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
 const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isDark } = getColorInfo(c, theme);
-  let { light: lightGray, dark: darkGray } = getColorInfo("_gray", theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  if (isDark) [lightGray, darkGray] = [darkGray, lightGray];
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     container: {
@@ -89,7 +89,7 @@ const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
       borderTopWidth: "4px",
       borderTopColor: mode(`${light}.9`, `${dark}.9`)(props),
       bg: getBg(props),
-      color: mode(`${darkGray}.1`, `${lightGray}.1`)(props),
+      color: mode(`${_grayDark}.1`, `${_gray}.1`)(props),
     },
     icon: {
       color: mode(`${light}.9`, `${dark}.9`)(props),
@@ -100,15 +100,15 @@ const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
   let { light, dark, isBright, isDark } = getColorInfo(c, theme);
-  let { light: gray, dark: grayDark } = getColorInfo("_gray", theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  if (isBright) [gray, grayDark] = [grayDark, grayDark];
-  if (isDark) [gray, grayDark] = [grayDark, gray];
+  if (isBright) [_gray, _grayDark] = [_grayDark, _grayDark];
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     container: {
       bg: mode(`${light}.9`, `${dark}.9`)(props),
-      color: mode(`${gray}.1`, `${grayDark}.1`)(props),
+      color: mode(`${_gray}.1`, `${_grayDark}.1`)(props),
     },
   };
 };

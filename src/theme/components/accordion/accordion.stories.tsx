@@ -59,7 +59,7 @@ const OldDefault = (props: StackProps) => {
   return (
     <VStack {...props}>
       <Text as="h1" fontWeight="bold">
-        New Theme
+        Old Theme
       </Text>
       <Box p="4">
         <Accordion>

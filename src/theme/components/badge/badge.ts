@@ -1,4 +1,4 @@
-import { getColor, mode, transparentize } from "@chakra-ui/theme-tools";
+import { getColor, mode } from "@chakra-ui/theme-tools";
 import type {
   SystemStyleFunction,
   SystemStyleObject,
@@ -15,55 +15,48 @@ const baseStyle: SystemStyleObject = {
 
 const variantSolid: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette, isDark, isBright } = getColorInfo(
-    c,
-    theme
-  );
+  const { light, dark, isBright, isDark } = getColorInfo(c, theme);
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  // when custom text colors, we must flip them here instead of with the
-  // return from getColorInfo
-  let [lightText, darkText] = ["_gray.1", "_grayDarkA.12"];
+  let [lightText, darkText] = [`${_gray}.1`, `${_grayDark}.1`];
+  if (isBright) [lightText, darkText] = [darkText, darkText];
   if (isDark) [lightText, darkText] = [darkText, lightText];
-  if (isBright) [lightText, darkText] = ["_gray.12", "_gray.12"];
 
   return {
-    bg: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+    bg: mode(`${light}.9`, `${dark}.9`)(props),
     color: mode(lightText, darkText)(props),
   };
 };
 
 const variantSubtle: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette, isDark } = getColorInfo(c, theme);
-  let { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
-    c,
-    theme
-  );
+  const { light, dark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo(c, theme);
 
   // when custom text colors, we must flip them here instead of with the
   // return from getColorInfo
-  let [lightText, darkText] = ["_grayA.11", "_grayDarkA.11"];
-  if (isDark) [lightText, darkText] = [darkText, lightText];
+  let [lightText, darkText] = [`${light}.11`, `${dark}.11`];
   if (c.startsWith("_gray"))
-    [lightText, darkText] = [`${grayLight}.12`, `${grayDark}.12`];
+    [lightText, darkText] = [`${_gray}.12`, `${_grayDark}.12`];
 
   return {
-    bg: mode(`${lightPalette}.4`, `${darkPalette}.4`)(props),
+    bg: mode(`${light}.4`, `${dark}.4`)(props),
     color: mode(lightText, darkText)(props),
   };
 };
 
 const variantOutline: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  let { lightPalette, darkPalette, isDark } = getColorInfo(c, theme);
+  let { light, dark, isDark } = getColorInfo(c, theme);
 
   // when custom text colors, we must flip them here instead of with the
   // return from getColorInfo
-  let [lightText, darkText] = [`${lightPalette}.9`, `${darkPalette}.9`];
+  let [lightText, darkText] = [`${light}.9`, `${dark}.9`];
+  if (isDark) [lightText, darkText] = [darkText, lightText];
 
   // get the color
-  const [lightColor] = getColor(theme, lightText);
-  const [darkColor] = getColor(theme, darkText);
+  const lightColor = getColor(theme, lightText);
+  const darkColor = getColor(theme, darkText);
   const color = mode(lightColor, darkColor)(props);
 
   return {
