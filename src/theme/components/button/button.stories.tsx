@@ -4,338 +4,671 @@ import {
   Button,
   ButtonGroup,
   IconButton,
+  StackProps,
+  VStack,
   HStack,
-  Stack,
+  Text,
   Box,
 } from "@chakra-ui/react";
+import { useThemedColor } from "util/helpers";
 import { Decorators } from "util/storybook-utils";
-import {
-  ArrowForwardIcon,
-  ChevronDownIcon,
-  EmailIcon,
-  PhoneIcon,
-  SearchIcon,
-} from "@chakra-ui/icons";
-import { MdBuild, MdCall } from "react-icons/md";
-import { BeatLoader } from "react-spinners";
+import { ArrowForwardIcon, EmailIcon } from "@chakra-ui/icons";
 
 export default {
   title: "Components / Button",
   component: Button,
 } as ComponentMeta<typeof Button>;
 
-const _Solid = (props: { colors: string[] }) => (
-  <Box display="grid">
-    <Box>
-      {props.colors.map((color) => (
-        <Button key={color} colorScheme={color}>
-          Button
-        </Button>
-      ))}
-    </Box>
-    <Box>
-      {props.colors.map((color) => (
-        <Button key={color} colorScheme={color} disabled>
-          Button
-        </Button>
-      ))}
-    </Box>
-  </Box>
-);
-export const Solid: ComponentStory<typeof Button> = (args) => {
+const NewSolidVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <HStack data-testid="light-color">
+          <Button variant="solid" colorScheme="_gray">
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="_gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="solid" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <HStack data-testid="dark-color">
+          <Button variant="solid" colorScheme="_grayDark">
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="_grayDark" isDisabled>
+            Gray
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="redDark"
+            leftIcon={<EmailIcon />}
+          >
+            Red
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blueDark"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="solid" colorScheme="orangeDark" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+const OldSolidVariant = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <HStack data-testid="light-color">
+          <Button variant="solid" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="solid" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <HStack data-testid="dark-color">
+          <Button variant="solid" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="solid" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="solid" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+export const SolidVariant: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={
-        <_Solid
-          colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
-        />
-      }
-      oldComponent={
-        <_Solid colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
-      }
+      newComponent={<NewSolidVariant data-testid="NewSolidVariant" />}
+      oldComponent={<OldSolidVariant data-testid="OldSolidVariant" />}
     />
   );
 };
 
-const _Ghost = (props: { colors: string[] }) => (
-  <>
-    {props.colors.map((color) => (
-      <Button key={color} colorScheme={color} variant="ghost">
-        Button
-      </Button>
-    ))}
-  </>
-);
-export const Ghost: ComponentStory<typeof Button> = (args) => {
+const NewGhostVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <HStack data-testid="light-color">
+          <Button variant="ghost" colorScheme="_gray">
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="_gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="ghost"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="ghost" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <HStack data-testid="dark-color">
+          <Button variant="ghost" colorScheme="_grayDark">
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="_grayDark" isDisabled>
+            Gray
+          </Button>
+          <Button
+            variant="ghost"
+            colorScheme="redDark"
+            leftIcon={<EmailIcon />}
+          >
+            Red
+          </Button>
+          <Button
+            variant="ghost"
+            colorScheme="blueDark"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="ghost" colorScheme="orangeDark" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+const OldGhostVariant = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <HStack data-testid="light-color">
+          <Button variant="ghost" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="ghost"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="ghost" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <HStack data-testid="dark-color">
+          <Button variant="ghost" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="ghost" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="ghost"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="ghost" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+export const GhostVariant: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={
-        <_Ghost
-          colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
-        />
-      }
-      oldComponent={
-        <_Ghost colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
-      }
+      newComponent={<NewGhostVariant data-testid="NewGhostVariant" />}
+      oldComponent={<OldGhostVariant data-testid="OldGhostVariant" />}
     />
   );
 };
 
-const _Outline = (props: { colors: string[] }) => (
-  <Box display="grid">
-    <Box>
-      {props.colors.map((color) => (
-        <Button key={color} colorScheme={color} variant="outline">
-          Button
-        </Button>
-      ))}
-    </Box>
-    <Box>
-      {props.colors.map((color) => (
-        <Button key={color} colorScheme={color + "Dark"} variant="outline">
-          Button
-        </Button>
-      ))}
-    </Box>
-  </Box>
-);
-export const Outline: ComponentStory<typeof Button> = (args) => {
+const NewOutlineVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <HStack data-testid="light-color">
+          <Button variant="outline" colorScheme="_gray">
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="_gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="outline"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="outline" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <HStack data-testid="dark-color">
+          <Button variant="outline" colorScheme="_grayDark">
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="_grayDark" isDisabled>
+            Gray
+          </Button>
+          <Button
+            variant="outline"
+            colorScheme="redDark"
+            leftIcon={<EmailIcon />}
+          >
+            Red
+          </Button>
+          <Button
+            variant="outline"
+            colorScheme="blueDark"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="outline" colorScheme="orangeDark" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+const OldOutlineVariant = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <HStack data-testid="light-color">
+          <Button variant="outline" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="outline"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="outline" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <HStack data-testid="dark-color">
+          <Button variant="outline" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="outline" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="outline"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="outline" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+export const OutlineVariant: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={
-        <_Outline
-          colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
-        />
-      }
-      oldComponent={
-        <_Outline colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
-      }
+      newComponent={<NewOutlineVariant data-testid="NewOutlineVariant" />}
+      oldComponent={<OldOutlineVariant data-testid="OldOutlineVariant" />}
     />
   );
 };
 
-const _Link = (props: { colors: string[] }) => (
-  <>
-    {props.colors.map((color) => (
-      <Button key={color} colorScheme={color} variant="link">
-        Button
-      </Button>
-    ))}
-  </>
-);
-export const Link: ComponentStory<typeof Button> = (args) => {
+const NewLinkVariant = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <HStack data-testid="light-color">
+          <Button variant="link" colorScheme="_gray">
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="_gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="link"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="link" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <HStack data-testid="dark-color">
+          <Button variant="link" colorScheme="_grayDark">
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="_grayDark" isDisabled>
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="redDark" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="link"
+            colorScheme="blueDark"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="link" colorScheme="orangeDark" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+const OldLinkVariant = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <HStack data-testid="light-color">
+          <Button variant="link" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="link"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="link" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <HStack data-testid="dark-color">
+          <Button variant="link" colorScheme="gray">
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="gray" isDisabled>
+            Gray
+          </Button>
+          <Button variant="link" colorScheme="red" leftIcon={<EmailIcon />}>
+            Red
+          </Button>
+          <Button
+            variant="link"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="link" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+export const LinkVariant: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={
-        <_Link
-          colors={["_gray", "gray", "red", "green", "blue", "sky", "amber"]}
-        />
-      }
-      oldComponent={
-        <_Link colors={["gray", "red", "green", "blue", "cyan", "yellow"]} />
-      }
+      newComponent={<NewLinkVariant data-testid="NewLinkVariant" />}
+      oldComponent={<OldLinkVariant data-testid="OldLinkVariant" />}
     />
   );
 };
 
-const _withVariants = () => (
-  <HStack spacing="24px">
-    <Button colorScheme="teal" variant="solid">
-      Button
-    </Button>
-    <Button colorScheme="teal" variant="outline">
-      Button
-    </Button>
-    <Button colorScheme="teal" variant="ghost">
-      Button
-    </Button>
-    <Button colorScheme="teal" variant="link">
-      Button
-    </Button>
-    <Button colorScheme="teal" variant="unstyled">
-      Button
-    </Button>
-  </HStack>
-);
-export const WithVariants = () => {
+const NewBrightColor = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <HStack data-testid="light-color">
+          <Button variant="solid" colorScheme="yellow">
+            Yellow
+          </Button>
+          <Button variant="solid" colorScheme="lime" leftIcon={<EmailIcon />}>
+            Lime
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="sky"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Sky
+          </Button>
+          <Button variant="solid" colorScheme="amber" isDisabled>
+            Amber
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <HStack data-testid="dark-color">
+          <Button variant="solid" colorScheme="yellowDark">
+            Yellow
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="limeDark"
+            leftIcon={<EmailIcon />}
+          >
+            Lime
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="skyDark"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Sky
+          </Button>
+          <Button variant="solid" colorScheme="amberDark" isDisabled>
+            Amber
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+const OldBrightColor = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <HStack data-testid="light-color">
+          <Button variant="solid" colorScheme="yellow">
+            Yellow
+          </Button>
+          <Button variant="solid" colorScheme="green" leftIcon={<EmailIcon />}>
+            Green
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="solid" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <HStack data-testid="dark-color">
+          <Button variant="solid" colorScheme="yellow">
+            Yellow
+          </Button>
+          <Button variant="solid" colorScheme="green" leftIcon={<EmailIcon />}>
+            Green
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            rightIcon={<ArrowForwardIcon />}
+            isLoading
+          >
+            Blue
+          </Button>
+          <Button variant="solid" colorScheme="orange" isDisabled>
+            Orange
+          </Button>
+        </HStack>
+      </Box>
+    </VStack>
+  );
+};
+
+export const BrightColor: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={<_withVariants />}
-      oldComponent={<_withVariants />}
-    />
-  );
-};
-
-const _withSizes = () => (
-  <HStack>
-    <Button colorScheme="blue" size="xs">
-      Button
-    </Button>
-    <Button colorScheme="blue" size="sm">
-      Button
-    </Button>
-    <Button colorScheme="blue" size="md">
-      Button
-    </Button>
-    <Button colorScheme="blue" size="lg">
-      Button
-    </Button>
-  </HStack>
-);
-export const WithSizes = () => {
-  return (
-    <Decorators newComponent={<_withSizes />} oldComponent={<_withSizes />} />
-  );
-};
-
-const _WithIcon = () => (
-  <Stack direction="row" spacing={4}>
-    <Button leftIcon={<EmailIcon />} colorScheme="teal" variant="solid">
-      Email
-    </Button>
-    <Button
-      rightIcon={<ArrowForwardIcon />}
-      colorScheme="teal"
-      variant="outline"
-    >
-      Call us
-    </Button>
-  </Stack>
-);
-export const WithIcon = () => {
-  return (
-    <Decorators newComponent={<_WithIcon />} oldComponent={<_WithIcon />} />
-  );
-};
-
-const _withReactIcons = () => (
-  <Stack direction="row" spacing={4} align="center">
-    <Button leftIcon={<MdBuild />} colorScheme="pink" variant="solid">
-      Settings
-    </Button>
-    <Button rightIcon={<MdCall />} colorScheme="blue" variant="outline">
-      Call us
-    </Button>
-  </Stack>
-);
-export const WithReactIcons = () => {
-  return (
-    <Decorators
-      newComponent={<_withReactIcons />}
-      oldComponent={<_withReactIcons />}
-    />
-  );
-};
-
-const _WithLoading = () => (
-  <Stack direction="row" spacing={4} align="center">
-    <Button size="lg" isLoading colorScheme="teal">
-      Email
-    </Button>
-
-    <Button
-      isLoading
-      colorScheme="blue"
-      spinner={<BeatLoader size={8} color="white" />}
-    >
-      Click me
-    </Button>
-
-    <Button
-      isLoading
-      loadingText="Submitting..."
-      colorScheme="teal"
-      variant="outline"
-    >
-      Submit
-    </Button>
-  </Stack>
-);
-export const WithLoading = () => {
-  return (
-    <Decorators
-      newComponent={<_WithLoading />}
-      oldComponent={<_WithLoading />}
-    />
-  );
-};
-
-const _withDisabled = () => (
-  <HStack spacing="24px">
-    <Button isDisabled colorScheme="teal" variant="solid">
-      Button
-    </Button>
-    <Button isDisabled colorScheme="teal" variant="outline">
-      Button
-    </Button>
-    <Button isDisabled colorScheme="teal" variant="ghost">
-      Button
-    </Button>
-    <Button isDisabled colorScheme="teal" variant="link">
-      Button
-    </Button>
-  </HStack>
-);
-export const WithDisabled = () => {
-  return (
-    <Decorators
-      newComponent={<_withDisabled />}
-      oldComponent={<_withDisabled />}
-    />
-  );
-};
-
-const _iconButton = () => (
-  <Stack direction="row">
-    <IconButton aria-label="Search database" icon={<SearchIcon />} />
-
-    <IconButton
-      colorScheme="blue"
-      aria-label="Search database"
-      icon={<SearchIcon />}
-    />
-
-    <IconButton colorScheme="teal" aria-label="Call Segun" size="lg">
-      <PhoneIcon />
-    </IconButton>
-  </Stack>
-);
-export const AnIconButton = () => {
-  return (
-    <Decorators newComponent={<_iconButton />} oldComponent={<_iconButton />} />
-  );
-};
-
-const _WithButtonGroup = () => (
-  <ButtonGroup variant="outline">
-    <Button colorScheme="blue">Save</Button>
-    <Button>Cancel</Button>
-  </ButtonGroup>
-);
-export const WithButtonGroup = () => {
-  return (
-    <Decorators
-      newComponent={<_WithButtonGroup />}
-      oldComponent={<_WithButtonGroup />}
-    />
-  );
-};
-
-const _attachedButtons = () => (
-  <ButtonGroup size="sm" isAttached variant="outline">
-    <Button marginEnd="-px">Save</Button>
-    <IconButton
-      fontSize="2xl"
-      aria-label="Add to friends"
-      icon={<ChevronDownIcon />}
-    />
-  </ButtonGroup>
-);
-export const AttachedButtons = () => {
-  return (
-    <Decorators
-      newComponent={<_attachedButtons />}
-      oldComponent={<_attachedButtons />}
+      newComponent={<NewBrightColor data-testid="NewBrightColor" />}
+      oldComponent={<OldBrightColor data-testid="OldBrightColor" />}
     />
   );
 };

@@ -1,4 +1,4 @@
-import { mode, transparentize } from "@chakra-ui/theme-tools";
+import { mode } from "@chakra-ui/theme-tools";
 import type {
   SystemStyleObject,
   SystemStyleFunction,
@@ -28,23 +28,21 @@ const baseStyle: SystemStyleObject = {
 
 const variantGhost: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  let { lightPalette, darkPalette, lightText, darkText, isDark, isA } =
-    getColorInfo(c, theme);
+  let { light, dark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo(c, theme);
 
   // set the color
-  let [lightColor, darkColor] = [`${lightPalette}.11`, `${darkPalette}.11`];
-  if (c.startsWith("_gray")) {
-    [lightColor, darkColor] = [darkText, lightText];
-    if (isDark) [lightColor, darkColor] = [darkColor, lightColor];
-  }
+  let [lightColor, darkColor] = [`${light}.11`, `${dark}.11`];
+  if (c.startsWith("_gray"))
+    [lightColor, darkColor] = [`${_gray}.12`, `${_grayDark}.12`];
 
   return {
     color: mode(lightColor, darkColor)(props),
     _hover: {
-      bg: mode(`${lightPalette}.4`, `${darkPalette}.4`)(props),
+      bg: mode(`${light}.4`, `${dark}.4`)(props),
     },
     _active: {
-      bg: mode(`${lightPalette}.5`, `${darkPalette}.5`)(props),
+      bg: mode(`${light}.5`, `${dark}.5`)(props),
     },
   };
 };
@@ -66,29 +64,29 @@ const variantOutline: SystemStyleFunction = (props) => {
 
 const variantSolid: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  let { lightPalette, darkPalette, isBright, lightText, darkText } =
-    getColorInfo(c, theme);
+  let { light, dark, isBright } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo(c, theme);
 
   if (c.startsWith("_gray")) {
-    const bg = mode(`${lightPalette}.4`, `${darkPalette}.4`)(props);
+    const bg = mode(`${light}.4`, `${dark}.4`)(props);
     return {
       bg,
-      color: mode(darkText, lightText)(props),
+      color: mode(`${_gray}.12`, `${_grayDark}.12`)(props),
       _hover: {
-        bg: mode(`${lightPalette}.5`, `${darkPalette}.5`)(props),
+        bg: mode(`${light}.5`, `${dark}.5`)(props),
         _disabled: {
           bg,
         },
       },
-      _active: { bg: mode(`${lightPalette}.6`, `${darkPalette}.6`)(props) },
+      _active: { bg: mode(`${light}.6`, `${dark}.6`)(props) },
     };
   }
 
-  let bg = `${lightPalette}.9`;
-  let color = isBright ? "_gray.12" : "_gray.1";
-  let hoverBg = mode(`${lightPalette}.10`, `${darkPalette}.10`)(props);
-  let activeBg = mode(`${lightPalette}.10`, `${darkPalette}.10`)(props);
-  let background = mode(bg, `${darkPalette}.9`)(props);
+  let bg = `${light}.9`;
+  let color = isBright ? "_grayDark.1" : "_gray.1";
+  let hoverBg = mode(`${light}.10`, `${dark}.10`)(props);
+  let activeBg = mode(`${light}.10`, `${dark}.10`)(props);
+  let background = mode(bg, `${dark}.9`)(props);
 
   return {
     bg: background,
@@ -96,7 +94,7 @@ const variantSolid: SystemStyleFunction = (props) => {
     _hover: {
       bg: hoverBg,
       _disabled: {
-        bg,
+        background,
       },
     },
     _active: { bg: activeBg },
@@ -105,13 +103,13 @@ const variantSolid: SystemStyleFunction = (props) => {
 
 const variantLink: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  let { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { light, dark } = getColorInfo(c, theme);
   return {
     padding: 0,
     height: "auto",
     lineHeight: "normal",
     verticalAlign: "baseline",
-    color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+    color: mode(`${light}.9`, `${dark}.9`)(props),
     _hover: {
       textDecoration: "underline",
       _disabled: {
@@ -119,7 +117,7 @@ const variantLink: SystemStyleFunction = (props) => {
       },
     },
     _active: {
-      color: mode(`${lightPalette}.10`, `${darkPalette}.10`)(props),
+      color: mode(`${light}.10`, `${dark}.10`)(props),
     },
   };
 };
