@@ -27,7 +27,7 @@ const NewSolidVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <Alert
           status="error"
           variant="solid"
@@ -43,7 +43,7 @@ const NewSolidVariant = (props: StackProps) => {
         </Alert>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <Alert
           status="error"
           variant="solid"
@@ -105,7 +105,7 @@ const NewSubtleVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <Alert
           status="success"
           variant="subtle"
@@ -120,7 +120,7 @@ const NewSubtleVariant = (props: StackProps) => {
         </Alert>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <Alert
           status="success"
           variant="subtle"
@@ -182,7 +182,7 @@ const NewLeftAccentVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <Alert
           variant="left-accent"
           alignItems="start"
@@ -197,7 +197,7 @@ const NewLeftAccentVariant = (props: StackProps) => {
         </Alert>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <Alert
           variant="left-accent"
           alignItems="start"
@@ -258,7 +258,7 @@ const NewTopAccentVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <Alert
           variant="top-accent"
           alignItems="start"
@@ -273,7 +273,7 @@ const NewTopAccentVariant = (props: StackProps) => {
         </Alert>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <Alert
           variant="top-accent"
           alignItems="start"
@@ -334,7 +334,7 @@ const NewBrightColor = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <Alert
           status="error"
           variant="solid"
@@ -350,7 +350,7 @@ const NewBrightColor = (props: StackProps) => {
         </Alert>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <Alert
           status="error"
           variant="solid"

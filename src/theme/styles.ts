@@ -4,7 +4,7 @@ export function globalStyles(props: StyleFunctionProps) {
   return {
     body: {
       fontFamily: "body",
-      color: mode("_gray.12", "_gray.1")(props),
+      color: mode("_gray.12", "_grayDark.12")(props),
       bg: mode("_gray.1", "_grayDark.1")(props),
       transitionProperty: "background-color",
       transisionDuration: "normal",

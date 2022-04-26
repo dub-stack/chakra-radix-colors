@@ -1,79 +1,87 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { BrowserRouter, Link } from "react-router-dom";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  StackProps,
+  VStack,
+  Box,
+  Text,
+} from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Breadcrumb",
   component: Breadcrumb,
 } as ComponentMeta<typeof Breadcrumb>;
 
-const _Default = () => (
-  <BrowserRouter>
-    <Breadcrumb spacing="4">
-      <BreadcrumbItem>
-        <BreadcrumbLink as={Link} to="/home" replace>
-          Breadcrumb 1
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">Breadcrumb 2</BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem isCurrentPage>
-        <BreadcrumbLink href="#">Breadcrumb 3</BreadcrumbLink>
-      </BreadcrumbItem>
-    </Breadcrumb>
-  </BrowserRouter>
-);
-export const Default: ComponentStory<typeof Breadcrumb> = (args) => {
-  return <Decorators newComponent={<_Default />} oldComponent={<_Default />} />;
-};
-
-const _Separator = () => (
-  <Breadcrumb separator=">">
-    <BreadcrumbItem>
-      <BreadcrumbLink href="#">Home</BreadcrumbLink>
-    </BreadcrumbItem>
-
-    <BreadcrumbItem>
-      <BreadcrumbLink href="#">About</BreadcrumbLink>
-    </BreadcrumbItem>
-
-    <BreadcrumbItem isCurrentPage>
-      <BreadcrumbLink href="#">Current</BreadcrumbLink>
-    </BreadcrumbItem>
-  </Breadcrumb>
-);
-export const Seperator: ComponentStory<typeof Breadcrumb> = (args) => {
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
   return (
-    <Decorators newComponent={<_Separator />} oldComponent={<_Separator />} />
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <BrowserRouter>
+          <Breadcrumb spacing="4">
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to="/home" replace>
+                Breadcrumb 1
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Breadcrumb 2</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#">Breadcrumb 3</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </BrowserRouter>
+      </Box>
+    </VStack>
   );
 };
 
-const _SeparatorV2 = () => (
-  <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="gray.300" />}>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/">Home</BreadcrumbLink>
-    </BreadcrumbItem>
+const OldDefault = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <BrowserRouter>
+          <Breadcrumb spacing="4">
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to="/home" replace>
+                Breadcrumb 1
+              </BreadcrumbLink>
+            </BreadcrumbItem>
 
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/about">About</BreadcrumbLink>
-    </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Breadcrumb 2</BreadcrumbLink>
+            </BreadcrumbItem>
 
-    <BreadcrumbItem isCurrentPage>
-      <BreadcrumbLink href="/contact">Contact</BreadcrumbLink>
-    </BreadcrumbItem>
-  </Breadcrumb>
-);
-export const SeparatorV2: ComponentStory<typeof Breadcrumb> = (args) => {
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#">Breadcrumb 3</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </BrowserRouter>
+      </Box>
+    </VStack>
+  );
+};
+
+export const Default: ComponentStory<typeof VStack> = (args) => {
   return (
     <Decorators
-      newComponent={<_SeparatorV2 />}
-      oldComponent={<_SeparatorV2 />}
+      newComponent={<NewDefault data-testid="NewDefault" />}
+      oldComponent={<OldDefault data-testid="OldDefault" />}
     />
   );
 };

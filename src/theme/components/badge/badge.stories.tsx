@@ -18,7 +18,7 @@ const NewSolidVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <HStack>
           <Badge
             variant="solid"
@@ -43,7 +43,7 @@ const NewSolidVariant = (props: StackProps) => {
         </HStack>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <HStack>
           <Badge
             variant="solid"
@@ -133,7 +133,7 @@ const NewSubtleVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <HStack>
           <Badge
             variant="subtle"
@@ -158,7 +158,7 @@ const NewSubtleVariant = (props: StackProps) => {
         </HStack>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <HStack>
           <Badge
             variant="subtle"
@@ -248,7 +248,7 @@ const NewOutlineVariant = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <HStack>
           <Badge
             variant="outline"
@@ -273,7 +273,7 @@ const NewOutlineVariant = (props: StackProps) => {
         </HStack>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <HStack>
           <Badge
             variant="outline"
@@ -363,7 +363,7 @@ const NewBrightColor = (props: StackProps) => {
       <Text as="h1" fontWeight="bold">
         New Theme
       </Text>
-      <Box bg={c("gray.1")} p="4">
+      <Box bg={c("_gray.1")} p="4">
         <HStack>
           <Badge variant="solid" colorScheme="lime" data-testid="light-badge-1">
             Lime
@@ -380,7 +380,7 @@ const NewBrightColor = (props: StackProps) => {
         </HStack>
       </Box>
       {/* display the dark version in light mode */}
-      <Box bg={c("grayDark.1")} p="4">
+      <Box bg={c("_grayDark.1")} p="4">
         <HStack>
           <Badge
             variant="solid"
