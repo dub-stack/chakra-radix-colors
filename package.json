@@ -53,7 +53,7 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.4",
     "color-convert": "^2.0.1",
-    "cypress": "^9.5.4",
+    "cypress": "^9.6.0",
     "cypress-real-events": "^1.7.0",
     "framer-motion": "^6.2.9",
     "jest": "^27.5.1",
