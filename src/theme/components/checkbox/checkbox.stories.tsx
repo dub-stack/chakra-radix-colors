@@ -100,7 +100,7 @@ const NewBrightColor = (props: StackProps) => {
         New Theme
       </Text>
       <Box bg={c("_gray.1")} p="4">
-        <HStack>
+        <HStack data-testid="light-checkboxes">
           <Checkbox value="thing-1" isChecked colorScheme="lime" />
           <Checkbox value="thing-2" isChecked isDisabled colorScheme="lime" />
           <Checkbox value="thing-3" isIndeterminate colorScheme="lime" />
