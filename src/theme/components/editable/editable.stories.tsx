@@ -7,72 +7,57 @@ import {
   EditablePreview,
   EditableTextarea,
   useEditableControls,
+  StackProps,
+  VStack,
+  Box,
+  Text,
   chakra,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Editable",
   component: Editable,
 } as ComponentMeta<typeof Editable>;
 
-const EditableControls = () => {
-  const {
-    isEditing,
-    getEditButtonProps,
-    getSubmitButtonProps,
-    getCancelButtonProps,
-  } = useEditableControls();
-
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
   return (
-    <div>
-      {!isEditing ? (
-        <button {...getEditButtonProps()}>Edit</button>
-      ) : (
-        <>
-          <button {...getSubmitButtonProps()}>Save</button>
-          <button {...getCancelButtonProps()}>Cancel</button>
-        </>
-      )}
-    </div>
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <Editable defaultValue="Take some chakra">
+          <EditablePreview />
+          <EditableInput />
+        </Editable>
+      </Box>
+    </VStack>
   );
 };
 
-const _Basic = () => (
-  <Editable
-    defaultValue="Rasengan ⚡️"
-    fontSize="xl"
-    textAlign="center"
-    isPreviewFocusable={false}
-    submitOnBlur={false}
-    onChange={console.log}
-  >
-    <EditablePreview />
-    <EditableInput />
-    <EditableControls />
-  </Editable>
+const OldDefault = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <Editable defaultValue="Take some chakra">
+          <EditablePreview />
+          <EditableInput />
+        </Editable>
+      </Box>
+    </VStack>
+  );
+};
+
+export const Default: ComponentStory<typeof VStack> = (props) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
 );
-export const Basic: ComponentStory<typeof Editable> = (args) => {
-  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
-};
-
-export const _CodeSandboxTopbar = () => {
-  return (
-    <chakra.div py="4" display="flex" alignItems="center">
-      <chakra.p fontWeight="medium">My Sandboxes</chakra.p>
-      <chakra.span mx="3">/</chakra.span>
-      <Editable defaultValue="chakra-ui-demo">
-        <EditableInput _focus={{ boxShadow: "none" }} />
-        <EditablePreview />
-      </Editable>
-    </chakra.div>
-  );
-};
-export const CodeSandboxTopbar: ComponentStory<typeof Editable> = (args) => {
-  return (
-    <Decorators
-      newComponent={<_CodeSandboxTopbar />}
-      oldComponent={<_CodeSandboxTopbar />}
-    />
-  );
-};
