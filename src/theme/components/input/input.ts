@@ -90,7 +90,7 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
       borderColor: "inherit",
       bg: "inherit",
       _hover: {
-        borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
+        borderColor: mode(`${_gray}.7`, `${_grayDark}.7`)(props),
       },
       _readOnly: {
         boxShadow: "none !important",
@@ -99,6 +99,7 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
       _disabled: {
         opacity: 0.4,
         cursor: "not-allowed",
+        borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
       },
       _invalid: {
         borderColor: getColor(theme, ec),
