@@ -36,13 +36,13 @@ const baseStyleDialogContainer: SystemStyleObject = {
 
 const baseStyleDialog: SystemStyleFunction = (props) => {
   const { isFullHeight, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo("_gray", theme);
+  const { light, dark } = getColorInfo("_gray", theme);
 
   return {
     ...(isFullHeight && { height: "100vh" }),
     zIndex: "modal",
     maxH: "100vh",
-    bg: mode(`${lightPalette}.1`, `${darkPalette}.11`)(props),
+    bg: mode(`${light}.1`, `${dark}.1`)(props),
     color: "inherit",
     boxShadow: mode("lg", "dark-lg")(props),
   };
