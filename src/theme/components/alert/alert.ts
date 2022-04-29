@@ -44,7 +44,7 @@ const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   let { light, dark, isDark } = getColorInfo(c, theme);
   let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  if (isDark) [_gray, _grayDark] = [_grayDark, _grayDark];
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     container: {
@@ -60,7 +60,7 @@ const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   let { light, dark, isDark } = getColorInfo(c, theme);
   let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  if (isDark) [_gray, _grayDark] = [_grayDark, _grayDark];
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     container: {

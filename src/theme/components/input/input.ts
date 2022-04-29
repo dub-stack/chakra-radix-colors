@@ -70,28 +70,19 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
 
 function getDefaults(props: Record<string, any>) {
   const { focusBorderColor: fc, errorBorderColor: ec, theme } = props;
-  const { lightPalette: blueLight, darkPalette: blueDark } = getColorInfo(
-    "blue",
-    theme
-  );
-  const { lightPalette: redLight, darkPalette: redDark } = getColorInfo(
-    "red",
-    theme
-  );
+  const { light: blue, dark: blueDark } = getColorInfo("blue", theme);
+  const { light: red, dark: redDark } = getColorInfo("red", theme);
 
   return {
-    focusBorderColor: fc || mode(`${blueLight}.9`, `${blueDark}.9`)(props),
-    errorBorderColor: ec || mode(`${redLight}.9`, `${redDark}.9`)(props),
+    focusBorderColor: fc || mode(`${blue}.9`, `${blueDark}.9`)(props),
+    errorBorderColor: ec || mode(`${red}.9`, `${redDark}.9`)(props),
   };
 }
 
 const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
   const { theme } = props;
   const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
-  const { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
   return {
     field: {
@@ -99,7 +90,7 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
       borderColor: "inherit",
       bg: "inherit",
       _hover: {
-        borderColor: mode(`${grayLight}.6`, `${grayDark}.6`)(props),
+        borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
       },
       _readOnly: {
         boxShadow: "none !important",
@@ -121,8 +112,8 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
     },
     addon: {
       border: "1px solid",
-      borderColor: mode(`${grayLight}.6`, `${grayDark}.6`)(props),
-      bg: mode(`${grayLight}.3`, `${grayDark}.3`)(props),
+      borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
+      bg: mode(`${_gray}.3`, `${_grayDark}.3`)(props),
     },
   };
 };
@@ -130,18 +121,15 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
 const variantFilled: PartsStyleFunction<typeof parts> = (props) => {
   const { theme } = props;
   const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
-  const { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
   return {
     field: {
       border: "2px solid",
       borderColor: "transparent",
-      bg: mode(`${grayLight}.3`, `${grayDark}.3`)(props),
+      bg: mode(`${_gray}.3`, `${_grayDark}.3`)(props),
       _hover: {
-        bg: mode(`${grayLight}.4`, `${grayDark}.4`)(props),
+        bg: mode(`${_gray}.4`, `${_grayDark}.4`)(props),
       },
       _readOnly: {
         boxShadow: "none !important",
@@ -162,7 +150,7 @@ const variantFilled: PartsStyleFunction<typeof parts> = (props) => {
     addon: {
       border: "2px solid",
       borderColor: "transparent",
-      bg: mode(`${grayLight}.3`, `${grayDark}.3`)(props),
+      bg: mode(`${_gray}.3`, `${_grayDark}.3`)(props),
     },
   };
 };
