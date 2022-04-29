@@ -9,10 +9,10 @@ const $size = cssVar("close-button-size");
 
 const baseStyle: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo("_gray", theme);
+  const { light, dark } = getColorInfo("_gray", theme);
 
-  const hoverBg = mode(`${lightPalette}A.3`, `${darkPalette}A.3`)(props);
-  const activeBg = mode(`${lightPalette}A.4`, `${darkPalette}A.4`)(props);
+  const hoverBg = mode(`${light}A.3`, `${dark}A.3`)(props);
+  const activeBg = mode(`${light}A.4`, `${dark}A.4`)(props);
 
   return {
     w: [$size.reference],
