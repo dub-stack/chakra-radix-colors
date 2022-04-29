@@ -9,7 +9,7 @@ import { mode } from "@chakra-ui/theme-tools";
 import { getColorInfo } from "util/helpers";
 
 const baseStyleOverlay: SystemStyleObject = {
-  bg: "grayA.10",
+  bg: "_grayA.10",
   zIndex: "modal",
 };
 
@@ -27,14 +27,11 @@ const baseStyleDialogContainer: SystemStyleFunction = (props) => {
 
 const baseStyleDialog: SystemStyleFunction = (props) => {
   const { scrollBehavior, theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _darkGray } = getColorInfo("_gray", theme);
 
   return {
     borderRadius: "md",
-    bg: mode(`${lightGray}.1`, `${darkGray}.1`)(props),
+    bg: mode(`${_gray}.1`, `${_darkGray}.1`)(props),
     color: "inherit",
     my: "3.75rem",
     zIndex: "modal",

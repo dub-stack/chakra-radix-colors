@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import {
-  chakra,
   useDisclosure,
   Modal,
   ModalBody,
@@ -10,27 +9,26 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  StackProps,
+  Button,
+  VStack,
+  HStack,
+  Box,
+  Text,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Modal",
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Button = chakra("button", {
-  baseStyle: {
-    outline: 0,
-    transitionProperty: "color, box-shadow",
-    transitionDuration: "normal",
-  },
-});
-
-function _BasicUsage() {
+const NewDefault = (props: StackProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
-      <Button onClick={onOpen}>Open</Button>
+    <VStack {...props}>
+      <Button onClick={onOpen}>New Open</Button>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
@@ -42,17 +40,47 @@ function _BasicUsage() {
             irure nisi.
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button>Save</Button>
+            <HStack>
+              <Button onClick={onClose}>Cancel</Button>
+              <Button>Save</Button>
+            </HStack>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
-  );
-}
-
-export const BasicUsage: ComponentStory<typeof _BasicUsage> = (args) => {
-  return (
-    <Decorators newComponent={<_BasicUsage />} oldComponent={<_BasicUsage />} />
+    </VStack>
   );
 };
+
+const OldDefault = (props: StackProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <VStack {...props}>
+      <Button onClick={onOpen}>Old Open</Button>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalHeader>Welcome Home</ModalHeader>
+          <ModalBody>
+            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
+            ullamco deserunt aute id consequat veniam incididunt duis in sint
+            irure nisi.
+          </ModalBody>
+          <ModalFooter>
+            <HStack>
+              <Button onClick={onClose}>Cancel</Button>
+              <Button>Save</Button>
+            </HStack>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </VStack>
+  );
+};
+
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
+);
