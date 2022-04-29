@@ -1,26 +1,58 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FormControl, FormLabel, Container } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  StackProps,
+  VStack,
+  Box,
+  Text,
+} from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / FormLabel",
   component: FormLabel,
 } as ComponentMeta<typeof FormLabel>;
 
-const _InputExample = () => (
-  <Container maxW="max-content">
-    <FormControl id="first-name" isRequired isInvalid>
-      <FormLabel>First name</FormLabel>
-    </FormControl>
-  </Container>
-);
-
-export const InputExample: ComponentStory<typeof _InputExample> = (args) => {
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
   return (
-    <Decorators
-      newComponent={<_InputExample />}
-      oldComponent={<_InputExample />}
-    />
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <FormControl>
+          <FormLabel htmlFor="new-email">Email Address</FormLabel>
+          <Input id="new-email" type="email" />
+        </FormControl>
+      </Box>
+    </VStack>
   );
 };
+
+const OldDefault = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <FormControl>
+          <FormLabel htmlFor="old-email">Email Address</FormLabel>
+          <Input id="old-email" type="email" />
+        </FormControl>
+      </Box>
+    </VStack>
+  );
+};
+
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
+);
