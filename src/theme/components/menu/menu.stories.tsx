@@ -1,54 +1,86 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Menu, MenuButton, Button, MenuItem, MenuList } from "@chakra-ui/react";
-import { FaUnlink } from "react-icons/fa";
+import {
+  Menu,
+  MenuButton,
+  Button,
+  MenuGroup,
+  MenuItem,
+  MenuOptionGroup,
+  MenuItemOption,
+  MenuDivider,
+  MenuList,
+  StackProps,
+  VStack,
+  Text,
+  Box,
+} from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Menu",
   component: Menu,
 } as ComponentMeta<typeof Menu>;
 
-const words = [
-  "About Visual Studio Code",
-  "Check for updates",
-  "Preferences",
-  "Services",
-  "Hide Visual Studio Code",
-  "Show All",
-];
-
-function logEvents(e: React.MouseEvent | React.KeyboardEvent | undefined) {
-  if (e && e.persist) {
-    // Stop React from complaining about non-persisting events.
-    e.persist();
-  }
-  console.log(e);
-}
-
-const _Basic = () => (
-  <div style={{ minHeight: 4000, paddingTop: 500 }}>
-    <Menu>
-      <MenuButton
-        as={Button}
-        variant="solid"
-        colorScheme="teal"
-        size="sm"
-        rightIcon={<FaUnlink />}
-      >
-        Open Wakanda menu
-      </MenuButton>
-      <MenuList>
-        {words.map((word) => (
-          <MenuItem key={word} onClick={logEvents}>
-            {word}
-          </MenuItem>
-        ))}
-      </MenuList>
-    </Menu>
-  </div>
-);
-
-export const Basic: ComponentStory<typeof _Basic> = (args) => {
-  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <Menu closeOnSelect={false}>
+          <MenuButton as={Button} colorScheme="blue">
+            MenuItem
+          </MenuButton>
+          <MenuList minWidth="240px">
+            <MenuGroup title="Help">
+              <MenuItem>Docs</MenuItem>
+              <MenuItem>FAQ</MenuItem>
+            </MenuGroup>
+            <MenuOptionGroup defaultValue="asc" title="Order" type="radio">
+              <MenuItemOption value="asc">Ascending</MenuItemOption>
+              <MenuItemOption value="desc">Descending</MenuItemOption>
+            </MenuOptionGroup>
+          </MenuList>
+        </Menu>
+      </Box>
+    </VStack>
+  );
 };
+
+const OldDefault = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box p="4">
+        <Menu closeOnSelect={false}>
+          <MenuButton as={Button} colorScheme="blue">
+            MenuItem
+          </MenuButton>
+          <MenuList minWidth="240px">
+            <MenuGroup title="Help">
+              <MenuItem>Docs</MenuItem>
+              <MenuItem>FAQ</MenuItem>
+            </MenuGroup>
+            <MenuOptionGroup defaultValue="asc" title="Order" type="radio">
+              <MenuItemOption value="asc">Ascending</MenuItemOption>
+              <MenuItemOption value="desc">Descending</MenuItemOption>
+            </MenuOptionGroup>
+          </MenuList>
+        </Menu>
+      </Box>
+    </VStack>
+  );
+};
+
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
+);

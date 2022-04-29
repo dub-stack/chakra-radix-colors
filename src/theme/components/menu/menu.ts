@@ -9,13 +9,10 @@ import { getColorInfo } from "util/helpers";
 
 const baseStyleList: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
   return {
-    bg: mode(`${grayLight}.1`, `${grayDark}.1`)(props),
+    bg: mode(`${_gray}.1`, `${_grayDark}.1`)(props),
     boxShadow: mode("sm", "dark-lg")(props),
     color: "inherit",
     minW: "3xs",
@@ -28,10 +25,7 @@ const baseStyleList: SystemStyleFunction = (props) => {
 
 const baseStyleItem: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
   return {
     py: "0.4rem",
@@ -40,13 +34,13 @@ const baseStyleItem: SystemStyleFunction = (props) => {
     transitionDuration: "ultra-fast",
     transitionTimingFunction: "ease-in",
     _focus: {
-      bg: mode(`${grayLight}.3`, `${grayDark}.3`)(props),
+      bg: mode(`${_gray}.3`, `${_grayDark}.3`)(props),
     },
     _active: {
-      bg: mode(`${grayLight}.4`, `${grayDark}.4`)(props),
+      bg: mode(`${_gray}.4`, `${_grayDark}.4`)(props),
     },
     _expanded: {
-      bg: mode(`${grayLight}.3`, `${grayDark}.3`)(props),
+      bg: mode(`${_gray}.3`, `${_grayDark}.3`)(props),
     },
     _disabled: {
       opacity: 0.4,
