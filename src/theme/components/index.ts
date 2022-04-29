@@ -18,6 +18,7 @@ export { default as Heading } from "./heading/heading";
 export { default as Input } from "./input/input";
 export { default as Kbd } from "./kbd/kbd";
 export { default as Link } from "./link/link";
+export { default as List } from "./list/list";
 export { default as Menu } from "./menu/menu";
 export { default as Modal } from "./modal/modal";
 export { default as NumberInput } from "./number-input/number-input";

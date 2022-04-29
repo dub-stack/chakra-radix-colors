@@ -12,7 +12,7 @@ import {
   StackProps,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
-import { useThemedColor } from "index";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Alert",
