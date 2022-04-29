@@ -8,10 +8,7 @@ import { getColorInfo } from "util/helpers";
 
 const baseStyleText: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: redLight, darkPalette: redDark } = getColorInfo(
-    "red",
-    theme
-  );
+  const { light: redLight, dark: redDark } = getColorInfo("red", theme);
 
   return {
     color: mode(`${redLight}.9`, `${redDark}.9`)(props),
@@ -23,10 +20,7 @@ const baseStyleText: SystemStyleFunction = (props) => {
 
 const baseStyleIcon: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: redLight, darkPalette: redDark } = getColorInfo(
-    "red",
-    theme
-  );
+  const { light: redLight, dark: redDark } = getColorInfo("red", theme);
 
   return {
     marginEnd: "0.5em",
