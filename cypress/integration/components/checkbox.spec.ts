@@ -5,7 +5,7 @@ describe("Default", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-checkbox--default&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays dark color in dark mode correctly", () => {
@@ -236,7 +236,7 @@ describe("Bright Color", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-checkbox--bright-color&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays dark color in light mode correctly", () => {

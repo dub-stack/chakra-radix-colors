@@ -5,7 +5,7 @@ describe("Solid Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-alert--solid-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -40,7 +40,7 @@ describe("Subtle Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-alert--subtle-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -100,7 +100,7 @@ describe("Left-Accent Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-alert--left-accent-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -180,7 +180,7 @@ describe("Top-Accent Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-alert--top-accent-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -252,7 +252,7 @@ describe("Bright Color", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-alert--bright-color&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {

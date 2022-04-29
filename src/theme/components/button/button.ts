@@ -65,13 +65,12 @@ const variantOutline: SystemStyleFunction = (props) => {
 const variantSolid: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
   let { light, dark, isBright } = getColorInfo(c, theme);
-  let { light: _gray, dark: _grayDark } = getColorInfo(c, theme);
 
   if (c.startsWith("_gray")) {
     const bg = mode(`${light}.4`, `${dark}.4`)(props);
     return {
       bg,
-      color: mode(`${_gray}.12`, `${_grayDark}.12`)(props),
+      color: mode(`${light}.12`, `${dark}.12`)(props),
       _hover: {
         bg: mode(`${light}.5`, `${dark}.5`)(props),
         _disabled: {

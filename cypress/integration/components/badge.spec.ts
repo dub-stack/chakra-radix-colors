@@ -5,7 +5,7 @@ describe("Solid Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-badge--solid-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -48,7 +48,7 @@ describe("Subtle Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-badge--subtle-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -125,7 +125,7 @@ describe("Outline Variant", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-badge--outline-variant&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
@@ -176,7 +176,7 @@ describe("Bright Color", () => {
     cy.visit(
       "http://localhost:6006/iframe.html?id=components-badge--bright-color&args=&viewMode=story"
     );
-    cy.get("#reset-color-mode").click();
+    cy.get("#reset-color-mode").realHover().click(); // Important! Need to .realHover() to remove the hover state from prior tests.
   });
 
   it("displays light color in light mode correctly", () => {
