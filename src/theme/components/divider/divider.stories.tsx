@@ -1,54 +1,58 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Container, Divider } from "@chakra-ui/react";
+import {
+  Container,
+  Divider,
+  StackProps,
+  VStack,
+  HStack,
+  Box,
+  Text,
+} from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Divider",
   component: Divider,
 } as ComponentMeta<typeof Divider>;
 
-const _Basic = () => (
-  <Container p={4} height="300px">
-    <Divider />
-  </Container>
-);
-export const Basic: ComponentStory<typeof Divider> = (args) => {
-  return <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />;
-};
-
-const _Vertical = () => (
-  <Container p={4} height="300px">
-    <Divider orientation="vertical" />
-  </Container>
-);
-export const Vertical: ComponentStory<typeof Divider> = (args) => {
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
   return (
-    <Decorators newComponent={<_Vertical />} oldComponent={<_Vertical />} />
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <VStack w="300px">
+          <Divider variant="solid" />
+          <Divider variant="dashed" />
+        </VStack>
+      </Box>
+    </VStack>
   );
 };
 
-const _Horizontal = () => (
-  <Container p={4} height="300px">
-    <Divider orientation="horizontal" />
-  </Container>
-);
-export const Horizontal: ComponentStory<typeof Divider> = (args) => {
+const OldDefault = (props: StackProps) => {
   return (
-    <Decorators newComponent={<_Horizontal />} oldComponent={<_Horizontal />} />
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <VStack w="300px">
+          <Divider variant="solid" />
+          <Divider variant="dashed" />
+        </VStack>
+      </Box>
+    </VStack>
   );
 };
 
-const _DashedVariant = () => (
-  <Container p={4} height="300px">
-    <Divider orientation="horizontal" variant="dashed" />
-  </Container>
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
 );
-export const DashedVariant: ComponentStory<typeof Divider> = (args) => {
-  return (
-    <Decorators
-      newComponent={<_DashedVariant />}
-      oldComponent={<_DashedVariant />}
-    />
-  );
-};
