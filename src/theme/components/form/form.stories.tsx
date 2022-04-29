@@ -8,52 +8,58 @@ import {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-  useFormControl,
-  Container,
+  Input,
+  StackProps,
+  VStack,
+  Box,
+  Text,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
-  title: "Components / FormControl",
+  title: "Components / Form",
   component: FormControl,
 } as ComponentMeta<typeof FormControl>;
 
-type OmittedTypes = "disabled" | "required" | "readOnly" | "size";
-
-type InputProps = Omit<PropsOf<"input">, OmittedTypes> &
-  FormControlOptions & {
-    // Input component as `size` by default, so it resolves to `never`
-    // Omitted it from types in Line 16 and added back here.
-    size?: string;
-  };
-
-// Create an input that consumes useFormControl
-type Props = { focusBorderColor?: string; errorBorderColor?: string };
-
-const Input = React.forwardRef<HTMLInputElement, InputProps & Props>(
-  (props, ref) => {
-    const styles = useMultiStyleConfig("Input", props);
-    const inputProps = useFormControl<HTMLInputElement>(props);
-    return <chakra.input ref={ref} __css={styles.field} {...inputProps} />;
-  }
-);
-
-const _InputExample = () => (
-  <Container maxW="max-content">
-    <FormControl id="first-name" isRequired isInvalid>
-      <FormLabel>First name</FormLabel>
-      <Input placeholder="First Name" />
-      <FormHelperText>Keep it very short and sweet!</FormHelperText>
-      <FormErrorMessage>Your First name is invalid</FormErrorMessage>
-    </FormControl>
-  </Container>
-);
-
-export const InputExample: ComponentStory<typeof _InputExample> = (args) => {
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
   return (
-    <Decorators
-      newComponent={<_InputExample />}
-      oldComponent={<_InputExample />}
-    />
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <FormControl isRequired>
+          <FormLabel htmlFor="email">Email address</FormLabel>
+          <Input id="email" type="email" />
+          <FormHelperText>We'll never share your email.</FormHelperText>
+        </FormControl>
+      </Box>
+    </VStack>
   );
 };
+
+const OldDefault = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <FormControl isRequired>
+          <FormLabel htmlFor="email">Email address</FormLabel>
+          <Input id="email" type="email" />
+          <FormHelperText>We'll never share your email.</FormHelperText>
+        </FormControl>
+      </Box>
+    </VStack>
+  );
+};
+
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
+);

@@ -8,10 +8,7 @@ import { getColorInfo } from "util/helpers";
 
 const baseStyleRequiredIndicator: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: redLight, darkPalette: redDark } = getColorInfo(
-    "red",
-    theme
-  );
+  const { light: redLight, dark: redDark } = getColorInfo("red", theme);
   return {
     marginStart: 1,
     color: mode(`${redLight}.9`, `${redDark}.9`)(props),
@@ -20,11 +17,11 @@ const baseStyleRequiredIndicator: SystemStyleFunction = (props) => {
 
 const baseStyleHelperText: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo("gray", theme);
+  const { light, dark } = getColorInfo("_gray", theme);
 
   return {
     mt: 2,
-    color: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+    color: mode(`${light}.9`, `${dark}.9`)(props),
     lineHeight: "normal",
     fontSize: "sm",
   };
