@@ -40,26 +40,26 @@ const numericStyles: SystemStyleObject = {
 
 const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+  const { light, dark, isDark } = getColorInfo(c, theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     th: {
-      color: mode(`${lightGray}.11`, `${darkGray}.11`)(props),
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
       borderBottom: "1px",
-      borderColor: mode(`${lightPalette}.6`, `${darkPalette}.6`)(props),
+      borderColor: mode(`${light}.6`, `${dark}.6`)(props),
       ...numericStyles,
     },
     td: {
       borderBottom: "1px",
-      borderColor: mode(`${lightPalette}.6`, `${darkPalette}.6`)(props),
+      borderColor: mode(`${light}.6`, `${dark}.6`)(props),
+      color: mode(`${_gray}.12`, `${_grayDark}.12`)(props),
       ...numericStyles,
     },
     caption: {
-      color: mode(`${lightGray}.11`, `${darkGray}.11`)(props),
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
     },
     tfoot: {
       tr: {
@@ -73,36 +73,36 @@ const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantStripe: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+  const { light, dark, isDark } = getColorInfo(c, theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     th: {
-      color: mode(`${lightGray}.11`, `${darkGray}.11`)(props),
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
       borderBottom: "1px",
-      borderColor: mode(`${lightPalette}.3`, `${darkPalette}.3`)(props),
+      borderColor: mode(`${light}.3`, `${dark}.3`)(props),
       ...numericStyles,
     },
     td: {
       borderBottom: "1px",
-      borderColor: mode(`${lightPalette}.3`, `${darkPalette}.3`)(props),
+      borderColor: mode(`${light}.3`, `${dark}.3`)(props),
+      color: mode(`${_gray}.12`, `${_grayDark}.12`)(props),
       ...numericStyles,
     },
     caption: {
-      color: mode(`${lightGray}.11`, `${darkGray}.11`)(props),
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
     },
     tbody: {
       tr: {
         "&:nth-of-type(odd)": {
           "th, td": {
             borderBottomWidth: "1px",
-            borderColor: mode(`${lightPalette}.3`, `${darkPalette}.3`)(props),
+            borderColor: mode(`${light}.3`, `${dark}.3`)(props),
           },
           td: {
-            background: mode(`${lightPalette}.3`, `${darkPalette}.3`)(props),
+            background: mode(`${light}.3`, `${dark}.3`)(props),
           },
         },
       },
@@ -184,7 +184,7 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
 const defaultProps = {
   variant: "simple",
   size: "md",
-  colorScheme: "gray",
+  colorScheme: "_gray",
 };
 
 export default {

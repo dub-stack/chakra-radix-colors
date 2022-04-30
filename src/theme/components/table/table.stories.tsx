@@ -9,15 +9,20 @@ import {
   Th,
   Thead,
   Tr,
+  StackProps,
+  VStack,
+  Text,
+  Box,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Table",
   component: Table,
 } as ComponentMeta<typeof Table>;
 
-const SimpleTable = (props: TableProps) => (
+const LeTable = (props: TableProps) => (
   <Table {...props}>
     <TableCaption>Imperial to metric conversion factors</TableCaption>
     <Thead>
@@ -48,78 +53,110 @@ const SimpleTable = (props: TableProps) => (
         <Td>kilometres (km)</Td>
         <Td isNumeric>1.61</Td>
       </Tr>
-      <Tr>
-        <Td>square inches</Td>
-        <Td>sq. millimetres (mm²)</Td>
-        <Td isNumeric>645</Td>
-      </Tr>
-      <Tr>
-        <Td>square feet</Td>
-        <Td>square metres (m²)</Td>
-        <Td isNumeric>0.0929</Td>
-      </Tr>
-      <Tr>
-        <Td>square yards</Td>
-        <Td>square metres (m²)</Td>
-        <Td isNumeric>0.836</Td>
-      </Tr>
-      <Tr>
-        <Td>acres</Td>
-        <Td>hectares</Td>
-        <Td isNumeric>2.47</Td>
-      </Tr>
-      <Tr>
-        <Td>cubic inches</Td>
-        <Td>millilitres (ml)</Td>
-        <Td isNumeric>16.4</Td>
-      </Tr>
-      <Tr>
-        <Td>cubic feet</Td>
-        <Td>litres</Td>
-        <Td isNumeric>28.3</Td>
-      </Tr>
-      <Tr>
-        <Td>imperial gallons</Td>
-        <Td>litres</Td>
-        <Td isNumeric>4.55</Td>
-      </Tr>
-      <Tr>
-        <Td>
-          <abbr>US</abbr> barrels
-        </Td>
-        <Td>cubic metres (m³)</Td>
-        <Td isNumeric>0.159</Td>
-      </Tr>
     </Tbody>
   </Table>
 );
 
-const _SimpleMD = () => <SimpleTable size="md" />;
-export const SimpleMd: ComponentStory<typeof _SimpleMD> = (args) => (
-  <Decorators newComponent={<_SimpleMD />} oldComponent={<_SimpleMD />} />
-);
+const NewSimple = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <LeTable data-testid="light-table" colorScheme="purple" />
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <LeTable data-testid="dark-table" colorScheme="purpleDark" />
+      </Box>
+    </VStack>
+  );
+};
 
-const _StripedMD = () => <SimpleTable variant="striped" size="md" />;
-export const StripedMD: ComponentStory<typeof _StripedMD> = (args) => (
-  <Decorators newComponent={<_StripedMD />} oldComponent={<_StripedMD />} />
-);
+const OldSimple = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box p="4">
+        <LeTable data-testid="light-table" colorScheme="purple" />
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <LeTable data-testid="dark-table" colorScheme="purple" />
+      </Box>
+    </VStack>
+  );
+};
 
-const _SimpleMDColor = () => <SimpleTable size="md" colorScheme="teal" />;
-export const SimpleMdColor: ComponentStory<typeof _SimpleMDColor> = (args) => (
+export const Simple: ComponentStory<typeof VStack> = (args) => (
   <Decorators
-    newComponent={<_SimpleMDColor />}
-    oldComponent={<_SimpleMDColor />}
+    newComponent={<NewSimple data-testid="NewSimple" />}
+    oldComponent={<OldSimple data-testid="OldSimple" />}
   />
 );
 
-const _StripedMDColor = () => (
-  <SimpleTable variant="striped" size="md" colorScheme="teal" />
-);
-export const StripedMDColor: ComponentStory<typeof _StripedMDColor> = (
-  args
-) => (
+const NewStriped = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <LeTable
+          data-testid="light-table"
+          variant="striped"
+          colorScheme="purple"
+        />
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <LeTable
+          data-testid="dark-table"
+          variant="striped"
+          colorScheme="purpleDark"
+        />
+      </Box>
+    </VStack>
+  );
+};
+
+const OldStriped = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box p="4">
+        <LeTable
+          data-testid="light-table"
+          variant="striped"
+          colorScheme="purple"
+        />
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <LeTable
+          data-testid="dark-table"
+          variant="striped"
+          colorScheme="purple"
+        />
+      </Box>
+    </VStack>
+  );
+};
+
+export const Striped: ComponentStory<typeof VStack> = (args) => (
   <Decorators
-    newComponent={<_StripedMDColor />}
-    oldComponent={<_StripedMDColor />}
+    newComponent={<NewStriped data-testid="NewStriped" />}
+    oldComponent={<OldStriped data-testid="OldStriped" />}
   />
 );
