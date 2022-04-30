@@ -24,6 +24,9 @@ const NewDefault = (props: StackProps) => {
   const c = useThemedColor();
   return (
     <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
       <Box bg={c("_gray.1")} p="4">
         <NumberInput>
           <NumberInputField />
@@ -38,9 +41,11 @@ const NewDefault = (props: StackProps) => {
 };
 
 const OldDefault = (props: StackProps) => {
-  const c = useThemedColor();
   return (
     <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
       <Box p="4">
         <NumberInput>
           <NumberInputField />
