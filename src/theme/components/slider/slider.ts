@@ -16,6 +16,9 @@ function thumbOrientation(props: StyleFunctionProps): SystemStyleObject {
       transform: `translateX(-50%)`,
       _active: {
         transform: `translateX(-50%) scale(1.15)`,
+        _disabled: {
+          transform: "translateX(-50%)",
+        },
       },
     },
     horizontal: {
@@ -23,6 +26,9 @@ function thumbOrientation(props: StyleFunctionProps): SystemStyleObject {
       transform: `translateY(-50%)`,
       _active: {
         transform: `translateY(-50%) scale(1.15)`,
+        _disabled: {
+          transform: "translateY(-50%)",
+        },
       },
     },
   });
@@ -37,8 +43,8 @@ const baseStyleContainer: SystemStyleFunction = (props) => {
     cursor: "pointer",
     _disabled: {
       opacity: 0.6,
-      cursor: "default",
-      pointerEvents: "none",
+      cursor: "not-allowed",
+      pointerEvents: "auto",
     },
     ...orient({
       orientation,
@@ -49,28 +55,36 @@ const baseStyleContainer: SystemStyleFunction = (props) => {
 };
 
 const baseStyleTrack: SystemStyleFunction = (props) => {
-  const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { colorScheme: c, theme } = props;
+  const { isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     overflow: "hidden",
     borderRadius: "sm",
-    bg: mode(`${lightGray}.4`, `${darkGray}.4`)(props),
+    bg: mode(`${_gray}.3`, `${_grayDark}.3`)(props),
     _disabled: {
-      bg: mode(`${lightGray}.5`, `${darkGray}.5`)(props),
+      bg: mode(`${_gray}.4`, `${_grayDark}.4`)(props),
     },
   };
 };
 
 const baseStyleThumb: SystemStyleFunction = (props) => {
-  const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { colorScheme: c, theme } = props;
+  const { isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  let [bg, _disabledBg] = [
+    mode(`${_gray}.1`, `${_grayDark}.4`)(props),
+    mode(`${_gray}.3`, `${_grayDark}.5`)(props),
+  ];
+  if (isDark)
+    [bg, _disabledBg] = [
+      mode(`${_grayDark}.4`, `${_gray}.1`)(props),
+      mode(`${_grayDark}.5`, `${_gray}.3`)(props),
+    ];
 
   return {
     display: "flex",
@@ -80,26 +94,28 @@ const baseStyleThumb: SystemStyleFunction = (props) => {
     outline: 0,
     zIndex: 1,
     borderRadius: "full",
-    bg: "white",
+    bg,
     boxShadow: "base",
     border: "1px solid",
     borderColor: "transparent",
     transitionProperty: "transform",
     transitionDuration: "normal",
     _focus: { boxShadow: "outline" },
-    _disabled: { bg: mode(`${lightGray}.3`, `${darkGray}.3`)(props) },
+    _disabled: {
+      bg: _disabledBg,
+    },
     ...thumbOrientation(props),
   };
 };
 
 const baseStyleFilledTrack: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
+  const { light, dark } = getColorInfo(c, theme);
 
   return {
     width: "inherit",
     height: "inherit",
-    bg: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+    bg: mode(`${light}.9`, `${dark}.9`)(props),
   };
 };
 
