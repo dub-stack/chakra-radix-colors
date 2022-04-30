@@ -18,11 +18,10 @@ const $translateX = cssVar("switch-thumb-x");
 
 const baseStyleTrack: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     borderRadius: "full",
@@ -31,7 +30,7 @@ const baseStyleTrack: SystemStyleFunction = (props) => {
     height: [$height.reference],
     transitionProperty: "common",
     transitionDuration: "fast",
-    bg: mode(`${lightGray}.7`, `${darkGray}.7`)(props),
+    bg: mode(`${_gray}.7`, `${_grayDark}.7`)(props),
     _focus: {
       boxShadow: "outline",
     },
@@ -40,7 +39,7 @@ const baseStyleTrack: SystemStyleFunction = (props) => {
       cursor: "not-allowed",
     },
     _checked: {
-      bg: mode(`${lightPalette}.9`, `${darkPalette}.9`)(props),
+      bg: mode(`${light}.9`, `${dark}.9`)(props),
     },
   };
 };
