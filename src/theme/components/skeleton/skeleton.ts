@@ -11,13 +11,10 @@ const fade = (startColor: string, endColor: string) =>
 
 const baseStyle: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  const defaultStartColor = mode(`${lightGray}.3`, `${darkGray}.3`)(props);
-  const defaultEndColor = mode(`${lightGray}.9`, `${darkGray}.9`)(props);
+  const defaultStartColor = mode(`${_gray}.3`, `${_grayDark}.3`)(props);
+  const defaultEndColor = mode(`${_gray}.9`, `${_grayDark}.9`)(props);
 
   const {
     startColor = defaultStartColor,

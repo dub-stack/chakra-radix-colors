@@ -4,48 +4,53 @@ import {
   Skeleton,
   SkeletonText,
   SkeletonCircle,
-  Stack,
-  Container,
-  chakra,
+  StackProps,
+  VStack,
+  Box,
+  Text,
 } from "@chakra-ui/react";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Skeleton",
   component: Skeleton,
 } as ComponentMeta<typeof Skeleton>;
 
-const _Basic = () => (
-  <Container maxW="500px">
-    <Skeleton h="20px" />{" "}
-  </Container>
-);
-export const Basic: ComponentStory<typeof Skeleton> = (args) => (
-  <Decorators newComponent={<_Basic />} oldComponent={<_Basic />} />
-);
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4" w="300px">
+        <SkeletonCircle size="10" />
+        <SkeletonText mt="4" noOfLines={4} spacing="4" />
+        <Skeleton mt="4" height="20px" />
+      </Box>
+    </VStack>
+  );
+};
 
-const _Text = () => (
-  <Container maxW="500px">
-    <SkeletonText
-      padding="20px"
-      borderWidth="1px"
-      borderRadius="lg"
-      noOfLines={[3, 4, 5, 6, 7]}
-    />
-  </Container>
-);
-export const Text: ComponentStory<typeof Skeleton> = (args) => (
-  <Decorators newComponent={<_Text />} oldComponent={<_Text />} />
-);
+const OldDefault = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4" w="300px">
+        <SkeletonCircle size="10" />
+        <SkeletonText mt="4" noOfLines={4} spacing="4" />
+        <Skeleton mt="4" height="20px" />
+      </Box>
+    </VStack>
+  );
+};
 
-const _Combined = () => (
-  <Container maxW="500px">
-    <chakra.div padding="6" boxShadow="lg" bg="white">
-      <SkeletonCircle size="10" />
-      <SkeletonText mt="4" noOfLines={4} spacing="4" />
-    </chakra.div>
-  </Container>
-);
-export const Combined: ComponentStory<typeof Skeleton> = (args) => (
-  <Decorators newComponent={<_Combined />} oldComponent={<_Combined />} />
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
 );
