@@ -12,19 +12,18 @@ import { getColorInfo } from "util/helpers";
 
 const baseStyleField: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  let { light: _gray, dark: _grayDark, isDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     ...Input.baseStyle.field,
-    bg: mode(`${lightGray}.1`, `${darkGray}.1`)(props),
+    bg: mode(`${_gray}.1`, `${_grayDark}.1`)(props),
     appearance: "none",
     paddingBottom: "1px",
     lineHeight: "normal",
     "> option, > optgroup": {
-      bg: mode(`${lightGray}.1`, `${darkGray}.1`)(props),
+      bg: mode(`${_gray}.1`, `${_grayDark}.1`)(props),
     },
   };
 };
