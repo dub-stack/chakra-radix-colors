@@ -4,10 +4,7 @@ import { getColorInfo } from "util/helpers";
 
 const baseStyle: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
   return {
     borderRadius: "md",
@@ -18,7 +15,7 @@ const baseStyle: SystemStyleFunction = (props) => {
       position: "fixed",
       top: "1.5rem",
       insetStart: "1.5rem",
-      bg: mode(`${lightGray}.1`, `${darkGray}.1`)(props),
+      bg: mode(`${_gray}.1`, `${_grayDark}.1`)(props),
     },
   };
 };
