@@ -30,6 +30,7 @@ export { default as Select } from "./select/select";
 export { default as Skeleton } from "./skeleton/skeleton";
 export { default as SkipLink } from "./skip-link/skip-link";
 export { default as Slider } from "./slider/slider";
+export { default as Spinner } from "./spinner/spinner";
 export { default as Switch } from "./switch/switch";
 export { default as Table } from "./table/table";
 export { default as Tabs } from "./tabs/tabs";
