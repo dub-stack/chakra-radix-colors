@@ -12,20 +12,20 @@ import {
 import { getColorInfo } from "util/helpers";
 
 function filledStyle(props: StyleFunctionProps): SystemStyleObject {
-  const { colorScheme: c, theme: t, isIndeterminate, hasStripe } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, t);
+  const { colorScheme: c, theme, isIndeterminate, hasStripe } = props;
+  const { light, dark, isDark, isBright } = getColorInfo(c, theme);
 
-  const stripeStyle = mode(
-    generateStripe(),
-    generateStripe("1rem", "rgba(0,0,0,0.1)")
-  )(props);
+  let stripeStyle = isDark
+    ? mode(generateStripe("1rem", "rgba(0,0,0,0.1)"), generateStripe())(props)
+    : mode(generateStripe(), generateStripe("1rem", "rgba(0,0,0,0.1)"))(props);
+  if (isBright) stripeStyle = generateStripe("1rem", "rgba(0,0,0,0.1)");
 
-  const bgColor = mode(`${lightPalette}.9`, `${darkPalette}.9`)(props);
+  const bgColor = mode(`${light}.9`, `${dark}.9`)(props);
 
   const gradient = `linear-gradient(
     to right,
     transparent 0%,
-    ${getColor(t, bgColor)} 50%,
+    ${getColor(theme, bgColor)} 50%,
     transparent 100%
   )`;
 
@@ -37,21 +37,30 @@ function filledStyle(props: StyleFunctionProps): SystemStyleObject {
   };
 }
 
-const baseStyleLabel: SystemStyleObject = {
-  lineHeight: "1",
-  fontSize: "0.25em",
-  fontWeight: "bold",
-  color: "white",
+const baseStyleLabel: SystemStyleFunction = (props) => {
+  const { colorScheme: c, theme } = props;
+  let { isBright } = getColorInfo(c, theme);
+
+  let color = "_gray.1";
+  if (isBright) color = "_gray.12";
+
+  return {
+    lineHeight: "1",
+    fontSize: "0.25em",
+    fontWeight: "bold",
+    color,
+  };
 };
 
 const baseStyleTrack: SystemStyleFunction = (props) => {
-  const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { colorScheme: c, theme } = props;
+  let { isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_grayDark, _gray] = [_gray, _grayDark];
+
   return {
-    bg: mode(`${lightGray}A.3`, `${darkGray}A.3`)(props),
+    bg: mode(`${_gray}A.3`, `${_grayDark}A.3`)(props),
   };
 };
 
@@ -64,7 +73,7 @@ const baseStyleFilledTrack: SystemStyleFunction = (props) => {
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
-  label: baseStyleLabel,
+  label: baseStyleLabel(props),
   filledTrack: baseStyleFilledTrack(props),
   track: baseStyleTrack(props),
 });
