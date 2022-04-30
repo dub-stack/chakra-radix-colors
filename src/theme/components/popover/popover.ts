@@ -18,13 +18,10 @@ const baseStylePopper: SystemStyleObject = {
 
 const baseStyleContent: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _darkGray } = getColorInfo("_gray", theme);
 
-  const bg = mode(`${lightGray}.1`, `${darkGray}.1`)(props);
-  const shadowColor = mode(`${lightGray}.4`, `${darkGray}.4`)(props);
+  const bg = mode(`${_gray}.1`, `${_darkGray}.1`)(props);
+  const shadowColor = mode(`${_gray}.4`, `${_darkGray}.4`)(props);
 
   return {
     [$popperBg.variable]: `colors.${bg}`,
