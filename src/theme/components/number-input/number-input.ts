@@ -30,16 +30,13 @@ const baseStyleStepperGroup: SystemStyleObject = {
 
 const baseStyleStepper: SystemStyleFunction = (props) => {
   const { theme } = props;
-  const { lightPalette: grayLight, darkPalette: grayDark } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
   return {
     borderStart: "1px solid",
-    borderStartColor: mode(`${grayLight}.6`, `${grayDark}.6`)(props),
+    borderStartColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
     _active: {
-      bg: mode(`${grayLight}.5`, `${grayDark}.5`)(props),
+      bg: mode(`${_gray}.5`, `${_grayDark}.5`)(props),
     },
     _disabled: {
       opacity: 0.4,
