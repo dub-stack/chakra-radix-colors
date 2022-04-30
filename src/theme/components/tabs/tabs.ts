@@ -86,27 +86,27 @@ const variantLine: PartsStyleFunction<typeof parts> = (props) => {
   const borderProp =
     orientation === "vertical" ? "borderStart" : "borderBottom";
   const marginProp = isVertical ? "marginStart" : "marginBottom";
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     tablist: {
       [borderProp]: "2px solid",
-      borderColor: "inherit",
+      borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
     },
     tab: {
       [borderProp]: "2px solid",
       borderColor: "transparent",
       [marginProp]: "-2px",
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
       _selected: {
-        color: mode(`${lightPalette}.11`, `${darkPalette}.11`)(props),
+        color: mode(`${light}.11`, `${dark}.11`)(props),
         borderColor: "currentColor",
       },
       _active: {
-        bg: mode(`${lightGray}.4`, `${darkGray}.4`)(props),
+        bg: mode(`${_gray}.4`, `${_grayDark}.4`)(props),
       },
       _disabled: {
         opacity: 0.4,
@@ -118,84 +118,95 @@ const variantLine: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantEnclosed: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     tab: {
       borderTopRadius: "md",
       border: "1px solid",
       borderColor: "transparent",
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
       mb: "-1px",
       _selected: {
-        color: mode(`${lightPalette}.11`, `${darkPalette}.11`)(props),
+        color: mode(`${light}.11`, `${dark}.11`)(props),
         borderColor: "inherit",
-        borderBottomColor: mode(`${lightGray}.1`, `${darkGray}.1`)(props),
+        borderBottomColor: mode(`${_gray}.1`, `${_grayDark}.1`)(props),
+      },
+      _disabled: {
+        cursor: "not-allowed",
+        opacity: 0.4,
       },
     },
     tablist: {
       mb: "-1px",
       borderBottom: "1px solid",
-      borderColor: "inherit",
+      borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
     },
   };
 };
 
 const variantEnclosedColored: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
+
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
 
   return {
     tab: {
       border: "1px solid",
       borderColor: "inherit",
-      bg: mode(`${lightGray}.2`, `${darkGray}.2`)(props),
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
+      bg: mode(`${_gray}.2`, `${_grayDark}.2`)(props),
       mb: "-1px",
       _notLast: {
         marginEnd: "-1px",
       },
       _selected: {
-        bg: mode(`${lightPalette}.1`, `${darkPalette}.1`)(props),
-        color: mode(`${lightPalette}.11`, `${darkPalette}.11`)(props),
+        bg: mode(`${light}.2`, `${dark}.2`)(props),
+        color: mode(`${light}.11`, `${dark}.11`)(props),
         borderColor: "inherit",
         borderTopColor: "currentColor",
         borderBottomColor: "transparent",
+      },
+      _disabled: {
+        cursor: "not-allowed",
+        opacity: "0.4",
       },
     },
     tablist: {
       mb: "-1px",
       borderBottom: "1px solid",
-      borderColor: "inherit",
+      borderColor: mode(`${_gray}.6`, `${_grayDark}.6`)(props),
     },
   };
 };
 
 const variantSoftRounded: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light, dark, isDark } = getColorInfo(c, theme);
+  let { light: _gray, dark: _grayDark } = getColorInfo("_gray", theme);
 
-  const color = mode(`${lightPalette}.11`, `${darkPalette}.11`)(props);
-  const bg = mode(`${lightPalette}.5`, `${darkPalette}.5`)(props);
+  if (isDark) [_gray, _grayDark] = [_grayDark, _gray];
+
+  const color = mode(`${light}.11`, `${dark}.11`)(props);
+  const bg = mode(`${light}.4`, `${dark}.4`)(props);
 
   return {
     tab: {
       borderRadius: "full",
       fontWeight: "semibold",
-      color: mode(`${lightGray}.11`, `${darkGray}.11`)(props),
+      color: mode(`${_gray}.11`, `${_grayDark}.11`)(props),
       _selected: {
         color: getColor(theme, color),
         bg: getColor(theme, bg),
+      },
+      _disabled: {
+        cursor: "not-allowed",
+        opacity: "0.4",
       },
     },
   };
@@ -203,20 +214,23 @@ const variantSoftRounded: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantSolidRounded: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const { lightPalette, darkPalette } = getColorInfo(c, theme);
-  const { lightPalette: lightGray, darkPalette: darkGray } = getColorInfo(
-    "gray",
-    theme
-  );
+  const { light, dark, isBright } = getColorInfo(c, theme);
+
+  let color = `_gray.1`;
+  if (isBright) color = `_gray.12`;
 
   return {
     tab: {
       borderRadius: "full",
       fontWeight: "semibold",
-      color: mode(`${lightPalette}.11`, `${darkPalette}.11`)(props),
+      color: mode(`${light}.11`, `${dark}.11`)(props),
       _selected: {
-        color: mode(`${lightGray}.1`, `${darkGray}.1`)(props),
-        bg: mode(`${lightPalette}.11`, `${darkPalette}.11`)(props),
+        color,
+        bg: mode(`${light}.9`, `${dark}.9`)(props),
+      },
+      _disabled: {
+        cursor: "not-allowed",
+        opacity: "0.4",
       },
     },
   };
