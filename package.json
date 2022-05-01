@@ -42,7 +42,7 @@
     "@emotion/styled": "^11.8.1",
     "@radix-ui/colors": "^0.1.8",
     "@storybook/addon-actions": "^6.4.20",
-    "@storybook/addon-essentials": "^6.4.20",
+    "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.20",
     "@storybook/addon-links": "^6.4.20",
     "@storybook/react": "^6.4.20",
