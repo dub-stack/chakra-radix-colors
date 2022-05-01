@@ -36,4 +36,5 @@ export { default as Switch } from "./switch/switch";
 export { default as Table } from "./table/table";
 export { default as Tabs } from "./tabs/tabs";
 export { default as Tag } from "./tag/tag";
+export { default as Textarea } from "./textarea/textarea";
 export { default as Tooltip } from "./tooltip/tooltip";
