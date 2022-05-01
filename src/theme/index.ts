@@ -11,9 +11,9 @@ import * as components from "./components";
 
 // create the theme
 const theme = extendTheme({
-  colors,
-  components,
-  styles,
+  colors: { ...colors },
+  components: { ...components },
+  styles: { ...styles },
 }) as unknown as Omit<Theme, "colors"> & { colors: RadixColorsType };
 theme.colors = colors; // remove the default @chakra-ui colors
 
