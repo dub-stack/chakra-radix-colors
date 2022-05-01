@@ -23,7 +23,11 @@ jobs:
   # Available types: [feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert]
   conventional-commit-check:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
       - name: check-commit-message
         uses: aevea/commitsar@v0.18.0
 
