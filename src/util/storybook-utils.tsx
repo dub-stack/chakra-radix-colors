@@ -6,7 +6,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { RiMoonFill, RiRecycleFill } from "react-icons/ri";
-import theme from "../theme";
+import { theme } from "../theme";
 
 /**
  * Effectively a hook that is used to toggle the colorMode for a Provider.

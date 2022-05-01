@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import { render } from "@testing-library/react";
 import { ChakraProvider } from "@chakra-ui/provider";
-import theme from "../theme";
+import { theme } from "../theme";
 import { RenderOptions } from "@storybook/addons";
 import { matchers } from "@emotion/jest";
 import { Button, useColorMode } from "@chakra-ui/react";

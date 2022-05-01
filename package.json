@@ -2,7 +2,7 @@
   "name": "@dub-stack/chakra-radix-colors",
   "version": "0.0.0-development",
   "description": "This package provides the @radix-ui/colors in a chakra project.",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "keywords": [
     "react",
     "chakra-ui",

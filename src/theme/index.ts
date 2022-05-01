@@ -18,4 +18,4 @@ const theme = extendTheme({
 theme.colors = colors; // remove the default @chakra-ui colors
 
 // export the theme
-export default theme;
+export { theme };
