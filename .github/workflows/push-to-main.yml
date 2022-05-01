@@ -28,7 +28,6 @@ jobs:
         with:
           node-version: 14
       - run: npm install
-      - run: npm test
       - run: npm run storybook
       - run: npm run cypress:run
 
