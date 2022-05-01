@@ -1,6 +1,6 @@
 {
   "name": "@dub-stack/chakra-radix-colors",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "This package provides the @radix-ui/colors in a chakra project.",
   "main": "./dist/index.js",
   "keywords": [
@@ -18,11 +18,12 @@
     "cypress:run": "cypress run",
     "storybook:dev": "start-storybook -p 6006",
     "storybook:ci": "start-storybook -p 6006 --ci",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dub-stack/chakra-radix-colors.git"
+    "url": "https://github.com/dub-stack/chakra-radix-colors.git"
   },
   "author": "Spencer Duball <spencer@spencerduball.com>",
   "license": "MIT",
@@ -65,7 +66,8 @@
     "react-spinners": "^0.11.0",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "semantic-release": "^19.0.2"
   },
   "peerDependencies": {
     "@chakra-ui/react": "^1.8.8",
