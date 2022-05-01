@@ -1,9 +1,7 @@
 <p align="center">
   <a href="https://www.radix-ui.com/colors">
-    <div height="50px" width="50px">
-    ![radix-ui logo](doc/images/radix-ui-logo_light.png#gh-light-mode-only)
-    ![radix-ui logo](doc/images/radix-ui-logo_dark.png#gh-dark-mode-only)
-    </div>
+    <img src="doc/images/radix-ui-logo_light.png" alt="radix-ui icon" height="50px" w="50px" href="#gh-light-mode-only" />
+    <img src="doc/images/radix-ui-logo_dark.png" alt="radix-ui icon" height="50px" w="50px" href="#gh-dark-mode-only" />
   </a>
   <img src="doc/images/plus.png" alt="plus icon" height="50px" w="50px" />
   <a href="https://www.chakra-ui.com">
@@ -16,8 +14,8 @@
 <br/>
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT" />
-  <img src="https://img.shields.io/bundlephobia/minzip/chakra-radix-colors" alt="Minzipped size" />
-  <img src="https://img.shields.io/jsdelivr/npm/hm/chakra-radix-colorslabel=downloads" alt="Downloads" />
+  <img src="https://img.shields.io/bundlephobia/minzip/@dub-stack/chakra-radix-colors" alt="Minzipped size" />
+  <img src="https://img.shields.io/jsdelivr/npm/hm/@dub-stack/chakra-radix-colorslabel=downloads" alt="Downloads" />
 </div>
 <br/>
 
@@ -41,7 +39,7 @@ npm install @dub-stack/chakra-radix-colors @radix-ui/colors
 
    ```ts
    // Pass our theme prop to the `ChakraProvider`
-   import { theme } from "chakra-radix-colors";
+   import { theme } from "@dub-stack/chakra-radix-colors";
 
    function App({ Component }) {
      return (
@@ -88,54 +86,4 @@ npm install @dub-stack/chakra-radix-colors @radix-ui/colors
 
 ## Customize the Theme
 
-All of the theme customization options that Chakra provides are still available to you with this package, you can add more colors, filter out colors you don't use, override components, and customize the theme much as you like. Since this package is just a custom theme ontop of the chakra default theme, we can pick and choose the overrides we want. See Chakra's [customizing theme](https://chakra-ui.com/docs/theming/customize-theme) documentation on how to set up a custom theme.
-
-```ts
-// 1. Import `extendTheme` and `overrides`
-import { extendTheme } from "@chakra-ui/react";
-import { overrides } from "chakra-radix-colors";
-
-// 2. Create `colors` object
-const colors = {
-  // Add all of the radix colors we want to keep
-  ...overrides.colors,
-
-  // If we want to use a different gray as the default
-  // instead of `slate`, we can specify it here
-  defaultgray: {
-    ...overrides.colors.olive,
-  },
-  defaultgrayDark: {
-    ...overrides.colors.oliveDark,
-  },
-  defaultgrayA: {
-    ...overrides.colors.oliveA,
-  },
-  defaultgrayDarkA: {
-    ...overrides.colors.oliveDarkA,
-  },
-};
-
-// 3. Call `extendTheme` and pass your custom values
-export const theme = extendTheme({
-  colors,
-  components: {
-    // here we can specify the component overrides, do you want
-    // another variant or different styling for your button, badge, etc?
-    // Specify component overrides here, see chakra docs for more info:
-    // https://chakra-ui.com/docs/theming/component-style
-    ...overrides.components,
-  },
-  styles: {
-    // to overwrite the global styles, you must copy in the styles from this
-    // package to have the correct grays for your components, and then modify
-    // how you like
-    global: overrides.styles.global,
-  },
-  config: overrides.config,
-});
-
-// 4. Remove the default chakra-ui colors, if we don't do this all of the
-// chakra colors will still be defined
-theme.colors = colors;
-```
+Docs on this coming soon!
