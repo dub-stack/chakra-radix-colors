@@ -1,7 +1,7 @@
 import { keyframes } from "@chakra-ui/system";
 import type { SystemStyleFunction } from "@chakra-ui/theme-tools";
 import { getColor, mode } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const fade = (startColor: string, endColor: string) =>
   keyframes({

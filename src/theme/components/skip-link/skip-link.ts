@@ -1,6 +1,6 @@
 import type { SystemStyleFunction } from "@chakra-ui/theme-tools";
 import { mode } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const baseStyle: SystemStyleFunction = (props) => {
   const { theme } = props;

@@ -6,7 +6,7 @@ import type {
   PartsStyleObject,
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const baseStyle: PartsStyleObject<typeof parts> = {
   table: {

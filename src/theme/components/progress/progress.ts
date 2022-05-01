@@ -9,7 +9,7 @@ import {
   SystemStyleObject,
   SystemStyleFunction,
 } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 function filledStyle(props: StyleFunctionProps): SystemStyleObject {
   const { colorScheme: c, theme, isIndeterminate, hasStripe } = props;

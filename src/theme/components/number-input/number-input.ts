@@ -8,7 +8,7 @@ import type {
 import { calc, cssVar, mode } from "@chakra-ui/theme-tools";
 import { theme } from "@chakra-ui/theme";
 import Input from "../input/input";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const { variants, defaultProps } = Input;
 

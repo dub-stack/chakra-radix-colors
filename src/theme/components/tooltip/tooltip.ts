@@ -1,5 +1,5 @@
 import { mode, cssVar, SystemStyleFunction } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const $bg = cssVar("tooltip-bg");
 const $arrowBg = cssVar("popper-arrow-bg");
