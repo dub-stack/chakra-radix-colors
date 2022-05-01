@@ -1,3 +1,3 @@
-# Test CI Fail Again
+# Setup CI
 
-yo
+Test automated release
