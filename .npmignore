@@ -1,4 +1,3 @@
-!dist/
 !package.json
 !LICENSE
 
@@ -10,6 +9,7 @@ dist/util/test-utils.tsx
 coverage/
 cypress/
 cypress.json
+.github/
 
 # ignore all config files
 *.config.{ts,tsx,js,jsx}
@@ -20,3 +20,6 @@ src/
 
 # ignore npm package files
 out/
+
+# ignore documentation
+doc/

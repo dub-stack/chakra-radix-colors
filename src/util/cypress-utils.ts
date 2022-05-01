@@ -1,5 +1,5 @@
 import { getColor } from "@chakra-ui/theme-tools";
-import theme from "theme";
+import { theme } from "theme";
 import { hsl, hex } from "color-convert";
 
 /**
