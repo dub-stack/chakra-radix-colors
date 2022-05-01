@@ -7,59 +7,184 @@ import {
   TagRightIcon,
   TagCloseButton,
   HStack,
+  StackProps,
+  VStack,
+  Text,
+  Box,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { Decorators } from "util/storybook-utils";
+import { useThemedColor } from "util/helpers";
 
 export default {
   title: "Components / Tag",
   component: Tag,
 } as ComponentMeta<typeof Tag>;
 
-const _Subtle = () => (
-  <HStack>
-    <Tag variant="subtle" colorScheme="teal">
-      <TagLeftIcon w="12px" h="12px" as={AddIcon} />
-      <TagLabel>Green</TagLabel>
-    </Tag>
-    <Tag variant="subtle" colorScheme="teal">
-      <TagLabel>Green</TagLabel>
-      <TagRightIcon w="12px" h="12px" as={AddIcon} />
-    </Tag>
-  </HStack>
-);
-export const Subtle: ComponentStory<typeof _Subtle> = (args) => (
-  <Decorators newComponent={<_Subtle />} oldComponent={<_Subtle />} />
-);
+const NewDefault = (props: StackProps) => {
+  const c = useThemedColor();
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        New Theme
+      </Text>
+      <Box bg={c("_gray.1")} p="4">
+        <VStack data-testid="stack-o-stacks">
+          <HStack>
+            <Tag variant="subtle" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="subtle" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="solid" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="solid" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="outline" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="outline" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+        </VStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box bg={c("_grayDark.1")} p="4">
+        <VStack data-testid="stack-o-stacks">
+          <HStack>
+            <Tag variant="subtle" colorScheme="tealDark">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="subtle" colorScheme="tealDark">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="solid" colorScheme="tealDark">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="solid" colorScheme="tealDark">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="outline" colorScheme="tealDark">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="outline" colorScheme="tealDark">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+        </VStack>
+      </Box>
+    </VStack>
+  );
+};
 
-const _Solid = () => (
-  <HStack>
-    <Tag variant="solid" colorScheme="teal">
-      <TagLeftIcon w="12px" h="12px" as={AddIcon} />
-      <TagLabel>Green</TagLabel>
-    </Tag>
-    <Tag variant="solid" colorScheme="teal">
-      <TagLabel>Green</TagLabel>
-      <TagRightIcon w="12px" h="12px" as={AddIcon} />
-    </Tag>
-  </HStack>
-);
-export const Solid: ComponentStory<typeof _Solid> = (args) => (
-  <Decorators newComponent={<_Solid />} oldComponent={<_Solid />} />
-);
+const OldDefault = (props: StackProps) => {
+  return (
+    <VStack {...props}>
+      {/* display the light version in light mode */}
+      <Text as="h1" fontWeight="bold">
+        Old Theme
+      </Text>
+      <Box p="4">
+        <VStack data-testid="stack-o-stacks">
+          <HStack>
+            <Tag variant="subtle" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="subtle" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="solid" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="solid" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="outline" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="outline" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+        </VStack>
+      </Box>
+      {/* display the dark version in light mode */}
+      <Box p="4" visibility="hidden">
+        <VStack data-testid="stack-o-stacks">
+          <HStack>
+            <Tag variant="subtle" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="subtle" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="solid" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="solid" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+          <HStack>
+            <Tag variant="outline" colorScheme="teal">
+              <TagLeftIcon w="12px" h="12px" as={AddIcon} />
+              <TagLabel>Green</TagLabel>
+            </Tag>
+            <Tag variant="outline" colorScheme="teal">
+              <TagLabel>Green</TagLabel>
+              <TagRightIcon w="12px" h="12px" as={AddIcon} />
+            </Tag>
+          </HStack>
+        </VStack>
+      </Box>
+    </VStack>
+  );
+};
 
-const _Outline = () => (
-  <HStack>
-    <Tag variant="outline" colorScheme="teal">
-      <TagLeftIcon w="12px" h="12px" as={AddIcon} />
-      <TagLabel>Green</TagLabel>
-    </Tag>
-    <Tag variant="outline" colorScheme="teal">
-      <TagLabel>Green</TagLabel>
-      <TagRightIcon w="12px" h="12px" as={AddIcon} />
-    </Tag>
-  </HStack>
-);
-export const Outline: ComponentStory<typeof _Outline> = (args) => (
-  <Decorators newComponent={<_Outline />} oldComponent={<_Outline />} />
+export const Default: ComponentStory<typeof VStack> = (args) => (
+  <Decorators
+    newComponent={<NewDefault data-testid="NewDefault" />}
+    oldComponent={<OldDefault data-testid="OldDefault" />}
+  />
 );
