@@ -1,3 +1,3 @@
 # Setup CI
 
-Test automated release
+Test auto-merge of PR
