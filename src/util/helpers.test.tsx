@@ -4,10 +4,10 @@ import {
   getBaseColorPair,
   getColorInfo,
 } from "./helpers";
-import { theme } from "theme";
+import { theme } from "../theme";
 import React from "react";
 import { Text } from "@chakra-ui/react";
-import { render, screen } from "util/test-utils";
+import { render, screen } from "./test-utils";
 
 describe("getThemedColor", () => {
   test("works with light colors", () => {

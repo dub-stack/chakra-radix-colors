@@ -1,7 +1,9 @@
 <p align="center">
   <a href="https://www.radix-ui.com/colors">
-    <img src="doc/images/radix-ui-logo_light.png#gh-light-mode-only" alt="radix-ui logo" height="50px" width="50px" />
-    <img src="doc/images/radix-ui-logo_dark.png#gh-dark-mode-only" alt="radix-ui logo" height="50px" width="50px" />
+    <div height="50px" width="50px">
+    ![radix-ui logo](doc/images/radix-ui-logo_light.png#gh-light-mode-only)
+    ![radix-ui logo](doc/images/radix-ui-logo_dark.png#gh-dark-mode-only)
+    </div>
     </a>
   <img src="doc/images/plus.png" alt="plus icon" height="50px" w="50px" />
   <a href="https://www.chakra-ui.com">

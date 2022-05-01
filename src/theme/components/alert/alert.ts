@@ -5,7 +5,7 @@ import type {
   PartsStyleFunction,
   StyleFunctionProps,
 } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 // Please visit: https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
 // to understand which values were used where. This link provides a style guide for using colors

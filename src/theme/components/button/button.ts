@@ -3,7 +3,7 @@ import type {
   SystemStyleObject,
   SystemStyleFunction,
 } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const baseStyle: SystemStyleObject = {
   lineHeight: "1.2",

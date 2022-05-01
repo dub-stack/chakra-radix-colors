@@ -6,7 +6,7 @@ import type {
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
 import { calc, cssVar, mode } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const $width = cssVar("switch-track-width");
 const $height = cssVar("switch-track-height");

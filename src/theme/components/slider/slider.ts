@@ -6,7 +6,7 @@ import type {
   SystemStyleObject,
 } from "@chakra-ui/theme-tools";
 import { mode, orient } from "@chakra-ui/theme-tools";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 function thumbOrientation(props: StyleFunctionProps): SystemStyleObject {
   return orient({

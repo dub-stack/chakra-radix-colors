@@ -8,7 +8,7 @@ import type {
 import { mergeWith } from "@chakra-ui/utils";
 import { mode } from "@chakra-ui/theme-tools";
 import Input from "../input/input";
-import { getColorInfo } from "util/helpers";
+import { getColorInfo } from "../../../util/helpers";
 
 const baseStyleField: SystemStyleFunction = (props) => {
   const { theme } = props;
