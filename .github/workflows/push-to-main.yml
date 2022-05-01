@@ -27,9 +27,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
     steps:
       - name: checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v1
       - name: check-commit-message
         uses: aevea/commitsar@v0.18.0
 
