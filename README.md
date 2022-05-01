@@ -1,7 +1,6 @@
 <p align="center">
   <a href="https://www.radix-ui.com/colors">
-    <img src="doc/images/radix-ui-logo_light.png" alt="radix-ui icon" height="50px" w="50px" href="#gh-light-mode-only" />
-    <img src="doc/images/radix-ui-logo_dark.png" alt="radix-ui icon" height="50px" w="50px" href="#gh-dark-mode-only" />
+    <img src="doc/images/radix-ui-logo.png" alt="radix-ui icon" height="50px" w="50px" />
   </a>
   <img src="doc/images/plus.png" alt="plus icon" height="50px" w="50px" />
   <a href="https://www.chakra-ui.com">
@@ -86,4 +85,55 @@ npm install @dub-stack/chakra-radix-colors @radix-ui/colors
 
 ## Customize the Theme
 
-Docs on this coming soon!
+Because this package is just a theme customization using the methods described in the [chakra docs](https://chakra-ui.com/docs/styled-system/theming/customize-theme), we can override the theme in the same way using as many or as little overrides from this package as we want.
+
+> ❗️ Important: The default theme provides the gray palette used as "slate". Radix provides many different shades of gray, see this customization example to learn how you can change the default gray palette. While all gray colors will still be available, the default gray used will be modified.
+
+```ts
+// 1. Import `extendTheme`
+import { extendTheme } from "@chakra-ui/react"
+import { theme } from "@dub-stack/chakra-radix-colors";
+
+// 2. Call `extendTheme` and pass your custom values
+const theme = extendTheme({
+  colors: {
+    // add all of the colors in ...
+    ...theme.colors,
+
+    // (optionally) overwrite the default gray color
+    _gray: { ...theme.colors.sand },
+    _grayDark: { ...theme.colors.sandDark },
+    _grayA: { ...theme.colors.sandA },
+    _grayDarkA: { ...theme.colors.sandDarkA },
+
+    // add any other colors you would like!
+  },
+  components: {
+    // add all of the components in
+    ...theme.components,
+
+    // add any other component overrides you would like!
+  },
+  styles: {
+    global: (props) => ({
+      // add the default styles
+      ...theme.styles.global(props)
+
+      // add any other styles you would like!
+      body: {
+        backgroundColor: "purple.1"
+      },
+    })
+  }
+})
+
+// 3. Pass the new theme to `ChakraProvider`
+<ChakraProvider theme={theme}>
+  <App />
+</ChakraProvider>
+
+// 4. Now you can use these colors in your components
+function Usage() {
+  return <Box bg="purple.12">Welcome</Box>
+}
+```
