@@ -4,6 +4,8 @@ on:
     branches: [main]
 
 jobs:
+  # PUBLISH_TO_NPM: ✅
+  # publish-to-npm job exists to publish a new patch or minor version to NPM.
   release:
     runs-on: ubuntu-latest
     steps:

@@ -18,7 +18,7 @@ jobs:
         uses: amannn/action-semantic-pull-request@v4.4.0
 
   # PASSING_TESTS: ✅
-  # test-check job exists to ensure nothing has broken between tests, and that all tests pass.
+  # run-check job exists to ensure nothing has broken between tests, and that all tests pass.
   run-tests:
     runs-on: ubuntu-latest
     steps:
@@ -58,6 +58,3 @@ jobs:
           same_commit: true
           # This will apply the format changes only to files that have been changed.
           only_changed: true
-
-  # PUBLISH_TO_NPM: ✅
-  # publish-to-npm job exists to publish a new patch or minor version to NPM.
