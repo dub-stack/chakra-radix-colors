@@ -14,6 +14,8 @@ import { Dict } from "@chakra-ui/utils";
  *   getThemedColor("dark")("blueA.5") // "blueDarkA.5"
  */
 export const getThemedColor = (colorMode: string) => (color: string) => {
+  if (typeof color !== "string") return color;
+
   const [base, scaleIndex] = color.split(".");
   const [isDark, isA] = [base.includes("Dark"), base.includes("A")];
 

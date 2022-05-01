@@ -51,6 +51,13 @@ describe("getThemedColor", () => {
       expect(getThemedColor("dark")(color)).toBe(color);
     });
   });
+
+  test("returns when not a string passed", () => {
+    [undefined, null, 249].forEach((color) => {
+      expect(getThemedColor("light")(color as any)).toBe(color);
+      expect(getThemedColor("dark")(color as any)).toBe(color);
+    });
+  });
 });
 
 describe("useThemedColor", () => {
@@ -122,49 +129,41 @@ describe("getColorPair ", () => {
 describe("getColorInfo", () => {
   test("gets light color info", () => {
     expect(getColorInfo("red", theme)).toEqual({
-      lightPalette: "red",
-      darkPalette: "redDark",
+      light: "red",
+      dark: "redDark",
       isDark: false,
       isBright: false,
       isA: false,
-      lightText: "_gray.1",
-      darkText: "_gray.12",
     });
   });
 
   test("gets dark color info", () => {
     expect(getColorInfo("redDark", theme)).toEqual({
-      lightPalette: "redDark",
-      darkPalette: "red",
+      light: "redDark",
+      dark: "red",
       isDark: true,
       isBright: false,
       isA: false,
-      lightText: "_gray.12",
-      darkText: "_gray.1",
     });
   });
 
   test("gets light bright color info", () => {
     expect(getColorInfo("sky", theme)).toEqual({
-      lightPalette: "sky",
-      darkPalette: "skyDark",
+      light: "sky",
+      dark: "skyDark",
       isDark: false,
       isBright: true,
       isA: false,
-      lightText: "_gray.1",
-      darkText: "_gray.12",
     });
   });
 
   test("gets alpha color info", () => {
     expect(getColorInfo("skyDarkA", theme)).toEqual({
-      lightPalette: "skyDarkA",
-      darkPalette: "skyA",
+      light: "skyDarkA",
+      dark: "skyA",
       isDark: true,
       isBright: true,
       isA: true,
-      lightText: "_gray.12",
-      darkText: "_gray.1",
     });
   });
 });
