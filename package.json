@@ -13,10 +13,11 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest --verbose",
+    "jest": "jest --verbose",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "storybook": "start-storybook -p 6006",
+    "storybook:dev": "start-storybook -p 6006",
+    "storybook:ci": "start-storybook -p 6006 --ci",
     "build-storybook": "build-storybook"
   },
   "repository": {

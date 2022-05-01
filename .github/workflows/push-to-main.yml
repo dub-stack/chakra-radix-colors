@@ -28,9 +28,8 @@ jobs:
         with:
           node-version: 14
       - run: npm install
-      - run: npm test
-      - run: npm run storybook
-      - run: npm run cypress:run
+      - run: npm run jest
+      - run: npm run storybook:ci & npm run cypress:run
 
   # FULL_COVERAGE: ✅
   # coverage-check job exists to ensure that there is 100% coverage for the codebase. While this
