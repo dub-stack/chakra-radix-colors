@@ -4,7 +4,7 @@
     ![radix-ui logo](doc/images/radix-ui-logo_light.png#gh-light-mode-only)
     ![radix-ui logo](doc/images/radix-ui-logo_dark.png#gh-dark-mode-only)
     </div>
-    </a>
+  </a>
   <img src="doc/images/plus.png" alt="plus icon" height="50px" w="50px" />
   <a href="https://www.chakra-ui.com">
     <img src="doc/images/chakra-ui-logo.png" alt="chakra-ui logo" height="50px" width="50px" />
