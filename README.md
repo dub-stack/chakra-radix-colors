@@ -24,6 +24,8 @@
 
 Chakra-ui provides all of the building blocks needed for creating beautiful and accessible UIs, however when creating custom components or styling your elements there is not a way to have automatic dark mode support. Radix-ui provides a colors package that supports automatic dark mode, has great accessibility, and provides excellent guidance for using their color palette. This package helps glue some of my favorite features of Chakra and Radix together.
 
+For a video that describes why this page exists and how to get started: https://www.youtube.com/watch?v=QnloAQTHeUg
+
 ## Installation
 
 ```bash
